@@ -1,0 +1,11 @@
+Poné acá los archivos de Pliant con estos nombres exactos.
+Sirven .ttf o .woff2 (el CSS acepta los dos formatos):
+
+  Pliant-Thin.ttf         (o .woff2)
+  Pliant-ThinItalic.ttf
+  Pliant-Black.ttf
+  Pliant-BlackItalic.ttf
+  Pliant-LightItalic.ttf   (opcional)
+
+Si el nombre del archivo no coincide, la web cae a la tipografía
+de reemplazo (Archivo) sin romperse.
