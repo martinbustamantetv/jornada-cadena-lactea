@@ -25,30 +25,18 @@
    JORNADA DE LA CADENA LÁCTEA DE ENTRE RÍOS · 2ª edición
    Títulos: Pliant, siempre en itálica, contraste Thin ↔ Black.
    Textos y títulos de charla: Inter.
-   Dejá los archivos en assets/fonts/ y las @font-face toman el control.
-   Acepta .woff2 y .ttf: si tenés solo los .ttf, alcanza con ponerlos ahí.
-   Fallback: Archivo (100 y 900, con itálicas reales).
+   Pliant es una fuente variable (ejes wght 100-900 y wdth 100-125).
+   Se usan dos archivos: Pliant.woff2 (redonda) y Pliant-Italic.woff2 (itálica),
+   ambos en assets/fonts/. Fallback: Archivo.
    ══════════════════════════════════════════════════════════════ */
 @font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-ThinItalic.woff2') format('woff2'),
-      url('assets/fonts/Pliant-ThinItalic.ttf') format('truetype');
-  font-weight:100;font-style:italic;font-display:swap}
+  src:url('assets/fonts/Pliant.woff2') format('woff2-variations'),
+      url('assets/fonts/Pliant.woff2') format('woff2');
+  font-weight:100 900;font-style:normal;font-display:swap}
 @font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-LightItalic.woff2') format('woff2'),
-      url('assets/fonts/Pliant-LightItalic.ttf') format('truetype');
-  font-weight:300;font-style:italic;font-display:swap}
-@font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-BlackItalic.woff2') format('woff2'),
-      url('assets/fonts/Pliant-BlackItalic.ttf') format('truetype');
-  font-weight:900;font-style:italic;font-display:swap}
-@font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-Thin.woff2') format('woff2'),
-      url('assets/fonts/Pliant-Thin.ttf') format('truetype');
-  font-weight:100;font-style:normal;font-display:swap}
-@font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-Black.woff2') format('woff2'),
-      url('assets/fonts/Pliant-Black.ttf') format('truetype');
-  font-weight:900;font-style:normal;font-display:swap}
+  src:url('assets/fonts/Pliant-Italic.woff2') format('woff2-variations'),
+      url('assets/fonts/Pliant-Italic.woff2') format('woff2');
+  font-weight:100 900;font-style:italic;font-display:swap}
 
 :root{
   --azul:#0752A9;
