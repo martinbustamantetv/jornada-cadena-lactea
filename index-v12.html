@@ -107,18 +107,14 @@ section[id],footer[id]{scroll-margin-top:88px}
 .nav__logo{display:flex;align-items:center;gap:12px}
 .nav__logo img{height:30px;width:auto}
 .nav__logo img{height:36px}
-.nav__dato{position:relative;height:34px;overflow:hidden;min-width:220px;margin-left:14px;
-  /* los bordes se desvanecen: el texto entra y sale difuminado, sin corte en seco */
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36%,#000 64%,transparent 100%);
-  mask-image:linear-gradient(to bottom,transparent 0,#000 36%,#000 64%,transparent 100%)}
+.nav__dato{position:relative;height:34px;overflow:hidden;min-width:220px;margin-left:14px}
 .nav__dato div{position:absolute;inset:0;display:flex;align-items:center;gap:9px;
   font-family:var(--texto);font-weight:500;font-size:12.5px;letter-spacing:.02em;color:rgba(255,255,255,.88);
-  transition:transform 1s cubic-bezier(.33,0,.2,1),opacity .8s cubic-bezier(.4,0,.2,1),filter .8s ease;
-  white-space:nowrap}
+  transition:transform .65s var(--ease),opacity .45s var(--ease);white-space:nowrap}
 .nav__dato svg{width:15px;height:15px;flex:none;color:var(--verde)}
-.nav__dato .b{transform:translateY(80%);opacity:0;filter:blur(3px)}
-.nav__dato.alt .a{transform:translateY(-80%);opacity:0;filter:blur(3px)}
-.nav__dato.alt .b{transform:none;opacity:1;filter:none}
+.nav__dato .b{transform:translateY(100%);opacity:0}
+.nav__dato.alt .a{transform:translateY(-100%);opacity:0}
+.nav__dato.alt .b{transform:none;opacity:1}
 @media(max-width:1120px){.nav__dato{display:none}}
 .nav__links{display:flex;gap:clamp(14px,1.7vw,30px);align-items:center}
 .nav__links a{font-family:var(--texto);font-weight:500;font-size:13px;letter-spacing:.06em;
@@ -682,61 +678,7 @@ section[id],footer[id]{scroll-margin-top:88px}
   font-size:1rem;letter-spacing:-.03em}
 .ficha__nota p{margin:0;font-size:.88rem;color:rgba(255,255,255,.62)}
 
-/* ════════ 7 · APORTE SOLIDARIO ════════ */
-.dona{background:var(--hueso);color:var(--tinta);position:relative;overflow:hidden}
-.dona__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,4vw,72px);align-items:start}
-.dona__grid>div:first-child{position:sticky;top:110px}
-@media(max-width:900px){.dona__grid>div:first-child{position:static}}
-@media(max-width:900px){.dona__grid{grid-template-columns:1fr;gap:clamp(26px,6vw,40px)}}
-
-/* la foto se disuelve en el fondo con una máscara suave en los cuatro bordes */
-.dona__foto{position:relative;margin:0;aspect-ratio:3/4;max-width:min(100%,470px)}
-.dona__foto>img:first-child{width:100%;height:100%;object-fit:cover;display:block;
-  -webkit-mask-image:
-    linear-gradient(to bottom,transparent 0,#000 15%,#000 60%,rgba(0,0,0,.5) 85%,transparent 100%),
-    linear-gradient(to right,transparent 0,#000 13%,#000 87%,transparent 100%);
-  mask-image:
-    linear-gradient(to bottom,transparent 0,#000 15%,#000 60%,rgba(0,0,0,.5) 85%,transparent 100%),
-    linear-gradient(to right,transparent 0,#000 13%,#000 87%,transparent 100%);
-  -webkit-mask-composite:source-in;mask-composite:intersect}
-.dona__bapfoto{position:absolute;left:0;bottom:-3%;width:clamp(104px,12vw,152px);height:auto;z-index:2}
-@media(max-width:900px){
-  .dona__foto{max-width:min(86%,380px);margin-inline:auto}
-  .dona__bapfoto{left:4%}
-}
-
-.dona__t{margin-bottom:clamp(20px,2.6vw,32px)}
-.dona__t .l1{display:block;font-size:clamp(1.5rem,3.4vw,2.7rem)}
-.dona__t .l2{display:block;font-size:clamp(2.1rem,5.6vw,4.4rem)}
-.dona__t .l1,.dona__t .l2{color:var(--azul)}
-.dona p{margin:0 0 16px;font-size:clamp(1rem,1.25vw,1.14rem);line-height:1.62;color:#4a5560;max-width:52ch}
-.dona p b{color:var(--noche);font-weight:600}
-.dona p:last-of-type{margin-bottom:0}
-
-/* la cuenta: un litro se vuelve cuatro vasos */
-.dona__cuenta{display:flex;align-items:center;gap:clamp(14px,2vw,26px);flex-wrap:wrap;
-  margin:clamp(22px,2.8vw,34px) 0;padding:clamp(18px,2.2vw,26px) clamp(20px,2.6vw,30px);
-  background:#fff;border-radius:12px;border-left:4px solid var(--verde);
-  box-shadow:0 14px 34px -26px rgba(4,31,66,.5)}
-.dona__cifra{font-family:var(--display);font-style:italic;font-weight:900;letter-spacing:-.045em;
-  font-size:clamp(2rem,4.2vw,3.2rem);line-height:.9;color:var(--azul);white-space:nowrap}
-.dona__cifra span{display:block;font-family:var(--texto);font-style:normal;font-weight:600;
-  text-transform:uppercase;font-size:10px;letter-spacing:.18em;color:#7b858f;margin-top:8px}
-.dona__flecha{color:var(--verde);flex:none}
-.dona__flecha svg{width:26px;height:26px;display:block}
-.dona__cuenta .dona__cifra:last-child{color:var(--verde)}
-
-.dona__cierre{display:flex;align-items:flex-start;gap:14px;margin-top:clamp(22px,2.8vw,32px);
-  padding-top:clamp(20px,2.4vw,28px);border-top:1px solid rgba(7,82,169,.16)}
-.dona__cierre svg{width:26px;height:26px;flex:none;color:var(--verde);margin-top:2px}
-.dona__cierre p{font-size:clamp(1rem,1.3vw,1.18rem);color:var(--noche);font-weight:500;max-width:44ch}
-.dona__bap{display:inline-flex;align-items:baseline;gap:8px;margin-top:18px;
-  font-family:var(--texto);font-weight:600;text-transform:uppercase;font-size:10.5px;letter-spacing:.16em;
-  color:#7b858f}
-.dona__bap b{font-family:var(--display);font-style:italic;font-weight:900;text-transform:none;
-  font-size:1.05rem;letter-spacing:-.02em;color:var(--azul)}
-
-/* ════════ 8 · GALERÍA ════════ */
+/* ════════ 7 · GALERÍA ════════ */
 .galeria{background:var(--noche)}
 .galeria__cab{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
   gap:24px;margin-bottom:clamp(26px,3vw,40px)}
@@ -783,7 +725,7 @@ section[id],footer[id]{scroll-margin-top:88px}
   box-shadow:0 30px 70px -24px rgba(115,193,239,.95)}
 .galeria__bt svg{width:17px;height:17px}
 
-/* ════════ 9 · CONTACTO ════════ *//* ════════ 8 · CONTACTO ════════ */
+/* ════════ 8 · CONTACTO ════════ *//* ════════ 8 · CONTACTO ════════ */
 .pie{background:var(--noche-2);position:relative}
 .pie__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:clamp(30px,4.5vw,80px);align-items:start}
@@ -948,10 +890,9 @@ section[id],footer[id]{scroll-margin-top:88px}
     <a href="#cronograma">Cronograma</a>
     <a href="#sponsors">Marcas</a>
     <a href="#planos">Planos</a>
-    <a href="#solidario">Solidario</a>
     <a href="#galeria">Galería</a>
   </nav>
-  <a class="nav__cta" href="#contacto">Contacto</a>
+  <a class="nav__cta" href="#contacto">Quiero mi stand</a>
   <button type="button" class="nav__burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
     <svg class="abrir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     <svg class="cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -962,9 +903,8 @@ section[id],footer[id]{scroll-margin-top:88px}
     <a href="#cronograma">Cronograma</a>
     <a href="#sponsors">Marcas</a>
     <a href="#planos">Planos</a>
-    <a href="#solidario">Solidario</a>
     <a href="#galeria">Galería</a>
-    <a class="nav__cta" href="#contacto">Contacto</a>
+    <a class="nav__cta" href="#contacto">Quiero mi stand</a>
   </nav>
 </header>
 
@@ -1204,60 +1144,16 @@ section[id],footer[id]{scroll-margin-top:88px}
           <p>El pabellón central concentra los stands 1 al 34 y el auditorio. Alejá el mapa para ver el sector externo, del 38 al 51, donde entra la maquinaria grande.</p>
         </div>
         <div class="ficha__nota">
-          <h4>Cómo usar el mapa</h4>
-          <p>Tocá cualquier stand para ver de qué empresa es. Alejá el mapa con la rueda o el botón de abajo para ver el predio completo.</p>
+          <h4>¿Querés un stand?</h4>
+          <p>Escribinos y te pasamos disponibilidad actualizada y valores por categoría.</p>
+          <a href="#contacto" class="nav__cta" style="display:inline-block;margin-top:14px">Reservar stand</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 7 · APORTE SOLIDARIO ══ -->
-<section class="sec dona" id="solidario">
-  <div class="wrap">
-    <p class="eyebrow rule reveal">Aporte solidario</p>
-    <div class="dona__grid">
-
-      <div class="reveal">
-        <figure class="dona__foto">
-          <img src="assets/donacion.jpg" alt="Una nena tomando un vaso de leche en el campo">
-          <img class="dona__bapfoto" src="assets/marcas/bap.png" alt="Banco de Alimentos Paraná">
-        </figure>
-      </div>
-
-      <div class="reveal">
-        <h2 class="d dona__t">
-          <span class="l1 d-thin">Traé un litro</span>
-          <span class="l2 d-black">Serán cuatro vasos</span>
-        </h2>
-
-        <p>En el Banco de Alimentos Paraná, cada <b>100 litros de leche se convierten en unos 400 vasos</b> que llegan a las organizaciones que asisten. Un litro puede volverse un desayuno, una merienda, o la base de un budín, una salsa, un postre.</p>
-
-        <div class="dona__cuenta">
-          <span class="dona__cifra">1 litro<span>que traés vos</span></span>
-          <span class="dona__flecha">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-          <span class="dona__cifra">4 vasos<span>que llegan a la mesa</span></span>
-        </div>
-
-        <p>Un flujo sostenido de leche larga vida y leche en polvo les permite responder mejor a lo que cada institución necesita y sostener la calidad nutricional de lo que reciben. Todo con trazabilidad, desde que el alimento entra hasta que llega a destino.</p>
-
-        <p>Porque recuperar alimentos es mucho más que evitar un desperdicio: es hacer que la leche <b>siga cumpliendo su propósito</b>.</p>
-
-        <div class="dona__cierre">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-9.4A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.6c0 4.9-7 9.4-7 9.4z"/></svg>
-          <p>Cuando vengas a la Jornada, traé una <b>leche en polvo</b> o una <b>leche larga vida</b>. La gente del Banco de Alimentos va a estar en el predio para recibirla y hacerla llegar a las instituciones que la esperan.</p>
-        </div>
-
-        <span class="dona__bap">Recibe <b>Banco de Alimentos Paraná</b></span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══ 8 · GALERÍA (espacio reservado, se diseña aparte) ══ -->
+<!-- ══ 7 · GALERÍA (espacio reservado, se diseña aparte) ══ -->
 <section class="sec galeria" id="galeria">
   <div class="wrap">
     <p class="eyebrow rule reveal">Ediciones anteriores</p>
@@ -1285,7 +1181,7 @@ section[id],footer[id]{scroll-margin-top:88px}
   </div>
 </section>
 
-<!-- ══ 9 · CONTACTO ══ -->
+<!-- ══ 8 · CONTACTO ══ -->
 <footer class="sec pie" id="contacto">
   <div class="wrap">
     <div class="pie__grid">
@@ -1310,7 +1206,7 @@ section[id],footer[id]{scroll-margin-top:88px}
           </div>
           <div class="dato">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
-            <div><b>Consultas</b><span>Dudas sobre las charlas, la organización o el predio: escribinos y te contestamos el mismo día.</span></div>
+            <div><b>Consultas comerciales</b><span>Stands, charlas comerciales y auspicios: escribinos y te contestamos el mismo día.</span></div>
           </div>
         </div>
       </div>
@@ -1339,7 +1235,7 @@ section[id],footer[id]{scroll-margin-top:88px}
           </div>
           <div class="campo">
             <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" placeholder="Contanos en qué podemos ayudarte…" required></textarea>
+            <textarea id="mensaje" name="mensaje" placeholder="Contanos qué necesitás: un stand, una charla comercial, prensa…" required></textarea>
             <span class="msg">Contanos brevemente qué necesitás.</span>
           </div>
           <button class="enviar" type="submit" id="enviar">Enviar consulta</button>
@@ -1518,8 +1414,8 @@ const PROGRAMA={
  '29':[
   {h:'09.30',pausa:'Apertura',det:'Espacio institucional CAPROLER y Gobierno de Entre Ríos'},
   {h:'10.00',marca:'La Sibila',tit:'Calidad de <b>leche cruda</b> en tambo',n:'Rolando Luis Sagardoy',rol:'Médico veterinario',f:'sagardoy'},
-  {h:'10.30',tit:'<b>IA aplicada al tambo</b>: automatización y procesos aplicables',n:'Ronald Lombardi',rol:'Médico veterinario',f:'lombardi'},
-  {h:'11.00',tit:'¿Llegó el momento de producir <b>leche + carne</b> en los sistemas lecheros tradicionales?',n:'Sebastián Riffel',rol:'Ingeniero agrónomo',f:'riffel'},
+  {h:'10.30',tit:'<b>IA aplicada al tambo</b>: automatización y procesos aplicables',n:'Ronald Lombardi',rol:'Médico veterinario'},
+  {h:'11.00',tit:'¿Llegó el momento de producir <b>leche + carne</b> en los sistemas lecheros tradicionales?',n:'Sebastián Riffel',rol:'Ingeniero agrónomo · M. Sc. en Producción Animal',f:'riffel'},
   {h:'12.00',marca:'Over',tit:'<b>Crianza artificial de terneros</b>: puntos claves de manejo y control',n:'Gonzalo Ceaglio',rol:'Médico veterinario',f:'ceaglio'},
   {h:'13.00',pausa:'Break',det:'Almuerzo'},
   {h:'15.00',marca:'Pauer',tit:'<b>Alfalfa</b>, la llave para bajar el costo productivo',n:'Juan Lus',rol:'Ingeniero agrónomo',f:'lus'},
@@ -1535,7 +1431,7 @@ const PROGRAMA={
   {h:'12.00',marca:'Bio Grow',tit:'<b>Silajes</b> de calidad higiénica',n:'Guillermo Piñeiro',rol:'Ingeniero agrónomo',f:'pineiro'},
   {h:'13.00',pausa:'Break',det:'Almuerzo'},
   {h:'14.30',marca:'MSD Salud Animal',tit:'Nuevas estrategias de control de la <b>diarrea neonatal</b> en ternero',n:'Victoria Reynals',rol:'Médica veterinaria',f:'reynals'},
-  {h:'15.15',tit:'<b>IA y modelos</b> aplicados al sector lácteo',n:'Leo Cortese y Tomás Vera',rol:'Ingenieros',f:'cortese'},
+  {h:'15.15',tit:'<b>IA y modelos</b> aplicados al sector lácteo',n:'Leo Cortese y Tomás Vera',rol:'Ingenieros'},
   {h:'16.00',marca:'Equipo Técnico Perennia',tit:'¿Es posible una <b>lechería regenerativa</b>?',n:'Federico Sörenson',rol:'Ingeniero',f:'sorenson'},
   {h:'17.00',marca:'Lácteos Tonutti',tit:'El <b>ABC de la lechería</b> para mejorar la rentabilidad',n:'Mauro Gorgerino',rol:'Médico veterinario',f:'gorgerino'},
   {h:'18.00',tit:'<b>Inscripción de tambos</b>',n:'Alexia Rolandelli',rol:'Bioingeniera',f:'rolandelli'},
@@ -1875,7 +1771,7 @@ function construirPlano(){
     const oscuro = logo ? logo[1] : 0;
     const cab = logo ? '<img src="'+logo[0]+'" alt="'+marca+'">'
       : marca ? '<span class="txt">'+marca+'</span>'
-              : '<span class="libre">Sin asignar</span>';
+              : '<span class="libre">Stand disponible</span>';
     /* si la marca ocupa stands adentro y afuera, se nombran todos;
        cada número lleva el color de su propio stand */
     const grupo = hermanos(g);
@@ -1888,7 +1784,7 @@ function construirPlano(){
     const secs = [...new Set(grupo.map(o=>o.dataset.c[0]==='i'?'Interno':'Externo'))];
     const sector = secs.length>1 ? 'Interno y externo' : secs[0];
     const info = marca ? (INFO[marca] || 'Expositor de la jornada. Completá su descripción en el objeto INFO.')
-                       : 'Espacio sin asignar.';
+                       : 'Este stand todavía está disponible. Escribinos para consultarlo.';
     ficha.className='ficha__sel '+(oscuro?'ficha--oscura':'ficha--clara');
     ficha.style.setProperty('--tinte',cat.col);
     const sl2 = LOGOS2[String(n).split('·')[0]];
