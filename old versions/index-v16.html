@@ -314,14 +314,13 @@ section[id],footer[id]{scroll-margin-top:88px}
 /* velo esmerilado que sube al pasar el cursor, sin corte duro */
 /* velo esmerilado suave, con fundido de entrada y de salida */
 .tj__velo{position:absolute;left:0;right:0;bottom:0;height:92%;z-index:-1;opacity:0;
-  backdrop-filter:none;-webkit-backdrop-filter:none;
+  backdrop-filter:blur(5px) saturate(.95);-webkit-backdrop-filter:blur(5px) saturate(.95);
   background:linear-gradient(180deg,rgba(4,31,66,0) 0%,rgba(4,31,66,.16) 42%,
     rgba(4,31,66,.4) 72%,rgba(4,31,66,.5) 100%);
   -webkit-mask-image:linear-gradient(to top,#000 26%,rgba(0,0,0,.72) 48%,rgba(0,0,0,.3) 70%,transparent 96%);
   mask-image:linear-gradient(to top,#000 26%,rgba(0,0,0,.72) 48%,rgba(0,0,0,.3) 70%,transparent 96%);
   transition:opacity .85s cubic-bezier(.4,0,.2,1)}
-.tj:hover .tj__velo,.tj:focus-within .tj__velo{opacity:1;
-  backdrop-filter:blur(5px) saturate(.95);-webkit-backdrop-filter:blur(5px) saturate(.95)}
+.tj:hover .tj__velo,.tj:focus-within .tj__velo{opacity:1}
 .tj__in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
   padding:clamp(22px,2.4vw,34px)}
 .tj__t{margin:0;font-family:var(--display);font-style:italic;text-transform:uppercase;line-height:.92;
@@ -530,9 +529,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .sponsors .rule{color:#fff;margin-bottom:36px}
 .sponsors .eyebrow{color:var(--celeste)}
 .cinta{display:flex;width:max-content;will-change:transform}
-.cinta--a{animation:corre 165s linear infinite;animation-play-state:paused;
-  will-change:transform;contain:paint}
-.cinta--a.corriendo{animation-play-state:running}
+.cinta--a{animation:corre 165s linear infinite}
 .cinta--b{animation:corre 128s linear infinite reverse}
 .cinta__g{display:flex;align-items:center;gap:clamp(14px,1.8vw,30px);padding-right:clamp(14px,1.8vw,30px)}
 @keyframes corre{to{transform:translateX(-50%)}}
@@ -540,7 +537,8 @@ section[id],footer[id]{scroll-margin-top:88px}
 /* todos los logos entran en la misma caja: el peso óptico ya está igualado en el PNG */
 /* sin cajas: el peso óptico ya viene igualado en cada PNG */
 .marca{flex:none;display:grid;place-items:center;width:clamp(150px,15vw,206px)}
-.marca img{width:100%;height:auto;object-fit:contain;opacity:.72;
+.marca img{width:100%;height:auto;object-fit:contain;
+  filter:grayscale(1) brightness(1.06);opacity:.72;
   transition:opacity .4s var(--ease),transform .4s var(--ease)}
 .marca:hover img{opacity:1;transform:translateY(-3px)}
 
@@ -754,8 +752,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .galeria__canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.65}
 .galeria__foto{position:absolute;z-index:1;border-radius:10px;overflow:hidden;
   box-shadow:0 26px 60px -30px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.1);
-  animation:flotar 12s ease-in-out infinite;animation-play-state:paused;will-change:transform}
-.galeria__esc.viva .galeria__foto{animation-play-state:running}
+  animation:flotar 12s ease-in-out infinite;will-change:transform}
 .galeria__foto img{width:100%;height:100%;object-fit:cover;display:block;
   filter:saturate(.75) brightness(.85);transition:filter .6s var(--ease),transform .8s var(--ease)}
 .galeria__esc:hover .galeria__foto img{filter:saturate(.95) brightness(.95)}
@@ -942,7 +939,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 
 <header class="nav" id="nav">
   <a class="nav__logo" href="#top" aria-label="Jornada de la Cadena Láctea de Entre Ríos">
-    <img decoding="async" src="assets/logo-vaca.png" alt="" width="399" height="221">
+    <img src="assets/logo-vaca.png" alt="">
   </a>
   <div class="nav__dato" id="navDato" aria-live="off">
     <div class="a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>29 y 30 de septiembre</div>
@@ -986,10 +983,10 @@ section[id],footer[id]{scroll-margin-top:88px}
     <span class="hero__ed hero__fade f1">Segunda edición</span>
 
     <div class="hero__mark" role="img" aria-label="Jornada de la Cadena Láctea de Entre Ríos">
-      <img decoding="async" class="lay lay-1" src="assets/logo-celeste.png" alt="" width="675" height="540">
-      <img decoding="async" class="lay lay-2" src="assets/logo-verde.png" alt="" width="675" height="540">
-      <img decoding="async" class="lay lay-3" src="assets/logo-azul.png" alt="" width="675" height="540">
-      <img decoding="async" class="lay lay-4" src="assets/logo-texto-blanco.png" alt="" width="675" height="540">
+      <img class="lay lay-1" src="assets/logo-celeste.png" alt="">
+      <img class="lay lay-2" src="assets/logo-verde.png" alt="">
+      <img class="lay lay-3" src="assets/logo-azul.png" alt="">
+      <img class="lay lay-4" src="assets/logo-texto-blanco.png" alt="">
     </div>
 
     <h1 class="hero__meta hero__fade f2">
@@ -1020,7 +1017,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 
 <!-- ══ 2 · EPICENTRO ══ -->
 <section class="sec epi" id="jornada">
-  <div class="epi__bg" aria-hidden="true"><img decoding="async" src="assets/tambo.jpg" alt="" width="1400" height="787"></div>
+  <div class="epi__bg" aria-hidden="true"><img src="assets/tambo.jpg" alt=""></div>
   <div class="wrap">
     <p class="eyebrow reveal">Crespo, Entre Ríos</p>
     <h2 class="d epi__t reveal">
@@ -1100,9 +1097,9 @@ section[id],footer[id]{scroll-margin-top:88px}
           <div class="tj__mas"><div>
             <p>Veintitrés charlas a lo largo de los dos días, con dos cierres de lujo abiertos a todo el público.</p>
             <div class="tj__caras">
-              <div class="tj__cara"><img decoding="async" src="assets/d-distefano.jpg" alt="Salvador Di Stefano" width="760" height="760">
+              <div class="tj__cara"><img src="assets/d-distefano.jpg" alt="Salvador Di Stefano">
                 <div><b>Salvador Di Stefano</b><small>Analista económico</small></div></div>
-              <div class="tj__cara"><img decoding="async" src="assets/d-albino.jpg" alt="Doctor Abel Albino" width="760" height="760">
+              <div class="tj__cara"><img src="assets/d-albino.jpg" alt="Doctor Abel Albino">
                 <div><b>Dr. Abel Albino</b><small>Pte. Fundación CONIN</small></div></div>
             </div>
           </div></div>
@@ -1146,7 +1143,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 
 <!-- ══ 5 · MARCAS ══ -->
 <section class="sec sponsors" id="sponsors">
-  <div class="sponsors__bg" aria-hidden="true"><img decoding="async" src="assets/tractor.jpg" alt="" width="1200" height="1182"></div>
+  <div class="sponsors__bg" aria-hidden="true"><img src="assets/tractor.jpg" alt=""></div>
   <div class="wrap"><p class="eyebrow rule reveal">Quiénes participan del evento</p></div>
 
   <div class="cinta cinta--a" id="cintaA" aria-label="Marcas participantes"></div>
@@ -1156,15 +1153,15 @@ section[id],footer[id]{scroll-margin-top:88px}
       <p class="auspi__t">Auspicia</p>
       <div class="auspi__g">
         <a class="auspi__c" href="https://over.com.ar/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/w-over.png" alt="Over Medicina Veterinaria" width="640" height="250"></a>
+          <img src="assets/marcas/w-over.png" alt="Over Medicina Veterinaria"></a>
         <a class="auspi__c" href="https://bladek.com.ar/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/m-bladek.png" alt="Bladek Nutrición Animal" width="640" height="250"></a>
+          <img src="assets/marcas/m-bladek.png" alt="Bladek Nutrición Animal"></a>
         <a class="auspi__c" href="https://gottig.com.ar/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/w-gottig.png" alt="Gottig" width="640" height="250"></a>
+          <img src="assets/marcas/w-gottig.png" alt="Gottig"></a>
       </div>
       <div class="auspi__g auspi__g--sec">
-        <div class="auspi__c"><img decoding="async" src="assets/marcas/w-la-lecherita.png" alt="La Lecherita" width="640" height="250"></div>
-        <div class="auspi__c"><img decoding="async" src="assets/marcas/w-indalac.png" alt="Indalac" width="640" height="250"></div>
+        <div class="auspi__c"><img src="assets/marcas/w-la-lecherita.png" alt="La Lecherita"></div>
+        <div class="auspi__c"><img src="assets/marcas/w-indalac.png" alt="Indalac"></div>
       </div>
     </div>
 
@@ -1172,9 +1169,9 @@ section[id],footer[id]{scroll-margin-top:88px}
       <p class="orgs__t">Organizan</p>
       <div class="orgs__g">
         <a class="org" href="https://martinbustamante.com/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/w-martin-bustamante.png" alt="Martín Bustamante" width="640" height="250"></a>
+          <img src="assets/marcas/w-martin-bustamante.png" alt="Martín Bustamante"></a>
         <a class="org" href="https://caproler.org/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/w-caproler.png" alt="CAPROLER · Cámara de Productores de Leche de Entre Ríos" width="640" height="250"></a>
+          <img src="assets/marcas/w-caproler.png" alt="CAPROLER · Cámara de Productores de Leche de Entre Ríos"></a>
       </div>
     </div>
   </div>
@@ -1226,8 +1223,8 @@ section[id],footer[id]{scroll-margin-top:88px}
 
       <div class="reveal">
         <figure class="dona__foto">
-          <img decoding="async" src="assets/donacion.jpg" alt="Una nena tomando un vaso de leche en el campo" width="1200" height="1600">
-          <img decoding="async" class="dona__bapfoto" src="assets/marcas/bap.png" alt="Banco de Alimentos Paraná" width="900" height="791">
+          <img src="assets/donacion.jpg" alt="Una nena tomando un vaso de leche en el campo">
+          <img class="dona__bapfoto" src="assets/marcas/bap.png" alt="Banco de Alimentos Paraná">
         </figure>
       </div>
 
@@ -1276,12 +1273,12 @@ section[id],footer[id]{scroll-margin-top:88px}
 
     <div class="galeria__esc reveal">
       <canvas class="galeria__canvas" id="particulas" aria-hidden="true"></canvas>
-      <figure class="galeria__foto"><img decoding="async" src="assets/stands.jpg" alt="" loading="lazy" width="1200" height="1098"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/auditorio.jpg" alt="" loading="lazy" width="1400" height="788"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/tractor.jpg" alt="" loading="lazy" width="1200" height="1182"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/aerea.jpg" alt="" loading="lazy" width="1300" height="731"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/tambo.jpg" alt="" loading="lazy" width="1400" height="787"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/hero.jpg" alt="" loading="lazy" width="1700" height="1269"></figure>
+      <figure class="galeria__foto"><img src="assets/stands.jpg" alt="" loading="lazy"></figure>
+      <figure class="galeria__foto"><img src="assets/auditorio.jpg" alt="" loading="lazy"></figure>
+      <figure class="galeria__foto"><img src="assets/tractor.jpg" alt="" loading="lazy"></figure>
+      <figure class="galeria__foto"><img src="assets/aerea.jpg" alt="" loading="lazy"></figure>
+      <figure class="galeria__foto"><img src="assets/tambo.jpg" alt="" loading="lazy"></figure>
+      <figure class="galeria__foto"><img src="assets/hero.jpg" alt="" loading="lazy"></figure>
       <!-- La galería completa se arma en galeria.html -->
       <a class="galeria__bt" href="galeria.html">
         Ver galería
@@ -1359,7 +1356,7 @@ section[id],footer[id]{scroll-margin-top:88px}
       <div>
         <div class="pie__org">
           <a href="https://martinbustamante.com/" target="_blank" rel="noopener">
-            <img decoding="async" src="assets/marcas/w-martin-bustamante.png" alt="Martín Bustamante" width="640" height="250"></a>
+            <img src="assets/marcas/w-martin-bustamante.png" alt="Martín Bustamante"></a>
           
           <div class="redes">
             <a href="https://www.instagram.com/martinbustamantetv/" target="_blank" rel="noopener" aria-label="Instagram de Martín Bustamante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
@@ -1369,7 +1366,7 @@ section[id],footer[id]{scroll-margin-top:88px}
         </div>
         <div class="pie__org">
           <a href="https://caproler.org/" target="_blank" rel="noopener">
-            <img decoding="async" src="assets/marcas/w-caproler.png" alt="CAPROLER" width="640" height="250"></a>
+            <img src="assets/marcas/w-caproler.png" alt="CAPROLER"></a>
           
           <div class="redes">
             <a href="https://www.instagram.com/caprol.er/" target="_blank" rel="noopener" aria-label="Instagram de CAPROLER"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
@@ -1380,7 +1377,7 @@ section[id],footer[id]{scroll-margin-top:88px}
     </div>
 
     <div class="creditos">
-      <img decoding="async" src="assets/logo-blanco.png" alt="Jornada de la Cadena Láctea de Entre Ríos" width="675" height="540">
+      <img src="assets/logo-blanco.png" alt="Jornada de la Cadena Láctea de Entre Ríos">
       <p>© 2026 Jornada de la Cadena Láctea de Entre Ríos · Organizan Martín Bustamante y CAPROLER</p>
       <a class="arriba" href="#top">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
@@ -1565,7 +1562,7 @@ function logoMarca(m){
   const L=m && LOGO_MARCA[m];
   if(!L) return '';
   return '<div class="ag__logo'+(L[1]?' ag__logo--osc':'')+'">'+
-    '<img decoding="async" src="'+L[0]+'" alt="'+m+'" loading="lazy"></div>';
+    '<img src="'+L[0]+'" alt="'+m+'" loading="lazy"></div>';
 }
 const CHEVRON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" '+
   'stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
@@ -1575,8 +1572,8 @@ function pintarDia(id,items){
     if(it.pausa) return '<div class="pausa reveal"><span class="pausa__riel"></span>'+
       '<span class="pausa__h">'+it.h+' <i>hs</i></span>'+
       '<span class="pausa__c"><b>'+it.pausa+'</b> · '+it.det+'</span></div>';
-    const foto = it.f ? '<img decoding="async" class="ag__foto" width="760" height="760" src="assets/d-'+it.f+'.jpg" alt="" loading="lazy">' : '';
-    const retrato = it.f ? '<img decoding="async" width="760" height="760" src="assets/d-'+it.f+'.jpg" alt="'+it.n+'" loading="lazy">'
+    const foto = it.f ? '<img class="ag__foto" src="assets/d-'+it.f+'.jpg" alt="" loading="lazy">' : '';
+    const retrato = it.f ? '<img src="assets/d-'+it.f+'.jpg" alt="'+it.n+'" loading="lazy">'
                          : '<span class="ag__sinfoto" aria-hidden="true"></span>';
     const marca = it.marca ? '<span class="ag__marca">'+it.marca+'</span>' : '';
     return '<article class="ag reveal'+(it.top?' ag--top':'')+'">'+
@@ -1674,7 +1671,7 @@ function cinta(el,lista){
   /* una sola línea, todos en la misma escala de grises */
   const g=lista.map(([n,sl])=>
     '<span class="marca" title="'+n+'">'+
-      '<img decoding="async" width="640" height="250" src="assets/marcas/w-'+sl+'.png" alt="'+n+'" loading="lazy"></span>').join('');
+      '<img src="assets/marcas/w-'+sl+'.png" alt="'+n+'" loading="lazy"></span>').join('');
   el.innerHTML='<div class="cinta__g">'+g+'</div><div class="cinta__g" aria-hidden="true">'+g+'</div>';
 }
 cinta(document.getElementById('cintaA'),MARCAS);
@@ -1793,8 +1790,8 @@ function construirPlano(){
 
   /* grilla cada 10 m, desbordando el viewBox para cubrir todo el visor */
   const g=el('g',{class:'pl-grilla'});
-  for(let x=-60;x<=100;x+=10) g.appendChild(el('line',{x1:x,y1:-30,x2:x,y2:125}));
-  for(let y=-30;y<=125;y+=10) g.appendChild(el('line',{x1:-60,y1:y,x2:100,y2:y}));
+  for(let x=-160;x<=220;x+=10) g.appendChild(el('line',{x1:x,y1:-200,x2:x,y2:300}));
+  for(let y=-200;y<=300;y+=10) g.appendChild(el('line',{x1:-160,y1:y,x2:220,y2:y}));
   svg.appendChild(g);
 
   /* piso y muro del pabellón */
@@ -1815,13 +1812,9 @@ function construirPlano(){
   svg.appendChild(txt(21.4,5.6,'INGRESO',1.5,'pl-txt',{fill:'#fff'}));
 
   /* auditorio, pantalla y escenario */
-  /* las butacas van como patrón: un solo nodo por bloque en vez de 84 */
-  const defs=el('defs',{});
-  const pat=el('pattern',{id:'butacas',width:.82,height:.82,patternUnits:'userSpaceOnUse'});
-  pat.appendChild(el('rect',{x:0,y:0,width:.58,height:.58,rx:.12,class:'pl-silla'}));
-  defs.appendChild(pat); svg.appendChild(defs);
   [[-2.44,39],[8.5,39]].forEach(([bx,by])=>{
-    svg.appendChild(el('rect',{x:bx,y:by,width:12*.82,height:7*.82,fill:'url(#butacas)'}));
+    for(let r=0;r<7;r++) for(let c=0;c<12;c++)
+      svg.appendChild(el('rect',{x:bx+c*.82,y:by+r*.82,width:.58,height:.58,rx:.12,class:'pl-silla'}));
   });
   svg.appendChild(txt(7.95,47.3,'AUDITORIO',1.2));
   svg.appendChild(el('rect',{x:4.95,y:48.4,width:6,height:3,rx:.25,class:'pl-pant'}));
@@ -1883,7 +1876,7 @@ function construirPlano(){
     const cat=CAT[g.dataset.c], marca=g.dataset.marca, n=g.dataset.n;
     const logo=LOGOS[String(n).split('·')[0]];
     const oscuro = logo ? logo[1] : 0;
-    const cab = logo ? '<img decoding="async" src="'+logo[0]+'" alt="'+marca+'">'
+    const cab = logo ? '<img src="'+logo[0]+'" alt="'+marca+'">'
       : marca ? '<span class="txt">'+marca+'</span>'
               : '<span class="libre">Sin asignar</span>';
     /* si la marca ocupa stands adentro y afuera, se nombran todos;
@@ -1903,7 +1896,7 @@ function construirPlano(){
     ficha.style.setProperty('--tinte',cat.col);
     const sl2 = LOGOS2[String(n).split('·')[0]];
     /* la variante del segundo logo depende del fondo de la caja */
-    const extra = sl2 ? '<img decoding="async" class="ficha__logo2" src="assets/marcas/'+
+    const extra = sl2 ? '<img class="ficha__logo2" src="assets/marcas/'+
       (oscuro?'w-':'m-')+sl2+'.png" alt="" loading="lazy">' : '';
     ficha.innerHTML=
       '<div class="ficha__logo">'+cab+extra+'</div>'+
@@ -1988,18 +1981,6 @@ function construirPlano(){
   });
   /* el encuadre por defecto es el sector interno; hay que alejarse para ver el externo */
   requestAnimationFrame(()=>encuadrar(VISTA.interno));
-})();
-
-/* ───────── las animaciones pesadas sólo corren si están a la vista ───────── */
-(function(){
-  if(menos) return;
-  const pares=[[document.getElementById('cintaA'),'corriendo'],
-               [document.querySelector('.galeria__esc'),'viva']];
-  const io=new IntersectionObserver(es=>es.forEach(e=>{
-    const c=pares.find(x=>x[0]===e.target);
-    if(c) e.target.classList.toggle(c[1], e.isIntersecting);
-  }),{rootMargin:'150px'});
-  pares.forEach(([el])=>{ if(el) io.observe(el); });
 })();
 
 /* ───────── partículas de la galería ───────── */
