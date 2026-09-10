@@ -1667,6 +1667,7 @@ const MARCAS=[
  ['HEIT','heit','w'],
  ['BioGrow','biogrow','w'],
  ['Suplefeed','suplefeed','w'],
+ ['Aguas & Procesos','aguas-procesos','w'],
  ['FutureCow','futurecow','w'],
  ['BioSolares','biosolares','w'],
  ['Lácteos Tonutti','tonutti','w'],
@@ -1729,7 +1730,7 @@ const LOTES=[
  [6,15,26,3,4,'i34i','Folmer'],
  /* islas centrales */
  [16,6,7,3,4,'i34i','Cremigal'],[7,9,7,3,4,'i34i','Fliegl'],
- [15,6,11,3,4,'i34i',''],[8,9,11,3,4,'i34i','Nutrifar'],
+ [15,6,11,3,4,'i34i','Aguas & Procesos'],[8,9,11,3,4,'i34i','Nutrifar'],
  [14,6,18,3,4,'i34i','Agrotambo · DeLaval'],[9,9,18,3,4,'i34i','HEIT · BioGrow'],
  ['13·10',6,22,6,4,'i34i','Suplefeed · FutureCow'],
  [12,6,28,3,4,'i34i','BioSolares'],[11,9,28,3,4,'i34i','Tonutti'],
@@ -1754,7 +1755,7 @@ const LOTES=[
    [ruta, fondoOscuro] — fondoOscuro=1 cuando el logo es claro y necesita azul detrás. */
 /* segundo logo cuando el stand comparte dos marcas */
 const LOGOS2={"21": "boumatic", "3": "massey", "43": "massey", "14": "delaval", "9": "biogrow", "13": "futurecow", "10": "futurecow", "52": "traxor", "53": "traxor"};
-const LOGOS={"20": ["assets/marcas/m-peon.png", 0], "19": ["assets/marcas/m-lar.png", 0], "18": ["assets/marcas/m-bemix.png", 0], "17": ["assets/marcas/m-la-ganadera.png", 0], "21": ["assets/marcas/m-trossero.png", 0], "22": ["assets/marcas/m-bess.png", 0], "23": ["assets/marcas/m-santa-sylvina.png", 0], "24": ["assets/marcas/m-tsc.png", 0], "25": ["assets/marcas/m-tsc.png", 0], "26": ["assets/marcas/m-magno.png", 0], "27": ["assets/marcas/m-vet-hernandez.png", 0], "28": ["assets/marcas/w-indalac.png", 1], "1": ["assets/marcas/m-stel.png", 0], "2": ["assets/marcas/m-guemes.png", 0], "3": ["assets/marcas/m-weinbaur.png", 0], "4": ["assets/marcas/m-pauer.png", 0], "5": ["assets/marcas/m-pauer.png", 0], "6": ["assets/marcas/m-folmer.png", 0], "16": ["assets/marcas/m-cremigal.png", 1], "7": ["assets/marcas/m-fliegl.png", 0], "8": ["assets/marcas/m-nutriar.png", 0], "14": ["assets/marcas/m-agrotambo.png", 0], "9": ["assets/marcas/m-heit.png", 0], "13": ["assets/marcas/m-suplefeed.png", 0], "10": ["assets/marcas/m-suplefeed.png", 0], "12": ["assets/marcas/m-biosolares.png", 0], "11": ["assets/marcas/m-tonutti.png", 1], "29": ["assets/marcas/m-cotapa.png", 0], "30": ["assets/marcas/m-lely.png", 0], "31": ["assets/marcas/m-cau-siglo21.png", 0], "32": ["assets/marcas/m-lec-fri.png", 0], "33": ["assets/marcas/m-lec-fri.png", 0], "34": ["assets/marcas/m-la-sibila.png", 0], "47": ["assets/marcas/m-porta.png", 0], "38": ["assets/marcas/m-fliegl.png", 0], "39": ["assets/marcas/m-agronorte.png", 0], "40": ["assets/marcas/m-agronorte.png", 0], "41": ["assets/marcas/m-folmer.png", 0], "42": ["assets/marcas/m-jacob.png", 0], "43": ["assets/marcas/m-weinbaur.png", 0], "45": ["assets/marcas/m-gauss.png", 0], "46": ["assets/marcas/m-gauss.png", 0], "52": ["assets/marcas/m-mb-maquinarias.png", 0], "53": ["assets/marcas/m-mb-maquinarias.png", 0]};
+const LOGOS={"20": ["assets/marcas/m-peon.png", 0], "19": ["assets/marcas/m-lar.png", 0], "18": ["assets/marcas/m-bemix.png", 0], "17": ["assets/marcas/m-la-ganadera.png", 0], "21": ["assets/marcas/m-trossero.png", 0], "22": ["assets/marcas/m-bess.png", 0], "23": ["assets/marcas/m-santa-sylvina.png", 0], "24": ["assets/marcas/m-tsc.png", 0], "25": ["assets/marcas/m-tsc.png", 0], "26": ["assets/marcas/m-magno.png", 0], "27": ["assets/marcas/m-vet-hernandez.png", 0], "28": ["assets/marcas/w-indalac.png", 1], "1": ["assets/marcas/m-stel.png", 0], "2": ["assets/marcas/m-guemes.png", 0], "3": ["assets/marcas/m-weinbaur.png", 0], "4": ["assets/marcas/m-pauer.png", 0], "5": ["assets/marcas/m-pauer.png", 0], "6": ["assets/marcas/m-folmer.png", 0], "16": ["assets/marcas/m-cremigal.png", 1], "7": ["assets/marcas/m-fliegl.png", 0], "8": ["assets/marcas/m-nutriar.png", 0], "14": ["assets/marcas/m-agrotambo.png", 0], "9": ["assets/marcas/m-heit.png", 0], "13": ["assets/marcas/m-suplefeed.png", 0], "10": ["assets/marcas/m-suplefeed.png", 0], "12": ["assets/marcas/m-biosolares.png", 0], "11": ["assets/marcas/m-tonutti.png", 1], "29": ["assets/marcas/m-cotapa.png", 0], "30": ["assets/marcas/m-lely.png", 0], "31": ["assets/marcas/m-cau-siglo21.png", 0], "32": ["assets/marcas/m-lec-fri.png", 0], "33": ["assets/marcas/m-lec-fri.png", 0], "34": ["assets/marcas/m-la-sibila.png", 0], "47": ["assets/marcas/m-porta.png", 0], "38": ["assets/marcas/m-fliegl.png", 0], "39": ["assets/marcas/m-agronorte.png", 0], "40": ["assets/marcas/m-agronorte.png", 0], "41": ["assets/marcas/m-folmer.png", 0], "42": ["assets/marcas/m-jacob.png", 0], "43": ["assets/marcas/m-weinbaur.png", 0], "45": ["assets/marcas/m-gauss.png", 0], "46": ["assets/marcas/m-gauss.png", 0], "52": ["assets/marcas/m-mb-maquinarias.png", 0], "53": ["assets/marcas/m-mb-maquinarias.png", 0], "15": ["assets/marcas/m-aguas-procesos.png", 0]};
 /* Descripción breve de cada expositor. Revisala y completá la que falte. */
 const INFO={
  'Agronorte · John Deere':'Concesionario oficial John Deere con una red de 16 sucursales, brindando soluciones a través de equipos y posventa en las provincias de Santa Fe, Córdoba, Entre Ríos, Corrientes y Misiones.',
@@ -1770,10 +1771,13 @@ const INFO={
  'Weinbaur · Massey Ferguson':'Concesionario oficial Massey Ferguson en Crespo, Entre Ríos: maquinaria, repuestos y posventa.',
  'Pauer':'Biotecnología y agroindustria aplicadas a la producción de forrajes y cultivos.',
  'HEIT · BioGrow':'Nutrición y servicios para el tambo, junto a la línea BioGrow.',
- 'Suplefeed':'Suplementación y nutrición animal para mejorar la conversión del rodeo lechero.',
+ 'Suplefeed · FutureCow':'Suplefeed es una empresa de Esperanza, Santa Fe, especializada en bionutrición animal: desarrolla premezclas con enzimas, probióticos y aditivos funcionales que actúan sobre el rumen para aprovechar mejor fibras, proteínas y energía, con líneas para tambo, cría, recría y feedlot. FutureCow es un sistema automatizado de preparación de ubres que en una sola pasada lava, desinfecta, estimula y seca los pezones.',
+ 'Suplefeed':'Empresa de Esperanza, Santa Fe, especializada en bionutrición animal. Desarrolla premezclas con enzimas, probióticos y aditivos funcionales que actúan sobre el rumen para aprovechar mejor fibras, proteínas y energía, con líneas específicas para tambo, cría, recría y feedlot.',
+ 'Aguas & Procesos':'Empresa argentina de Sunchales, Santa Fe, dedicada desde 1980 a la ingeniería en tratamiento de aguas y procesos industriales. Diseña, fabrica y pone en marcha sistemas de ósmosis inversa, ultrafiltración, ablandamiento, desinfección y reutilización de agua.',
  'CAU Crespo · Siglo 21':'Cooperativa Agrícola Unión de Crespo: servicios e insumos para el productor.',
  'Jacob Maquinarias':'Maquinaria agrícola: venta, repuestos y servicio.',
- 'Fliegl Argentina':'Maquinaria agrícola de origen alemán para transporte, mixers y equipos de forraje.',
+ 'Fliegl':'Empresa con base en Crespo, Entre Ríos, que fabrica y vende acoplados multicarga, carros compactadores y equipos estercoleros bajo licencia de la marca alemana Fliegl. Soluciones para el manejo de efluentes, purines y compost.',
+ 'Fliegl Argentina':'Empresa con base en Crespo, Entre Ríos, que fabrica y vende acoplados multicarga, carros compactadores y equipos estercoleros bajo licencia de la marca alemana Fliegl. Soluciones para el manejo de efluentes, purines y compost.',
  'Indalac':'Industria láctea. Auspiciante de la jornada.',
  'MB Maquinarias · Traxor':'Empresa entrerriana con sede en General Ramírez. Junto a Ombú creó en 2025 la marca de tractores Traxor, con una línea de 30 a 260 HP fabricada por Dafeng y una red de unos 50 puntos de venta en todo el país.',
  'Gauss':'Equipos para la confección y el manejo de forrajes.',
@@ -1786,7 +1790,7 @@ const INFO={
  'Nutrifar':'Nutrición animal y aditivos para alimentación.',
  'BioSolares':'Energía solar aplicada a establecimientos rurales.',
  'Tonutti':'Lácteos Tonutti, industria láctea de Entre Ríos.',
- 'FutureCow':'Tecnología para la rutina de ordeñe.',
+ 'FutureCow':'Sistema automatizado de preparación de ubres antes del ordeñe: en una sola pasada lava, desinfecta, estimula y seca los pezones. Reduce el gasto de papel, previene la mastitis y empareja la rutina sin depender del operario. Más de 100.000 vacas lo usan a diario en el país.',
  'Cotapa':'Cooperativa de Trabajo Cotagro, industria láctea entrerriana.',
  'Lely':'Automatización del tambo: robots de ordeñe y manejo del rodeo.',
  'LEC-FRI':'Equipamiento de frío para leche y agroindustria.',
