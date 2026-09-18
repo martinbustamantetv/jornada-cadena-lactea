@@ -446,6 +446,8 @@ section[id],footer[id]{scroll-margin-top:88px}
   opacity:0;transform:translateY(10px);
   transition:opacity .42s .05s var(--ease),transform .42s .05s var(--ease)}
 .ag.abierta .ag__in{opacity:1;transform:none}
+.ag--nofoto .ag__in{grid-template-columns:minmax(0,1fr) auto;border-left:3px solid var(--celeste)}
+.ag--nofoto .ag__nom{font-size:clamp(1.15rem,1.85vw,1.6rem);line-height:1.12}
 .ag__in>img{width:clamp(150px,15vw,196px);height:100%;min-height:clamp(120px,11vw,152px);
   object-fit:cover;object-position:center 24%;display:block}
 .ag__txt{display:flex;flex-direction:column;justify-content:center;
@@ -479,7 +481,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .ag--top .ag__logo--osc{background:rgba(255,255,255,.12)}
 .ag--top .ag__in>img{width:clamp(190px,19vw,250px);min-height:clamp(180px,17vw,232px)}
 .ag--top .ag__nom{font-size:clamp(1.55rem,2.5vw,2.15rem);color:#fff}
-.ag__sinfoto{width:clamp(150px,15vw,196px);min-height:clamp(120px,11vw,152px);
+.ag__sinfoto{display:none;width:clamp(150px,15vw,196px);min-height:clamp(120px,11vw,152px);
   background:repeating-linear-gradient(135deg,rgba(7,82,169,.05) 0 8px,rgba(7,82,169,.02) 8px 16px)}
 .destacada{display:inline-block;margin-left:10px;padding:3px 9px;border-radius:999px;
   background:var(--rojo);color:#fff;font-family:var(--texto);font-weight:600;font-size:9px;
@@ -518,6 +520,7 @@ section[id],footer[id]{scroll-margin-top:88px}
   .ag__in{grid-template-columns:1fr;
     margin-left:calc(18px + clamp(52px,14vw,64px) + 12px)}
   .ag__in>img,.ag__sinfoto{width:100%;height:170px;min-height:0}
+  .ag--nofoto .ag__in{grid-template-columns:1fr}
   .ag--top .ag__in>img{width:100%;height:230px;min-height:0}
   .ag__logo{justify-self:start;padding-top:0}
   .ag__logo--osc{margin-top:0}
@@ -544,7 +547,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 /* todos los logos entran en la misma caja: el peso óptico ya está igualado en el PNG */
 /* sin cajas: el peso óptico ya viene igualado en cada PNG */
 .marca{flex:none;display:grid;place-items:center;width:clamp(150px,15vw,206px)}
-.marca img{width:100%;height:auto;object-fit:contain;opacity:.72;
+.marca img{width:100%;height:auto;object-fit:contain;opacity:.92;
   transition:opacity .4s var(--ease),transform .4s var(--ease)}
 .marca:hover img{opacity:1;transform:translateY(-3px)}
 
@@ -1552,6 +1555,7 @@ const PROGRAMA={
    bio:'Analista y consultor económico argentino, muy seguido en el sector agropecuario por sus informes sobre mercados, granos, hacienda y estrategias financieras. Escribe columnas y dicta conferencias en todo el país.'},
  ],
  '30':[
+  {h:'09.30',marca:'IAPSER',tit:'<b>Lanzamiento</b>: seguro de ganado',n:'Gustavo Dietz, Luciano Gallino y Lautaro Berdat',rol:''},
   {h:'10.00',tit:'<b>Manejo alimentario</b> en ganado',n:'Pablo Siri',rol:'',f:'siri'},
   {h:'11.00',marca:'Bladek',tit:'La vaca lechera ha cambiado: ¿estamos <b>nutriendo</b> para expresar su potencial?',n:'José Maiztegui',rol:'Médico veterinario',f:'maiztegui'},
   {h:'12.00',marca:'Bio Grow',tit:'<b>Silajes</b> de calidad higiénica',n:'Guillermo Piñeiro',rol:'Ingeniero agrónomo',f:'pineiro'},
@@ -1560,8 +1564,8 @@ const PROGRAMA={
   {h:'15.15',tit:'<b>IA y modelos</b> aplicados al sector lácteo',n:'Leo Cortese y Tomás Vera',rol:'Ingenieros',f:'cortese'},
   {h:'16.00',marca:'Equipo Técnico Perennia',tit:'¿Es posible una <b>lechería regenerativa</b>?',n:'Federico Sörenson',rol:'Ingeniero',f:'sorenson'},
   {h:'17.00',marca:'Lácteos Tonutti',tit:'El <b>ABC de la lechería</b> para mejorar la rentabilidad',n:'Mauro Gorgerino',rol:'Médico veterinario',f:'gorgerino'},
-  {h:'18.00',tit:'<b>Inscripción de tambos</b>',n:'Alexia Rolandelli',rol:'Bioingeniera',f:'rolandelli'},
-  {h:'18.30',tit:'Cierre institucional',n:'Sebastián Alconada',rol:'Director Nacional de Lechería de la Nación',f:'alconada'},
+  {h:'18.00',tema:'Ambiente y tambo',tit:'Gestión ambiental, residuos y efluentes: <b>del cumplimiento a la valorización</b>',n:'Alexia Rolandelli',rol:'Bioingeniera',f:'rolandelli'},
+  {h:'18.30',marca:'Región Centro',tit:'<b>Análisis de lechería</b>',n:'Mesa Región Centro',rol:''},
   {h:'19.30',marca:'Fundación CONIN',tit:'Los 5 pasos para una Gran Nación',n:'Abel Albino',rol:'Doctor en medicina · Presidente de Fundación CONIN',f:'albino',top:1,
    bio:'Médico pediatra argentino, fundador y presidente de la Fundación CONIN, dedicada desde 1993 a la prevención y el tratamiento de la desnutrición infantil. Su red de centros se extiende por la Argentina y varios países de la región.'},
  ]
@@ -1575,7 +1579,9 @@ const LOGO_MARCA={
  'Suplefeed':['assets/marcas/m-suplefeed.png',0],
  'Bladek':['assets/marcas/m-bladek.png',0],
  'Bio Grow':['assets/marcas/m-biogrow.png',0],
- 'Lácteos Tonutti':['assets/marcas/m-tonutti.png',1]
+ 'Lácteos Tonutti':['assets/marcas/m-tonutti.png',1],
+ 'IAPSER':['assets/marcas/m-iapser.png',0],
+ 'Región Centro':['assets/marcas/m-region-centro.png',0]
 };
 function logoMarca(m){
   const L=m && LOGO_MARCA[m];
@@ -1592,10 +1598,10 @@ function pintarDia(id,items){
       '<span class="pausa__h">'+it.h+' <i>hs</i></span>'+
       '<span class="pausa__c"><b>'+it.pausa+'</b> · '+it.det+'</span></div>';
     const foto = it.f ? '<img decoding="async" class="ag__foto" width="760" height="760" src="assets/d-'+it.f+'.jpg" alt="" loading="lazy">' : '';
-    const retrato = it.f ? '<img decoding="async" width="760" height="760" src="assets/d-'+it.f+'.jpg" alt="'+it.n+'" loading="lazy">'
-                         : '<span class="ag__sinfoto" aria-hidden="true"></span>';
-    const marca = it.marca ? '<span class="ag__marca">'+it.marca+'</span>' : '';
-    return '<article class="ag reveal'+(it.top?' ag--top':'')+'">'+
+    const retrato = it.f ? '<img decoding="async" width="760" height="760" src="assets/d-'+it.f+'.jpg" alt="'+it.n+'" loading="lazy">' : '';
+    const rotulo = it.marca || it.tema;
+    const marca = rotulo ? '<span class="ag__marca">'+rotulo+'</span>' : '';
+    return '<article class="ag reveal'+(it.top?' ag--top':'')+(it.f?'':' ag--nofoto')+'">'+
       '<button type="button" class="ag__bt" aria-expanded="false">'+
         '<span class="ag__riel"></span>'+
         '<span class="ag__h">'+it.h+'<i>hs</i></span>'+
@@ -1643,56 +1649,63 @@ pestanas(document.getElementById('tabsCrono'),document.getElementById('pillCrono
 });
 
 /* ───────── marcas ───────── */
+/* [nombre, archivo, variante] — "w" sólo para los logos que la marca entregó en blanco;
+   el resto va con su diseño original a color */
 const MARCAS=[
  ['Peón Electrocercas','peon','m'],
  ['LAR','lar','m'],
- ['Bemix','bemix','w'],
+ ['Bemix','bemix','m'],
  ['La Ganadera','la-ganadera','w'],
- ['Trossero','trossero','w'],
+ ['Trossero','trossero','m'],
  ['BouMatic','boumatic','m'],
  ['BESS','bess','w'],
- ['Santa Sylvina','santa-sylvina','m'],
- ['TSC Agroindustriales','tsc','w'],
- ['Magno','magno','w'],
+ ['Santa Sylvina','santa-sylvina','w'],
+ ['TSC Agroindustriales','tsc','m'],
+ ['Magno','magno','m'],
  ['Veterinaria Hernández','vet-hernandez','w'],
- ['Stel Grupo','stel','w'],
- ['Metalúrgica Güemes','guemes','w'],
+ ['Stel Grupo','stel','m'],
+ ['Metalúrgica Güemes','guemes','m'],
  ['Weinbaur','weinbaur','m'],
  ['Massey Ferguson','massey','m'],
- ['Pauer','pauer','m'],
- ['Folmer','folmer','w'],
+ ['Pauer','pauer','w'],
+ ['Folmer','folmer','m'],
  ['Cremigal','cremigal','m'],
  ['Fliegl','fliegl','m'],
  ['Nutriar','nutriar','w'],
- ['HEIT','heit','w'],
- ['BioGrow','biogrow','w'],
- ['Suplefeed','suplefeed','w'],
- ['Aguas & Procesos','aguas-procesos','w'],
- ['FutureCow','futurecow','w'],
+ ['HEIT','heit','m'],
+ ['BioGrow','biogrow','m'],
+ ['Suplefeed','suplefeed','m'],
+ ['Aguas & Procesos','aguas-procesos','m'],
+ ['FutureCow','futurecow','m'],
  ['BioSolares','biosolares','w'],
- ['Lácteos Tonutti','tonutti','w'],
- ['Cotapa','cotapa','w'],
+ ['Lácteos Tonutti','tonutti','m'],
+ ['Cotapa','cotapa','m'],
  ['Lely','lely','m'],
- ['CAU Crespo · Siglo 21','cau-siglo21','w'],
- ['LEC-FRI','lec-fri','w'],
- ['La Sibila','la-sibila','w'],
- ['Porta','porta','w'],
+ ['CAU Crespo · Siglo 21','cau-siglo21','m'],
+ ['LEC-FRI','lec-fri','m'],
+ ['La Sibila','la-sibila','m'],
+ ['Porta','porta','m'],
  ['Agronorte · John Deere','agronorte','w'],
  ['Jacob Maquinarias','jacob','w'],
- ['Gauss','gauss','w'],
+ ['Gauss','gauss','m'],
  ['MB Maquinarias','mb-maquinarias','w'],
  ['Traxor','traxor','w'],
- ['Over','over','m'],
+ ['Over','over','w'],
  ['Bladek','bladek','m'],
- ['Gottig','gottig','m'],
+ ['Gottig','gottig','w'],
  ['La Lecherita','la-lecherita','m'],
  ['Indalac','indalac','m']
 ];
 function cinta(el,lista){
-  /* una sola línea, todos en la misma escala de grises */
-  const g=lista.map(([n,sl])=>
+  /* se baraja en cada carga para que no encabecen siempre las mismas marcas */
+  const orden=lista.slice();
+  for(let i=orden.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [orden[i],orden[j]]=[orden[j],orden[i]];
+  }
+  const g=orden.map(([n,sl,v])=>
     '<span class="marca" title="'+n+'">'+
-      '<img decoding="async" width="640" height="250" src="assets/marcas/w-'+sl+'.png" alt="'+n+'" loading="lazy"></span>').join('');
+      '<img decoding="async" width="460" height="180" src="assets/marcas/'+v+'-'+sl+'.png" alt="'+n+'" loading="lazy"></span>').join('');
   el.innerHTML='<div class="cinta__g">'+g+'</div><div class="cinta__g" aria-hidden="true">'+g+'</div>';
 }
 alAcercarse('#sponsors',()=>cinta(document.getElementById('cintaA'),MARCAS));
