@@ -471,43 +471,40 @@ section[id],footer[id]{scroll-margin-top:88px}
   font-size:1.05rem;letter-spacing:-.02em;color:var(--azul)}
 
 .galeria{background:var(--noche)}
-.galeria__cab{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
-  gap:24px;margin-bottom:clamp(26px,3vw,40px)}
+.galeria__cab{display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:clamp(22px,2.6vw,34px);margin-bottom:clamp(20px,2.4vw,32px)}
+.galeria .rule{justify-content:center}
+.galeria .rule::before{content:"";flex:1;height:1px;background:currentColor;opacity:.25}
 .galeria__t .l1{display:block;font-size:clamp(1.4rem,3vw,2.5rem);letter-spacing:.14em}
 .galeria__t .l2{display:block;font-size:clamp(2rem,6.2vw,5.4rem)}
 .galeria__t .l1,.galeria__t .l2{color:#fff}
 .galeria{overflow:hidden}
-.galeria__esc{position:relative;min-height:clamp(340px,42vw,520px);margin-top:clamp(10px,2vw,26px);
+.galeria__esc{position:relative;min-height:clamp(340px,40vw,520px);margin-top:clamp(10px,2vw,26px);
   display:grid;place-items:center;isolation:isolate}
 .galeria__canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.65}
-.galeria__foto{position:absolute;z-index:1;border-radius:10px;overflow:hidden;
-  box-shadow:0 26px 60px -30px rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.1);
-  animation:flotar 12s ease-in-out infinite;animation-play-state:paused;will-change:transform}
-.galeria__esc.viva .galeria__foto{animation-play-state:running}
-.galeria__foto img{width:100%;height:100%;object-fit:cover;display:block;
-  filter:saturate(.75) brightness(.85);transition:filter .6s var(--ease),transform .8s var(--ease)}
-.galeria__esc:hover .galeria__foto img{filter:saturate(.95) brightness(.95)}
-@keyframes flotar{
-  0%,100%{transform:translate3d(0,0,0) rotate(var(--rot))}
-  50%{transform:translate3d(0,var(--dy),0) rotate(var(--rot2))}
+.arco{position:absolute;inset:0;z-index:1;perspective:900px;perspective-origin:50% 50%;
+  pointer-events:none}
+.arco__f{position:absolute;left:50%;top:50%;margin:0;width:var(--w,120px);aspect-ratio:4/5;
+  border-radius:11px;overflow:hidden;background:var(--noche-2);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 34px 80px -28px rgba(0,0,0,.95);
+  transform:translate(-50%,-50%) translateX(0) scale(.84) rotateY(0deg);
+  opacity:0;
+  transition:transform 1.15s var(--ease),opacity .75s ease;
+  transition-delay:var(--d,0s)}
+.galeria__esc.in .arco__f{
+  transform:translate(-50%,-50%) translateX(var(--x)) scale(var(--s)) rotateY(var(--r));
+  opacity:1}
+.arco__f[hidden]{display:none}
+.arco__f img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.97) brightness(.99)}
+.arco__f::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(2,20,44,0) 62%,rgba(2,20,44,.3) 100%)}
+@media(prefers-reduced-motion:reduce){
+  .arco__f{transition:none;opacity:1;
+    transform:translate(-50%,-50%) translateX(var(--x)) scale(var(--s)) rotateY(var(--r))}
 }
-.galeria__foto:nth-of-type(1){left:2%;top:8%;width:clamp(120px,15vw,208px);aspect-ratio:4/3;
-  --rot:-4deg;--rot2:-2.4deg;--dy:-16px;animation-duration:13s}
-.galeria__foto:nth-of-type(2){right:3%;top:4%;width:clamp(110px,13vw,182px);aspect-ratio:3/4;
-  --rot:5deg;--rot2:3deg;--dy:18px;animation-duration:15s;animation-delay:-3s}
-.galeria__foto:nth-of-type(3){left:11%;bottom:6%;width:clamp(120px,14vw,196px);aspect-ratio:16/10;
-  --rot:3.5deg;--rot2:1.5deg;--dy:14px;animation-duration:11s;animation-delay:-6s}
-.galeria__foto:nth-of-type(4){right:9%;bottom:9%;width:clamp(125px,16vw,222px);aspect-ratio:4/3;
-  --rot:-5deg;--rot2:-2.5deg;--dy:-18px;animation-duration:14s;animation-delay:-1.5s}
-.galeria__foto:nth-of-type(5){left:26%;top:2%;width:clamp(92px,10vw,142px);aspect-ratio:1/1;
-  --rot:7deg;--rot2:4deg;--dy:12px;animation-duration:16s;animation-delay:-8s}
-.galeria__foto:nth-of-type(6){right:25%;bottom:2%;width:clamp(92px,10vw,150px);aspect-ratio:1/1;
-  --rot:-7deg;--rot2:-4deg;--dy:-13px;animation-duration:12.5s;animation-delay:-4.5s}
-@media(max-width:760px){
-  .galeria__foto:nth-of-type(5),.galeria__foto:nth-of-type(6){display:none}
-  .galeria__esc{min-height:400px}
-}
-.galeria__bt{position:relative;z-index:3;display:inline-flex;align-items:center;gap:14px;
+.galeria__bt{position:relative;z-index:3;flex:none;display:inline-flex;align-items:center;gap:14px;
   padding:clamp(18px,2vw,24px) clamp(30px,3.4vw,46px);border-radius:999px;background:#fff;color:var(--noche);
   font-family:var(--display);font-style:italic;font-weight:900;text-transform:uppercase;
   font-size:clamp(1rem,1.5vw,1.35rem);letter-spacing:-.01em;
@@ -917,21 +914,16 @@ section[id],footer[id]{scroll-margin-top:88px}
         <span class="l1 d-thin">Mirá cómo se vive</span>
         <span class="l2 d-black">Ediciones anteriores</span>
       </h2>
-    </div>
-
-    <div class="galeria__esc reveal">
-      <canvas class="galeria__canvas" id="particulas" aria-hidden="true"></canvas>
-      <figure class="galeria__foto"><img decoding="async" src="assets/stands.jpg" alt="" loading="lazy" width="1200" height="1098"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/auditorio.jpg" alt="" loading="lazy" width="1400" height="788"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/tractor.jpg" alt="" loading="lazy" width="1200" height="1182"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/aerea.jpg" alt="" loading="lazy" width="1300" height="731"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/tambo.jpg" alt="" loading="lazy" width="1400" height="787"></figure>
-      <figure class="galeria__foto"><img decoding="async" src="assets/hero.jpg" alt="" loading="lazy" width="1700" height="1269"></figure>
-
       <a class="galeria__bt" href="galeria.html">
         Ver galería
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
+    </div>
+
+    <div class="galeria__esc reveal">
+      <canvas class="galeria__canvas" id="particulas" aria-hidden="true"></canvas>
+      <div class="arco" id="arco" aria-hidden="true"></div>
+
     </div>
   </div>
 </section>
@@ -1222,6 +1214,47 @@ function cinta(el,lista){
   el.innerHTML='<div class="cinta__g">'+g+'</div><div class="cinta__g" aria-hidden="true">'+g+'</div>';
 }
 alAcercarse('#sponsors',()=>cinta(document.getElementById('cintaA'),MARCAS));
+
+const ARCO_RUTA='assets/arco/';
+const ARCO=['01.jpg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg'];
+(function(){
+  const arco=document.getElementById('arco'); if(!arco) return;
+  const esc=document.querySelector('.galeria__esc');
+  const PERF=[{s:1,x:0,r:0},{s:1.12,x:1.03,r:24},{s:1.56,x:2.28,r:38},{s:2.26,x:4.12,r:45}];
+  const ALTO=1.25;
+  const tramo=k=>2*(PERF[k].x+0.5*PERF[k].s*Math.cos(PERF[k].r*Math.PI/180));
+  const fichas=[];
+  ARCO.forEach(n=>{
+    const f=document.createElement('figure');
+    f.className='arco__f';
+    const im=document.createElement('img');
+    im.src=ARCO_RUTA+n; im.alt=''; im.decoding='async'; im.loading='lazy';
+    im.width=600; im.height=750;
+    im.addEventListener('error',()=>{ f.remove(); fichas.splice(fichas.indexOf(f),1); colocar(); },{once:true});
+    f.appendChild(im); arco.appendChild(f); fichas.push(f);
+  });
+  function colocar(){
+    const total=fichas.length; if(!total) return;
+    const W=arco.clientWidth||innerWidth, H=arco.clientHeight||360;
+    let lados = W<560 ? 1 : W<900 ? 2 : 3;
+    lados = Math.min(lados, Math.floor((total-1)/2));
+    const w=Math.min(W/tramo(lados), 0.76*H/(PERF[lados].s*ALTO), 180);
+    arco.style.setProperty('--w', w.toFixed(1)+'px');
+    const med=(total-1)/2;
+    fichas.forEach((el,k)=>{
+      const i=k-med, a=Math.abs(i);
+      if(a>lados+0.01){ el.hidden=true; return; }
+      el.hidden=false;
+      const q=PERF[Math.round(a)];
+      el.style.setProperty('--x',(Math.sign(i)*q.x*w).toFixed(1)+'px');
+      el.style.setProperty('--s',q.s.toFixed(3));
+      el.style.setProperty('--r',(-Math.sign(i)*q.r).toFixed(1)+'deg');
+      el.style.setProperty('--d',(a*0.075).toFixed(3)+'s');
+    });
+  }
+  colocar();
+  let t; addEventListener('resize',()=>{ clearTimeout(t); t=setTimeout(colocar,150); });
+})();
 
 (function(){
   if(menos) return;

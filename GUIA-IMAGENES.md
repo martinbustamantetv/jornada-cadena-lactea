@@ -22,6 +22,26 @@ Trabajá siempre sobre `index.html`, no sobre `jornada-preview.html`.
 
 ---
 
+## El arco de la portada (sección "Ediciones anteriores")
+
+Las fotos verticales que forman el arco en 3D de la landing van en:
+
+```
+assets/arco/01.jpg  02.jpg  03.jpg  04.jpg  05.jpg  06.jpg  07.jpg
+```
+
+Son **siete**, **verticales**, y se recomienda **600 × 860 px** (proporción 3:4,3).
+Se ven recortadas a esa proporción, así que dejá el motivo centrado. El orden es
+el del número: la `04` queda justo en el medio del arco y las `01` y `07` en las
+puntas.
+
+Si querés otra cantidad, en `index.html` hay una línea `const ARCO=[...]` con la
+lista: sacás o agregás nombres y el arco se reacomoda solo, siempre simétrico. Si
+alguno de los archivos no está, esa tarjeta se saltea sin romper nada. En pantallas
+medianas se muestran 5 y en teléfono 3, siempre las del centro.
+
+---
+
 ## Fotos de la galería (`galeria.html`)
 
 Cada día tiene su carpeta, con las fotos en dos tamaños y un archivo índice:
