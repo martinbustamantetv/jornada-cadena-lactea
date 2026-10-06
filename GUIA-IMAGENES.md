@@ -22,6 +22,93 @@ Trabajá siempre sobre `index.html`, no sobre `jornada-preview.html`.
 
 ---
 
+## Fotos de la galería (`galeria.html`)
+
+Cada día tiene su carpeta, con las fotos en dos tamaños y un archivo índice:
+
+```
+assets/galeria/
+└── 2026/
+    ├── d1/                      ← martes 29
+    │   ├── g/   las fotos en calidad  (visor + botón de descargar)
+    │   ├── m/   las miniaturas        (la grilla)
+    │   └── fotos.txt   o   fotos.json
+    └── d2/                      ← miércoles 30 (este año no hubo fotos)
+```
+
+Lo único obligatorio: **el nombre del archivo tiene que ser el mismo en `g` y en
+`m`**. Fuera de eso el nombre no importa — se puede llamar como salga de la
+cámara. Si falta la miniatura, esa foto se muestra con la versión grande; si
+falta la grande, el visor y la descarga usan la miniatura; y si una foto del
+índice no está en ninguna de las dos, se saltea sin romper nada.
+
+Para las miniaturas, lado largo de **900 px** anda bien: son las que carga la
+grilla, así que cuanto más livianas, más rápido entra la gente.
+
+### Preparar un día: `renombrar.ps1`
+
+Está en `assets/galeria/renombrar.ps1` (y `renombrar.sh` para Mac o Linux).
+
+1. Copiá `renombrar.ps1` adentro de la carpeta del día (la que tiene `g` y `m`).
+2. Click derecho sobre el archivo → **Ejecutar con PowerShell**.
+   Si Windows no te deja, abrí PowerShell ahí y pegá:
+   `powershell -ExecutionPolicy Bypass -File .\renombrar.ps1`
+
+Antes de tocar nada muestra qué encontró en cada carpeta, cómo va a emparejar y
+cómo van a quedar las tres primeras, y espera que confirmes. Para verlo sin que
+renombre nada:
+
+```
+powershell -ExecutionPolicy Bypass -File .\renombrar.ps1 -Revisar
+```
+
+Qué hace:
+
+- Renombra todo a `JORNADA CADENA LACTEA-001.jpg`, `-002.jpg`, …: `g\JORNADA CADENA LACTEA-001.jpg, -002.jpg, …` y lo mismo en `m`, con
+  **el mismo número para la misma foto**. Empareja primero por nombre; si los
+  nombres de `m` no coinciden con los de `g` pero hay la misma cantidad en las
+  dos carpetas, empareja por orden. No renombra nada hasta tener resuelto el
+  emparejado de las dos, así nunca queda `g` numerada y `m` sin numerar.
+- Respeta el orden actual de los nombres, con orden natural: `IMG_2` va antes que
+  `IMG_10`, no después.
+- Deja un `fotos.json` con la lista, que es lo que lee la galería.
+- Deja un `nombres-originales.txt` con la equivalencia, por si alguna vez querés
+  volver atrás.
+- Te avisa si alguna foto de `g` se quedó sin miniatura en `m`.
+
+Se puede correr las veces que haga falta: si agregás o sacás fotos, lo volvés a
+correr y renumera todo de nuevo. `galeria.html` no se toca nunca.
+
+### Si preferís no renombrar
+
+No es obligatorio. La galería también acepta:
+
+- Un **`fotos.txt`** en la carpeta del día, un nombre por línea (las líneas que
+  empiezan con `#` se ignoran). En Windows sale con `dir /b /on m\*.jpg > fotos.txt`
+  desde la carpeta del día; en Mac o Linux, `ls m/*.jpg | xargs -n1 basename > fotos.txt`.
+- Un **`fotos.json`**: una lista de nombres `["DSC_0001.jpg", "DSC_0002.jpg"]`, o
+  con las medidas `[["DSC_0001.jpg", 4000, 2667], …]` si querés que la grilla se
+  arme de una sola vez sin ir midiendo.
+- **Nada**: sólo si las fotos están numeradas `0001.jpg, 0002.jpg…` la galería las
+  encuentra sola, tanteando. Anda bien, pero deja unos 404 en la consola del
+  navegador mientras busca dónde termina la numeración — por eso el script deja
+  el `fotos.json`, que resuelve todo en una sola consulta.
+
+En los tres casos el orden del archivo es el orden que se ve. Un navegador **no
+puede ver qué hay adentro de una carpeta** — ni en GitHub Pages ni en ningún
+servidor —, por eso hace falta la lista o la numeración.
+
+### Sumar una edición
+
+En `galeria.html`, al principio del `<script>`, está el bloque `EDICIONES`: sólo
+los datos de cada edición (año, fechas, lugar y los días), sin ninguna lista de
+fotos. Para sumar una edición se copia el bloque de 2026, se cambia el año y las
+fechas, y se deja al lado la carpeta `assets/galeria/<año>/`: la portada y las
+pestañas se arman solas. Un día sin fotos se marca con `disponible:false` y queda
+a la vista pero apagado, como el miércoles 30.
+
+---
+
 ## Retratos de disertantes
 
 Cuadrados, se recomiendan 760×760 px o más, en `.jpg`.

@@ -21,17 +21,11 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Pliant.woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,300;0,900;1,100;1,300;1,900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap"></noscript>
 
 <style>
-/* ══════════════════════════════════════════════════════════════
-   JORNADA DE LA CADENA LÁCTEA DE ENTRE RÍOS · 2ª edición
-   Títulos: Pliant, siempre en itálica, contraste Thin ↔ Black.
-   Textos y títulos de charla: Inter.
-   Pliant es una fuente variable (ejes wght 100-900 y wdth 100-125).
-   Se usan dos archivos: Pliant.woff2 (redonda) y Pliant-Italic.woff2 (itálica),
-   ambos en assets/fonts/. Fallback: Archivo.
-   ══════════════════════════════════════════════════════════════ */
+
 @font-face{font-family:'Pliant';
   src:url('assets/fonts/Pliant.woff2') format('woff2-variations'),
       url('assets/fonts/Pliant.woff2') format('woff2');
@@ -75,7 +69,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:3px solid var(--verde);outline-offset:3px;border-radius:2px}
 ::selection{background:var(--verde);color:#02142C}
 
-/* ── juego tipográfico: todo itálica, Thin contra Black ── */
 .d{font-family:var(--display);font-style:italic;text-transform:uppercase;margin:0;
   line-height:.94;letter-spacing:-.01em;overflow-wrap:break-word}
 .d-thin{font-weight:100;letter-spacing:.015em}
@@ -95,7 +88,6 @@ section[id],footer[id]{scroll-margin-top:88px}
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
-/* ════════ progreso + nav ════════ */
 .progress{position:fixed;inset:0 auto auto 0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
   background:linear-gradient(90deg,var(--celeste),var(--verde));z-index:120}
 .nav{
@@ -111,7 +103,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .nav__logo img{height:30px;width:auto}
 .nav__logo img{height:36px}
 .nav__dato{position:relative;height:34px;overflow:hidden;min-width:220px;margin-left:14px;
-  /* los bordes se desvanecen: el texto entra y sale difuminado, sin corte en seco */
+
   -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36%,#000 64%,transparent 100%);
   mask-image:linear-gradient(to bottom,transparent 0,#000 36%,#000 64%,transparent 100%)}
 .nav__dato div{position:absolute;inset:0;display:flex;align-items:center;gap:9px;
@@ -165,7 +157,6 @@ section[id],footer[id]{scroll-margin-top:88px}
 }
 @media(min-width:961px){.nav__panel{display:none}}
 
-/* ════════ 1 · HERO ════════ */
 .hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;isolation:isolate}
 .hero__bg{position:absolute;inset:-6%;z-index:-2}
 .hero__bg img,.hero__bg video{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.06) brightness(1.12)}
@@ -203,7 +194,6 @@ section[id],footer[id]{scroll-margin-top:88px}
   box-shadow:0 0 0 0 rgba(128,177,51,.7);animation:ping 2.6s infinite}
 @keyframes ping{70%{box-shadow:0 0 0 12px rgba(128,177,51,0)}100%{box-shadow:0 0 0 0 rgba(128,177,51,0)}}
 
-/* fecha y lugar: sólo la palabra, la info se revela al pasar el cursor */
 .hero__meta{display:flex;justify-content:center;align-items:center;
   gap:clamp(26px,5vw,64px);flex-wrap:wrap;margin:0}
 .hero__caja{position:relative;overflow:hidden;cursor:default;
@@ -247,7 +237,6 @@ section[id],footer[id]{scroll-margin-top:88px}
 .comenzar svg{width:17px;height:17px;animation:bob 2.2s var(--ease) infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
-/* ════════ ondas de marca — anchas, un valle por pantalla ════════ */
 .olas{position:absolute;left:0;right:0;width:100%;height:clamp(88px,11vw,180px);z-index:5;pointer-events:none;line-height:0}
 .olas svg{width:100%;height:100%;display:block}
 .olas path{animation:deriva linear infinite;animation-play-state:paused;will-change:transform}
@@ -258,7 +247,6 @@ section[id],footer[id]{scroll-margin-top:88px}
 @keyframes deriva{to{transform:translateX(-1440px)}}
 .olas--abajo{bottom:-1px}
 
-/* ════════ 2 · EPICENTRO ════════ */
 .epi{background:var(--azul);position:relative;overflow:hidden}
 .epi__bg{position:absolute;inset:0;z-index:0}
 .epi__bg img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.55;filter:saturate(.4)}
@@ -291,7 +279,6 @@ section[id],footer[id]{scroll-margin-top:88px}
   text-transform:uppercase;font-size:clamp(.9rem,1.35vw,1.25rem);letter-spacing:.2em;
   color:rgba(255,255,255,.85)}
 
-/* ════════ 3 · QUÉ ENCONTRÁS ════════ */
 .enc{background:var(--hueso);color:var(--tinta)}
 .enc .rule,.enc .eyebrow{color:var(--azul)}
 .enc__t{margin-bottom:clamp(34px,4.5vw,60px)}
@@ -299,7 +286,6 @@ section[id],footer[id]{scroll-margin-top:88px}
 .enc__t .l2{display:block;font-size:clamp(2.2rem,6.4vw,5.6rem)}
 .enc__t .l1,.enc__t .l2{color:var(--azul)}
 
-/* tarjetas de video con revelado al hover */
 .tarjetas{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px)}
 @media(max-width:980px){.tarjetas{grid-template-columns:1fr}}
 .tj{position:relative;overflow:hidden;border-radius:8px;background:var(--noche-2);
@@ -315,8 +301,7 @@ section[id],footer[id]{scroll-margin-top:88px}
     rgba(2,20,44,0) 0%, rgba(2,20,44,.03) 30%, rgba(2,20,44,.1) 46%,
     rgba(2,20,44,.22) 60%, rgba(2,20,44,.38) 72%, rgba(2,20,44,.52) 84%,
     rgba(2,20,44,.6) 94%, rgba(2,20,44,.62) 100%)}
-/* velo esmerilado que sube al pasar el cursor, sin corte duro */
-/* velo esmerilado suave, con fundido de entrada y de salida */
+
 .tj__velo{position:absolute;left:0;right:0;bottom:0;height:92%;z-index:-1;opacity:0;
   backdrop-filter:none;-webkit-backdrop-filter:none;
   background:linear-gradient(180deg,rgba(4,31,66,0) 0%,rgba(4,31,66,.16) 42%,
@@ -333,7 +318,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .tj__t em{display:block;font-weight:100;font-size:clamp(.95rem,1.3vw,1.15rem);letter-spacing:.06em;
   color:var(--celeste);margin-bottom:6px}
 .tj__t span{display:block;font-weight:900;font-size:clamp(1.9rem,2.9vw,2.9rem);letter-spacing:-.04em;color:#fff}
-/* lo que aparece al pasar el cursor */
+
 .tj__mas{display:grid;grid-template-rows:0fr;opacity:0;
   transition:grid-template-rows .75s var(--ease),opacity .6s cubic-bezier(.4,0,.2,1)}
 .tj__mas>div{overflow:hidden;min-height:0;
@@ -351,7 +336,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .tj:hover .tj__mas li:nth-child(3){transition-delay:.28s}
 .tj:hover .tj__mas li:nth-child(4){transition-delay:.34s}
 .tj:hover .tj__mas li:nth-child(5){transition-delay:.40s}
-/* en táctil: se despliega al tocar la foto, una tarjeta por vez */
+
 @media(hover:none){
   .tj{aspect-ratio:4/3;transition:aspect-ratio .55s var(--ease),transform .5s var(--ease)}
   .tj:hover{transform:none;box-shadow:none}
@@ -375,160 +360,6 @@ section[id],footer[id]{scroll-margin-top:88px}
   font-size:.88rem;letter-spacing:-.02em;color:#fff}
 .tj__cara small{display:block;font-size:.72rem;color:rgba(255,255,255,.62);max-width:18ch;line-height:1.3}
 
-/* ════════ 4 · CRONOGRAMA ════════ */
-.crono{background:var(--hueso);color:var(--tinta);padding-top:0}
-.crono__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
-  gap:clamp(20px,3vw,40px);margin-bottom:clamp(34px,4.4vw,60px)}
-.crono__t .l1{display:block;font-size:clamp(1.4rem,3vw,2.5rem);letter-spacing:.14em}
-.crono__t .l2{display:block;font-size:clamp(2.4rem,6.8vw,6rem)}
-.crono__t .l1,.crono__t .l2{color:var(--azul)}
-.tabs{position:relative;isolation:isolate;display:flex;gap:8px;background:rgba(7,82,169,.09);padding:7px;border-radius:999px}
-.tabs button{padding:14px clamp(18px,2.4vw,38px);border-radius:999px;
-  font-family:var(--display);font-style:italic;font-weight:100;text-transform:uppercase;
-  font-size:clamp(13px,1.15vw,17px);letter-spacing:.1em;color:var(--azul);transition:color .35s;white-space:nowrap}
-.tabs button b{font-weight:900;letter-spacing:-.03em;margin-left:.4em;font-size:1.3em}
-.tabs button[aria-selected="true"]{color:#fff}
-.tabs__pill{position:absolute;inset:7px auto 7px 7px;border-radius:999px;background:var(--azul);z-index:-1;
-  transition:transform .55s var(--ease),width .55s var(--ease)}
-
-.dia[hidden]{display:none}
-.dia{max-width:1000px;margin-inline:auto}
-
-/* ── agenda: grilla fija de riel + hora + título ── */
-.ag{position:relative}
-.ag::before{content:'';position:absolute;left:11px;top:0;bottom:0;width:1px;
-  background:rgba(7,82,169,.2)}
-.ag:first-child::before{top:clamp(20px,2vw,26px)}
-.ag:last-of-type::before{bottom:auto;height:clamp(20px,2vw,26px)}
-@media(max-width:640px){.ag::before{left:9px}}
-.ag__bt{display:grid;grid-template-columns:22px clamp(58px,6vw,76px) minmax(0,1fr) 74px;
-  align-items:start;gap:0 clamp(12px,1.6vw,20px);width:100%;text-align:left;
-  padding:clamp(15px,1.6vw,20px) 0;border-radius:0;
-  transition:background .3s var(--ease)}
-.ag__bt:hover{background:rgba(255,255,255,.62)}
-/* riel de puntos unidos por una línea */
-.ag__riel{position:relative;align-self:stretch;justify-self:center;width:1px}
-.ag__riel::after{content:'';position:absolute;left:50%;top:clamp(20px,2vw,26px);
-  width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);
-  background:var(--hueso);border:2px solid var(--azul);
-  transition:transform .35s var(--ease),background .3s,border-color .3s}
-.ag__bt:hover .ag__riel::after,.ag.abierta .ag__riel::after{
-  transform:translate(-50%,-50%) scale(1.3);background:var(--azul)}
-.ag__h{font-family:var(--display);font-style:italic;font-weight:900;letter-spacing:-.035em;
-  font-size:clamp(.95rem,1.15vw,1.08rem);line-height:1.5;color:rgba(7,82,169,.72);
-  white-space:nowrap;padding-top:1px}
-.ag__h i{font-weight:100;font-size:.8em;margin-left:.12em}
-.ag__t{font-family:var(--texto);font-weight:600;color:var(--noche);
-  font-size:clamp(1.02rem,1.35vw,1.22rem);line-height:1.42;letter-spacing:-.01em}
-.ag__t b{font-weight:700;color:var(--azul)}
-.ag__marca{display:block;margin-bottom:6px;font-family:var(--texto);font-weight:600;
-  text-transform:uppercase;font-size:9.5px;letter-spacing:.16em;color:var(--verde)}
-.ag__r{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding-top:1px}
-.ag__foto{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:center 26%;flex:none}
-.ag__mas{width:24px;height:24px;flex:none;display:grid;place-items:center;border-radius:50%;
-  border:1px solid rgba(7,82,169,.28);color:var(--azul);
-  transition:transform .45s var(--ease),background .3s,color .3s,border-color .3s}
-.ag__mas svg{width:11px;height:11px}
-.ag__bt:hover .ag__mas{background:var(--azul);border-color:var(--azul);color:#fff}
-.ag.abierta .ag__mas{transform:rotate(180deg);background:var(--azul);border-color:var(--azul);color:#fff}
-.ag__sep{grid-column:2/-1;height:1px;background:rgba(7,82,169,.13)}
-
-/* panel desplegable */
-.ag__panel{display:grid;grid-template-rows:0fr;
-  transition:grid-template-rows .48s cubic-bezier(.4,0,.2,1)}
-.ag.abierta .ag__panel{grid-template-rows:1fr}
-.ag__panel>div{overflow:hidden;min-height:0}
-.ag__in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:stretch;
-  gap:0;overflow:hidden;
-  margin:0 0 clamp(14px,1.6vw,20px) calc(22px + clamp(58px,6vw,76px) + clamp(12px,1.6vw,20px));
-  border-radius:10px;background:#F4F6F8;border:1px solid rgba(7,82,169,.09);
-  box-shadow:0 12px 30px -24px rgba(4,31,66,.6);
-  opacity:0;transform:translateY(10px);
-  transition:opacity .42s .05s var(--ease),transform .42s .05s var(--ease)}
-.ag.abierta .ag__in{opacity:1;transform:none}
-.ag--nofoto .ag__in{grid-template-columns:minmax(0,1fr) auto;border-left:3px solid var(--celeste)}
-.ag--nofoto .ag__nom{font-size:clamp(1.15rem,1.85vw,1.6rem);line-height:1.12}
-.ag__in>img{width:clamp(150px,15vw,196px);height:100%;min-height:clamp(120px,11vw,152px);
-  object-fit:cover;object-position:center 24%;display:block}
-.ag__txt{display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(18px,2vw,26px) clamp(20px,2.4vw,34px)}
-.ag__rol{display:block;font-family:var(--texto);font-weight:600;text-transform:uppercase;
-  font-size:10px;letter-spacing:.19em;color:#8b95a0;margin-bottom:7px}
-.ag__nom{display:block;font-family:var(--display);font-style:italic;font-weight:900;
-  font-size:clamp(1.3rem,2.1vw,1.85rem);letter-spacing:-.035em;color:var(--noche);line-height:1}
-.ag__bio{margin:12px 0 0;font-size:.9rem;line-height:1.55;color:#5d6771;max-width:56ch}
-.ag__logo{display:grid;place-items:center;padding:clamp(16px,2vw,26px);
-  min-width:clamp(120px,13vw,180px)}
-.ag__logo img{width:clamp(112px,12vw,150px);height:auto;object-fit:contain}
-.ag__logo--osc{background:#0A2B52;margin:clamp(14px,1.6vw,20px);border-radius:8px;
-  padding:clamp(12px,1.4vw,18px) clamp(16px,1.8vw,22px)}
-
-/* charlas destacadas */
-.ag--top .ag__riel::after{border-color:var(--rojo)}
-.ag--top .ag__bt:hover .ag__riel::after,.ag--top.abierta .ag__riel::after{background:var(--rojo)}
-.ag--top .ag__h{color:rgba(193,24,38,.8)}
-.ag--top .ag__t{font-size:clamp(1.12rem,1.55vw,1.4rem);font-weight:700}
-.ag--top .ag__marca{color:var(--rojo)}
-.ag--top .ag__mas{border-color:rgba(193,24,38,.32);color:var(--rojo)}
-.ag--top .ag__bt:hover .ag__mas,.ag--top.abierta .ag__mas{background:var(--rojo);border-color:var(--rojo);color:#fff}
-.ag--top .ag__foto{width:44px;height:44px;border:2px solid var(--rojo);
-  box-shadow:0 0 0 3px rgba(193,24,38,.18)}
-.ag--top .ag__in{border:0;background:linear-gradient(115deg,#8E101C 0%,var(--rojo) 55%,#D82434 100%);
-  box-shadow:0 0 0 1px rgba(193,24,38,.35),0 18px 46px -20px rgba(193,24,38,.7),
-             0 0 70px -22px rgba(193,24,38,.85)}
-.ag--top .ag__rol{color:rgba(255,255,255,.78)}
-.ag--top .ag__bio{color:rgba(255,255,255,.9)}
-.ag--top .ag__logo--osc{background:rgba(255,255,255,.12)}
-.ag--top .ag__in>img{width:clamp(190px,19vw,250px);min-height:clamp(180px,17vw,232px)}
-.ag--top .ag__nom{font-size:clamp(1.55rem,2.5vw,2.15rem);color:#fff}
-.ag__sinfoto{display:none;width:clamp(150px,15vw,196px);min-height:clamp(120px,11vw,152px);
-  background:repeating-linear-gradient(135deg,rgba(7,82,169,.05) 0 8px,rgba(7,82,169,.02) 8px 16px)}
-.destacada{display:inline-block;margin-left:10px;padding:3px 9px;border-radius:999px;
-  background:var(--rojo);color:#fff;font-family:var(--texto);font-weight:600;font-size:9px;
-  letter-spacing:.14em;text-transform:uppercase;vertical-align:.18em}
-
-/* pausas, en la misma grilla */
-.pausa{display:grid;grid-template-columns:22px clamp(58px,6vw,76px) minmax(0,1fr);
-  gap:0 clamp(12px,1.6vw,20px);align-items:center;padding:clamp(9px,1.1vw,13px) 0}
-.pausa__riel{position:relative;align-self:stretch;justify-self:center;width:1px}
-.pausa__riel::before{content:'';position:absolute;left:0;width:1px;top:0;bottom:0;background:rgba(7,82,169,.2)}
-.pausa__riel::after{content:'';position:absolute;left:50%;top:50%;width:7px;height:7px;border-radius:50%;
-  transform:translate(-50%,-50%);background:var(--ambar)}
-.pausa__h{font-family:var(--display);font-style:italic;font-weight:900;
-  font-size:clamp(.85rem,1vw,.95rem);letter-spacing:-.03em;color:#C98A05;white-space:nowrap}
-.pausa__h i{font-weight:100}
-.pausa__c{display:flex;align-items:center;gap:12px;
-  font-family:var(--texto);font-weight:600;text-transform:uppercase;font-size:9.5px;
-  letter-spacing:.16em;color:#B8860B}
-.pausa__c b{color:#8A6100;font-weight:700}
-.pausa__c::after{content:'';flex:1;height:1px;
-  background:linear-gradient(90deg,rgba(249,178,51,.7),rgba(249,178,51,.06))}
-
-/* botón de descarga */
-.crono__acc{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
-.bt-pdf{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;
-  border:1px solid rgba(7,82,169,.28);color:var(--azul);
-  font-family:var(--texto);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.13em;
-  transition:background .3s,color .3s,transform .35s var(--ease),border-color .3s}
-.bt-pdf svg{width:15px;height:15px}
-.bt-pdf:hover{background:var(--azul);border-color:var(--azul);color:#fff;transform:translateY(-2px)}
-
-@media(max-width:640px){
-  .ag__bt{grid-template-columns:18px clamp(52px,14vw,64px) minmax(0,1fr) 28px;gap:0 12px}
-  .ag__r{flex-direction:column;gap:8px}
-  .ag__foto{display:none}
-  .ag__in{grid-template-columns:1fr;
-    margin-left:calc(18px + clamp(52px,14vw,64px) + 12px)}
-  .ag__in>img,.ag__sinfoto{width:100%;height:170px;min-height:0}
-  .ag--nofoto .ag__in{grid-template-columns:1fr}
-  .ag--top .ag__in>img{width:100%;height:230px;min-height:0}
-  .ag__logo{justify-self:start;padding-top:0}
-  .ag__logo--osc{margin-top:0}
-  .pausa{grid-template-columns:18px clamp(52px,14vw,64px) minmax(0,1fr);gap:0 12px}
-}
-.crono__pie{margin-top:26px;font-size:.86rem;color:#66707b;max-width:1000px;margin-inline:auto}
-
-/* ════════ 5 · SPONSORS ════════ */
 .sponsors{background:var(--azul);padding-block:clamp(60px,7.5vw,110px);overflow:hidden;position:relative}
 .sponsors__bg{position:absolute;inset:0;z-index:0}
 .sponsors__bg img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.4;filter:saturate(.3)}
@@ -544,8 +375,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .cinta__g{display:flex;align-items:center;gap:clamp(14px,1.8vw,30px);padding-right:clamp(14px,1.8vw,30px)}
 @keyframes corre{to{transform:translateX(-50%)}}
 .cinta:hover{animation-play-state:paused}
-/* todos los logos entran en la misma caja: el peso óptico ya está igualado en el PNG */
-/* sin cajas: el peso óptico ya viene igualado en cada PNG */
+
 .marca{flex:none;display:grid;place-items:center;width:clamp(150px,15vw,206px)}
 .marca img{width:100%;height:auto;object-fit:contain;opacity:.92;
   transition:opacity .4s var(--ease),transform .4s var(--ease)}
@@ -555,7 +385,7 @@ section[id],footer[id]{scroll-margin-top:88px}
 .auspi__t{font-family:var(--display);font-style:normal;font-weight:100;text-transform:uppercase;
   font-size:clamp(.85rem,1.15vw,1.05rem);letter-spacing:.26em;color:rgba(255,255,255,.75);
   margin:0 0 clamp(22px,2.6vw,34px);text-align:center}
-/* los dos de menor aporte: más chicos, y cada uno centrado en el hueco entre los principales */
+
 .auspi__g--sec{grid-template-columns:repeat(3,1fr);margin-top:clamp(2px,.6vw,10px)}
 .auspi__g--sec .auspi__c:nth-child(1){grid-column:1/3;grid-row:1}
 .auspi__g--sec .auspi__c:nth-child(2){grid-column:2/4;grid-row:1}
@@ -587,121 +417,14 @@ section[id],footer[id]{scroll-margin-top:88px}
 .org:hover{transform:translateY(-4px)}
 .org img{width:clamp(170px,18vw,240px);height:auto;object-fit:contain}
 
-/* ════════ 6 · PLANOS ════════ */
-.planos{background:var(--noche);position:relative}
-.planos__t .l1{display:block;font-size:clamp(1.4rem,3vw,2.5rem);letter-spacing:.14em}
-.planos__t .l1,.planos__t .l2{color:#fff}
-.planos__t .l2{display:block;font-size:clamp(2rem,6.2vw,5.4rem)}
-.planos__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px}
-.tabs--osc{background:rgba(255,255,255,.08)}
-.tabs--osc button{color:rgba(255,255,255,.75)}
-.tabs--osc button[aria-selected="true"]{color:var(--noche)}
-.tabs--osc .tabs__pill{background:var(--celeste)}
-.planos__grid{display:grid;grid-template-columns:minmax(0,1fr) clamp(280px,25vw,390px);gap:clamp(20px,2.4vw,36px)}
-@media(max-width:980px){.planos__grid{grid-template-columns:1fr}}
-
-
-.visor{position:relative;border:1px solid rgba(255,255,255,.16);border-radius:10px;overflow:hidden;
-  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;
-  background:radial-gradient(120% 90% at 50% 40%,#0a2547,#04162c);
-  height:clamp(520px,84vh,900px);touch-action:pan-y;cursor:grab}
-.visor.drag{cursor:grabbing}
-.visor__lienzo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.visor__lienzo svg{width:100%;height:100%;transform-origin:center center;transition:transform .35s var(--ease)}
-.visor.moviendo .visor__lienzo svg{transition:none}
-.visor__ui{position:absolute;right:16px;bottom:16px;display:flex;gap:8px;z-index:3}
-.visor__ui button{width:46px;height:46px;border-radius:8px;background:rgba(2,20,44,.85);color:#fff;
-  border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;backdrop-filter:blur(8px);
-  font-family:var(--display);font-weight:900;font-size:20px;line-height:1;transition:background .3s,transform .3s}
-.visor__ui button:hover{background:var(--celeste);color:var(--noche);transform:translateY(-2px)}
-.visor__vista{position:absolute;left:16px;bottom:16px;z-index:3;padding:10px 18px;border-radius:999px;
-  background:rgba(2,20,44,.82);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);
-  font-family:var(--texto);font-weight:600;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em;
-  color:rgba(255,255,255,.86);transition:background .3s,color .3s,border-color .3s,transform .3s}
-.visor__vista:hover{background:var(--celeste);color:var(--noche);border-color:var(--celeste);transform:translateY(-2px)}
-.visor__nota,.visor__zoom{position:absolute;top:16px;z-index:3;padding:9px 15px;border-radius:999px;
-  background:rgba(2,20,44,.82);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);
-  font-family:var(--texto);font-weight:500;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em;
-  color:rgba(255,255,255,.82)}
-.visor__nota{left:16px;max-width:calc(100% - 118px)}
-.visor__zoom{right:16px;font-family:var(--display);font-style:italic;font-weight:900;font-size:12px;letter-spacing:0}
-@media(max-width:620px){.visor__nota span{display:none}.visor__nota::after{content:'Pellizcá para acercar'}}
-
-/* ── plano ── */
-.visor__lienzo svg{width:100%;height:100%;transform-origin:center center;
-  transition:transform .6s var(--ease)}
-.visor.moviendo .visor__lienzo svg{transition:none}
-.lote{cursor:pointer}
-.lote:focus{outline:none}
-.lote__f{transition:filter .3s var(--ease)}
-.lote__r{fill:none;stroke:#fff;stroke-width:0;opacity:0;
-  transition:stroke-width .35s var(--ease),opacity .35s var(--ease)}
-.lote:hover .lote__r{stroke-width:.16;opacity:.7}
-.lote:hover .lote__f{filter:brightness(1.12)}
-.lote.sel .lote__r{stroke-width:.24;opacity:1}
-.lote.sel .lote__f{filter:brightness(1.15) drop-shadow(0 0 1.6px rgba(255,255,255,.7))}
-.lote:focus-visible .lote__r{stroke:var(--verde);stroke-width:.24;opacity:1}
-.lote__n{font-family:var(--texto);font-weight:700;pointer-events:none;
-  text-anchor:middle;dominant-baseline:central}
-.pl-muro{fill:none;stroke:rgba(255,255,255,.55);stroke-width:.2;stroke-linejoin:round;stroke-linecap:round}
-.pl-piso{fill:rgba(255,255,255,.035)}
-.pl-grilla{stroke:rgba(115,193,239,.055);stroke-width:.05}
-.pl-aux{fill:rgba(255,255,255,.07);stroke:rgba(255,255,255,.22);stroke-width:.09}
-.visor__lienzo svg text{user-select:none;-webkit-user-select:none}
-.pl-txt{font-family:var(--texto);font-weight:600;fill:rgba(255,255,255,.72);
-  text-anchor:middle;dominant-baseline:central;letter-spacing:.08em;pointer-events:none}
-.pl-rot{font-family:var(--display);font-style:italic;font-weight:900;fill:rgba(255,255,255,.34);
-  text-anchor:start;dominant-baseline:central;letter-spacing:-.02em;pointer-events:none}
-.pl-silla{fill:rgba(115,193,239,.4)}
-.pl-esc{fill:var(--azul);stroke:rgba(255,255,255,.3);stroke-width:.1}
-.pl-pant{fill:rgba(115,193,239,.7)}
-
-.ficha{display:flex;flex-direction:column;gap:clamp(14px,1.8vw,20px)}
-.ficha__sel{--tinte:rgba(255,255,255,.3);
-  border:1px solid color-mix(in srgb, var(--tinte) 40%, transparent);
-  border-radius:10px;overflow:hidden;background:rgba(255,255,255,.04);
-  box-shadow:0 18px 46px -34px color-mix(in srgb, var(--tinte) 85%, transparent);
-  transition:border-color .5s var(--ease),box-shadow .5s var(--ease)}
-.ficha__logo{min-height:clamp(180px,19vw,240px);display:grid;place-items:center;
-  padding:clamp(22px,2.6vw,34px);background:#DDEEFB;color:var(--azul);
-  transition:background .45s var(--ease),color .45s var(--ease)}
-.ficha--oscura .ficha__logo{background:#062B52;color:#fff}
-.ficha__logo img{width:min(88%,270px);height:auto;object-fit:contain}
-.ficha__logo .txt{font-family:var(--display);font-style:italic;font-weight:900;text-transform:uppercase;
-  font-size:clamp(1rem,1.65vw,1.4rem);letter-spacing:-.04em;text-align:center;line-height:1.12;
-  max-width:100%;overflow-wrap:break-word}
-.ficha__logo .libre{font-family:var(--texto);font-weight:600;text-transform:uppercase;font-size:11px;
-  letter-spacing:.18em;opacity:.75}
-.ficha__d{padding:clamp(20px,2.2vw,28px)}
-.ficha__d b{display:block;font-family:var(--display);font-style:italic;font-weight:900;text-transform:uppercase;
-  font-size:clamp(1.65rem,2.9vw,2.3rem);letter-spacing:-.045em;line-height:1.1;color:#fff}
-.ficha__n i{font-style:italic}
-.ficha__d .sector{display:block;margin-top:9px;font-family:var(--texto);font-weight:600;
-  text-transform:uppercase;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.55)}
-.ficha__logo{flex-direction:column;gap:14px}
-.ficha__logo2{width:min(48%,140px)!important;height:auto;opacity:.9}
-.ficha__n s{display:inline-block;text-decoration:none;font-weight:100;margin:0 .26em;
-  color:rgba(255,255,255,.5)}
-.ficha__d .info{display:block;margin-top:12px;font-size:.95rem;color:rgba(255,255,255,.78);line-height:1.5}
-.leyenda{display:grid;gap:9px}
-.leyenda div{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.72)}
-.leyenda i{width:14px;height:14px;border-radius:3px;display:block;flex:none;border:1px solid rgba(255,255,255,.3)}
-.ficha__nota{border-top:2px solid var(--verde);padding-top:13px}
-.ficha__nota h4{margin:0 0 6px;font-family:var(--display);font-style:italic;font-weight:900;text-transform:uppercase;
-  font-size:1rem;letter-spacing:-.03em}
-.ficha__nota p{margin:0;font-size:.88rem;color:rgba(255,255,255,.62)}
-
-/* ════════ 7 · APORTE SOLIDARIO ════════ */
 .dona{background:var(--hueso);color:var(--tinta);position:relative;overflow:hidden}
 .dona__grid{display:grid;grid-template-columns:1.24fr 1fr;gap:clamp(24px,3vw,56px);align-items:center}
 .dona__grid>div:first-child{position:sticky;top:110px}
 @media(max-width:900px){.dona__grid>div:first-child{position:static}}
 @media(max-width:900px){.dona__grid{grid-template-columns:1fr;gap:clamp(26px,6vw,40px)}}
 
-/* la foto se disuelve en el fondo con una máscara suave en los cuatro bordes */
 .dona__foto{position:relative;margin:0;aspect-ratio:10/11;width:100%;max-width:none;justify-self:stretch}
-/* la foto ya viene en duotono con las luces en el gris del fondo:
-   la máscara la termina de disolver por los cuatro bordes */
+
 .dona__foto>img:first-child{width:100%;height:100%;object-fit:cover;display:block;
   -webkit-mask-image:
     linear-gradient(to bottom,transparent 0,rgba(0,0,0,.55) 9%,#000 26%,#000 62%,rgba(0,0,0,.45) 88%,transparent 100%),
@@ -725,7 +448,6 @@ section[id],footer[id]{scroll-margin-top:88px}
 .dona p b{color:var(--noche);font-weight:600}
 .dona p:last-of-type{margin-bottom:0}
 
-/* la cuenta: un litro se vuelve cuatro vasos */
 .dona__cuenta{display:flex;align-items:center;gap:clamp(14px,2vw,26px);flex-wrap:wrap;
   margin:clamp(22px,2.8vw,34px) 0;padding:clamp(18px,2.2vw,26px) clamp(20px,2.6vw,30px);
   background:#fff;border-radius:12px;border-left:4px solid var(--verde);
@@ -748,7 +470,6 @@ section[id],footer[id]{scroll-margin-top:88px}
 .dona__bap b{font-family:var(--display);font-style:italic;font-weight:900;text-transform:none;
   font-size:1.05rem;letter-spacing:-.02em;color:var(--azul)}
 
-/* ════════ 8 · GALERÍA ════════ */
 .galeria{background:var(--noche)}
 .galeria__cab{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
   gap:24px;margin-bottom:clamp(26px,3vw,40px)}
@@ -796,7 +517,6 @@ section[id],footer[id]{scroll-margin-top:88px}
   box-shadow:0 30px 70px -24px rgba(115,193,239,.95)}
 .galeria__bt svg{width:17px;height:17px}
 
-/* ════════ 9 · CONTACTO ════════ *//* ════════ 8 · CONTACTO ════════ */
 .pie{background:var(--noche-2);position:relative}
 .pie__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:clamp(30px,4.5vw,80px);align-items:start}
@@ -873,11 +593,10 @@ section[id],footer[id]{scroll-margin-top:88px}
   .lay,.hero__fade{opacity:1;transform:none}
 }
 
-/* ═══════ ajustes de móvil (al final para ganar en cascada) ═══════ */
 @media(max-width:980px){
   .planos .visor{height:clamp(400px,58vh,520px)}
   .planos__grid .ficha{position:relative;margin-top:-146px;z-index:4;padding:0 10px;gap:14px}
-  /* el logo va a todo el ancho arriba y el número debajo: se lee mucho mejor */
+
   .planos__grid .ficha__sel{display:block;
     background:rgba(2,20,44,.93);backdrop-filter:blur(14px);border-color:rgba(255,255,255,.24);
     box-shadow:0 18px 40px -22px rgba(0,0,0,.9)}
@@ -900,7 +619,6 @@ section[id],footer[id]{scroll-margin-top:88px}
   .planos .visor__nota,.planos .visor__zoom{display:none}
 }
 
-/* ═══════ carrusel de tarjetas en móvil ═══════ */
 @media(max-width:980px){
   .enc .tarjetas{display:flex;grid-template-columns:none;gap:14px;
     overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
@@ -914,7 +632,7 @@ section[id],footer[id]{scroll-margin-top:88px}
   .enc .tj:hover .tj__v{transform:none}
   .enc .tj:hover .tj__velo,.enc .tj:focus-within .tj__velo{opacity:0}
   .enc .tj:hover .tj__mas,.enc .tj:focus-within .tj__mas{grid-template-rows:0fr;opacity:0}
-  /* al tocar, la info tapa la imagen entera */
+
   .enc .tj.abierta .tj__velo{opacity:1;height:100%;
     backdrop-filter:blur(10px) saturate(.9);-webkit-backdrop-filter:blur(10px) saturate(.9);
     background:linear-gradient(180deg,rgba(4,31,66,.72) 0%,rgba(4,31,66,.9) 60%,rgba(4,31,66,.94) 100%);
@@ -934,7 +652,6 @@ section[id],footer[id]{scroll-margin-top:88px}
 }
 @media(min-width:981px){.enc__pista{display:none}}
 
-/* ═══════ auspiciantes secundarios en móvil ═══════ */
 @media(max-width:760px){
   .auspi .auspi__g--sec{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(8px,3vw,20px)}
   .auspi .auspi__g--sec .auspi__c:nth-child(1),
@@ -958,9 +675,7 @@ section[id],footer[id]{scroll-margin-top:88px}
   <nav class="nav__links">
     <a href="#jornada">La jornada</a>
     <a href="#encontras">Qué encontrás</a>
-    <a href="#cronograma">Cronograma</a>
     <a href="#sponsors">Marcas</a>
-    <a href="#planos">Planos</a>
     <a href="#solidario">Solidario</a>
     <a href="#galeria">Galería</a>
   </nav>
@@ -972,20 +687,16 @@ section[id],footer[id]{scroll-margin-top:88px}
   <nav class="nav__panel" id="navPanel">
     <a href="#jornada">La jornada</a>
     <a href="#encontras">Qué encontrás</a>
-    <a href="#cronograma">Cronograma</a>
     <a href="#sponsors">Marcas</a>
-    <a href="#planos">Planos</a>
     <a href="#solidario">Solidario</a>
     <a href="#galeria">Galería</a>
     <a class="nav__cta" href="#contacto">Contacto</a>
   </nav>
 </header>
 
-<!-- ══ 1 · HERO ══ -->
 <section class="hero" id="top">
   <div class="hero__bg">
-    <!-- Reemplazá el poster por el video institucional en loop:
-         <source src="assets/jornada-loop.mp4" type="video/mp4"> -->
+
     <video autoplay muted loop playsinline poster="assets/hero.jpg"></video>
   </div>
 
@@ -1025,9 +736,8 @@ section[id],footer[id]{scroll-margin-top:88px}
   <div class="olas olas--abajo" aria-hidden="true" data-olas="verde"></div>
 </section>
 
-<!-- ══ 2 · EPICENTRO ══ -->
 <section class="sec epi" id="jornada">
-  <div class="epi__bg" aria-hidden="true"><img decoding="async" src="assets/tambo.jpg" alt="" width="1400" height="787"></div>
+  <div class="epi__bg" aria-hidden="true"><img decoding="async" src="assets/tambo.jpg" alt="" width="1400" height="787" loading="lazy"></div>
   <div class="wrap">
     <p class="eyebrow reveal">Crespo, Entre Ríos</p>
     <h2 class="d epi__t reveal">
@@ -1063,7 +773,6 @@ section[id],footer[id]{scroll-margin-top:88px}
   <div class="olas olas--abajo" aria-hidden="true" data-olas="hueso"></div>
 </section>
 
-<!-- ══ 3 · QUÉ ENCONTRÁS ══ -->
 <section class="sec enc" id="encontras">
   <div class="wrap">
     <p class="eyebrow rule reveal">Qué vas a encontrar</p>
@@ -1075,7 +784,7 @@ section[id],footer[id]{scroll-margin-top:88px}
     <div class="tarjetas reveal">
 
       <article class="tj" tabindex="0">
-        <!-- Reemplazá el poster por el clip: <source src="assets/v-stands.mp4" type="video/mp4"> -->
+
         <video class="tj__v" muted loop playsinline poster="assets/stands.jpg"></video>
         <span class="tj__velo" aria-hidden="true"></span>
         <div class="tj__in">
@@ -1107,9 +816,9 @@ section[id],footer[id]{scroll-margin-top:88px}
           <div class="tj__mas"><div>
             <p>Veintitrés charlas a lo largo de los dos días, con dos cierres de lujo abiertos a todo el público.</p>
             <div class="tj__caras">
-              <div class="tj__cara"><img decoding="async" src="assets/d-distefano.jpg" alt="Salvador Di Stefano" width="760" height="760">
+              <div class="tj__cara"><img decoding="async" src="assets/d-distefano.jpg" alt="Salvador Di Stefano" width="760" height="760" loading="lazy">
                 <div><b>Salvador Di Stefano</b><small>Analista económico</small></div></div>
-              <div class="tj__cara"><img decoding="async" src="assets/d-albino.jpg" alt="Doctor Abel Albino" width="760" height="760">
+              <div class="tj__cara"><img decoding="async" src="assets/d-albino.jpg" alt="Doctor Abel Albino" width="760" height="760" loading="lazy">
                 <div><b>Dr. Abel Albino</b><small>Pte. Fundación CONIN</small></div></div>
             </div>
           </div></div>
@@ -1121,39 +830,8 @@ section[id],footer[id]{scroll-margin-top:88px}
   </div>
 </section>
 
-<!-- ══ 4 · CRONOGRAMA ══ -->
-<section class="sec crono" id="cronograma">
-  <div class="wrap">
-    <div class="angosto">
-      <div class="crono__head reveal">
-        <h2 class="d crono__t">
-          <span class="l1 d-thin">Programa de charlas</span>
-          <span class="l2 d-black">Cronograma</span>
-        </h2>
-        <div class="crono__acc">
-          <div class="tabs" role="tablist" aria-label="Elegir día" id="tabsCrono">
-            <span class="tabs__pill" id="pillCrono" aria-hidden="true"></span>
-            <button type="button" role="tab" aria-selected="true" aria-controls="dia-29" id="tab-29">Martes <b>29</b></button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="dia-30" id="tab-30">Miércoles <b>30</b></button>
-          </div>
-          <a class="bt-pdf" href="assets/programa-jornada-cadena-lactea.pdf" download>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg>
-            Descargar programa
-          </a>
-        </div>
-      </div>
-
-      <div class="dia" id="dia-29" role="tabpanel" aria-labelledby="tab-29"></div>
-      <div class="dia" id="dia-30" role="tabpanel" aria-labelledby="tab-30" hidden></div>
-
-      <p class="crono__pie">Todas las charlas son en el auditorio del pabellón central. Programa sujeto a modificaciones.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 5 · MARCAS ══ -->
 <section class="sec sponsors" id="sponsors">
-  <div class="sponsors__bg" aria-hidden="true"><img decoding="async" src="assets/tractor.jpg" alt="" width="1200" height="1182"></div>
+  <div class="sponsors__bg" aria-hidden="true"><img decoding="async" src="assets/tractor.jpg" alt="" width="1200" height="1182" loading="lazy"></div>
   <div class="wrap"><p class="eyebrow rule reveal">Quiénes participan del evento</p></div>
 
   <div class="cinta cinta--a" id="cintaA" aria-label="Marcas participantes"></div>
@@ -1163,15 +841,15 @@ section[id],footer[id]{scroll-margin-top:88px}
       <p class="auspi__t">Auspicia</p>
       <div class="auspi__g">
         <a class="auspi__c" href="https://over.com.ar/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/w-over.png" alt="Over Medicina Veterinaria" width="640" height="250"></a>
+          <img decoding="async" src="assets/marcas/w-over.png" alt="Over Medicina Veterinaria" width="640" height="250" loading="lazy"></a>
         <a class="auspi__c" href="https://bladek.com.ar/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/m-bladek.png" alt="Bladek Nutrición Animal" width="640" height="250"></a>
+          <img decoding="async" src="assets/marcas/m-bladek.png" alt="Bladek Nutrición Animal" width="640" height="250" loading="lazy"></a>
         <a class="auspi__c" href="https://gottig.com.ar/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/w-gottig.png" alt="Gottig" width="640" height="250"></a>
+          <img decoding="async" src="assets/marcas/w-gottig.png" alt="Gottig" width="640" height="250" loading="lazy"></a>
       </div>
       <div class="auspi__g auspi__g--sec">
-        <div class="auspi__c"><img decoding="async" src="assets/marcas/w-la-lecherita.png" alt="La Lecherita" width="640" height="250"></div>
-        <div class="auspi__c"><img decoding="async" src="assets/marcas/w-indalac.png" alt="Indalac" width="640" height="250"></div>
+        <div class="auspi__c"><img decoding="async" src="assets/marcas/w-la-lecherita.png" alt="La Lecherita" width="640" height="250" loading="lazy"></div>
+        <div class="auspi__c"><img decoding="async" src="assets/marcas/w-indalac.png" alt="Indalac" width="640" height="250" loading="lazy"></div>
       </div>
     </div>
 
@@ -1179,53 +857,14 @@ section[id],footer[id]{scroll-margin-top:88px}
       <p class="orgs__t">Organizan</p>
       <div class="orgs__g">
         <a class="org" href="https://martinbustamante.com/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/w-martin-bustamante.png" alt="Martín Bustamante" width="640" height="250"></a>
+          <img decoding="async" src="assets/marcas/w-martin-bustamante.png" alt="Martín Bustamante" width="640" height="250" loading="lazy"></a>
         <a class="org" href="https://caproler.org/" target="_blank" rel="noopener">
-          <img decoding="async" src="assets/marcas/w-caproler.png" alt="CAPROLER · Cámara de Productores de Leche de Entre Ríos" width="640" height="250"></a>
+          <img decoding="async" src="assets/marcas/w-caproler.png" alt="CAPROLER · Cámara de Productores de Leche de Entre Ríos" width="640" height="250" loading="lazy"></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 6 · PLANOS ══ -->
-<section class="sec planos" id="planos">
-  <div class="wrap">
-    <div class="planos__head reveal">
-      <h2 class="d planos__t">
-        <span class="l1 d-thin">Mapa de stands</span>
-        <span class="l2 d-black">Encontrá lo que buscás</span>
-      </h2>
-    </div>
-
-    <div class="planos__grid">
-      <div class="visor reveal" id="visor">
-        <div class="visor__lienzo" id="lienzo"></div>
-        <span class="visor__nota" id="nota"><span>Tocá un lote para verlo · alejá para ver el sector externo</span></span>
-        <span class="visor__zoom" id="zoomVal">100%</span>
-        <div class="visor__ui">
-          <button type="button" id="zOut" aria-label="Alejar">−</button>
-          <button type="button" id="zIn" aria-label="Acercar">+</button>
-        </div>
-        <button type="button" class="visor__vista" id="btVista">Ver todo el predio</button>
-      </div>
-
-      <div class="ficha reveal">
-        <div class="ficha__sel" id="fichaSel" aria-live="polite"></div>
-        <div class="leyenda" id="leyenda"></div>
-        <div class="ficha__nota">
-          <h4>Un solo predio</h4>
-          <p>El pabellón central concentra los stands 1 al 34 y el auditorio. Alejá el mapa para ver el sector externo, del 38 al 51, donde entra la maquinaria grande.</p>
-        </div>
-        <div class="ficha__nota">
-          <h4>Cómo usar el mapa</h4>
-          <p>Tocá cualquier stand para ver de qué empresa es. Alejá el mapa con la rueda o el botón de abajo para ver el predio completo.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 7 · APORTE SOLIDARIO ══ -->
 <section class="sec dona" id="solidario">
   <div class="wrap">
     <p class="eyebrow rule reveal">Aporte solidario</p>
@@ -1233,8 +872,8 @@ section[id],footer[id]{scroll-margin-top:88px}
 
       <div class="reveal">
         <figure class="dona__foto">
-          <img decoding="async" src="assets/donacion.jpg" alt="Una nena tomando un vaso de leche en el campo" width="1200" height="1600">
-          <img decoding="async" class="dona__bapfoto" src="assets/marcas/bap.png" alt="Banco de Alimentos Paraná" width="900" height="791">
+          <img decoding="async" src="assets/donacion.jpg" alt="Una nena tomando un vaso de leche en el campo" width="1200" height="1600" loading="lazy">
+          <img decoding="async" class="dona__bapfoto" src="assets/marcas/bap.png" alt="Banco de Alimentos Paraná" width="900" height="791" loading="lazy">
         </figure>
       </div>
 
@@ -1270,7 +909,6 @@ section[id],footer[id]{scroll-margin-top:88px}
   </div>
 </section>
 
-<!-- ══ 8 · GALERÍA (espacio reservado, se diseña aparte) ══ -->
 <section class="sec galeria" id="galeria">
   <div class="wrap">
     <p class="eyebrow rule reveal">Ediciones anteriores</p>
@@ -1289,7 +927,7 @@ section[id],footer[id]{scroll-margin-top:88px}
       <figure class="galeria__foto"><img decoding="async" src="assets/aerea.jpg" alt="" loading="lazy" width="1300" height="731"></figure>
       <figure class="galeria__foto"><img decoding="async" src="assets/tambo.jpg" alt="" loading="lazy" width="1400" height="787"></figure>
       <figure class="galeria__foto"><img decoding="async" src="assets/hero.jpg" alt="" loading="lazy" width="1700" height="1269"></figure>
-      <!-- La galería completa se arma en galeria.html -->
+
       <a class="galeria__bt" href="galeria.html">
         Ver galería
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1298,7 +936,6 @@ section[id],footer[id]{scroll-margin-top:88px}
   </div>
 </section>
 
-<!-- ══ 9 · CONTACTO ══ -->
 <footer class="sec pie" id="contacto">
   <div class="wrap">
     <div class="pie__grid">
@@ -1366,8 +1003,8 @@ section[id],footer[id]{scroll-margin-top:88px}
       <div>
         <div class="pie__org">
           <a href="https://martinbustamante.com/" target="_blank" rel="noopener">
-            <img decoding="async" src="assets/marcas/w-martin-bustamante.png" alt="Martín Bustamante" width="640" height="250"></a>
-          
+            <img decoding="async" src="assets/marcas/w-martin-bustamante.png" alt="Martín Bustamante" width="640" height="250" loading="lazy"></a>
+
           <div class="redes">
             <a href="https://www.instagram.com/martinbustamantetv/" target="_blank" rel="noopener" aria-label="Instagram de Martín Bustamante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
             <a href="https://www.facebook.com/MBustamante.Tv/" target="_blank" rel="noopener" aria-label="Facebook de Martín Bustamante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M14.9 8.4h-1.3c-1 0-1.7.7-1.7 1.7v1.7m-1.4 0h4.2m-2.8 0v6.4"/></svg></a>
@@ -1376,8 +1013,8 @@ section[id],footer[id]{scroll-margin-top:88px}
         </div>
         <div class="pie__org">
           <a href="https://caproler.org/" target="_blank" rel="noopener">
-            <img decoding="async" src="assets/marcas/w-caproler.png" alt="CAPROLER" width="640" height="250"></a>
-          
+            <img decoding="async" src="assets/marcas/w-caproler.png" alt="CAPROLER" width="640" height="250" loading="lazy"></a>
+
           <div class="redes">
             <a href="https://www.instagram.com/caprol.er/" target="_blank" rel="noopener" aria-label="Instagram de CAPROLER"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
             <a href="https://caproler.org/" target="_blank" rel="noopener" aria-label="Sitio web de CAPROLER"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.6 5.6 3.6 9s-1.2 6.4-3.6 9c-2.4-2.6-3.6-5.6-3.6-9S9.6 5.6 12 3z"/></svg></a>
@@ -1387,7 +1024,7 @@ section[id],footer[id]{scroll-margin-top:88px}
     </div>
 
     <div class="creditos">
-      <img decoding="async" src="assets/logo-blanco.png" alt="Jornada de la Cadena Láctea de Entre Ríos" width="675" height="540">
+      <img decoding="async" src="assets/logo-blanco.png" alt="Jornada de la Cadena Láctea de Entre Ríos" width="675" height="540" loading="lazy">
       <p>© 2026 Jornada de la Cadena Láctea de Entre Ríos · Organizan Martín Bustamante y CAPROLER</p>
       <a class="arriba" href="#top">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
@@ -1402,10 +1039,9 @@ section[id],footer[id]{scroll-margin-top:88px}
 "use strict";
 const menos = matchMedia('(prefers-reduced-motion: reduce)').matches;
 requestAnimationFrame(()=>document.body.classList.add('go'));
-/* las ondas arrancan recién cuando el hilo principal se libera */
+
 addEventListener('load',()=>requestAnimationFrame(()=>document.body.classList.add('listo')));
 
-/* construye recién cuando hace falta: al arrancar sólo se arma lo que se ve */
 const alAcercarse=(sel,fn)=>{
   const el=document.querySelector(sel); if(!el) return fn();
   const io=new IntersectionObserver(es=>{
@@ -1415,13 +1051,11 @@ const alAcercarse=(sel,fn)=>{
 };
 const enRatoLibre = window.requestIdleCallback || (f=>setTimeout(f,300));
 
-/* ───────── ondas: un valle y dos subidas por pantalla ───────── */
 function onda(y1,y2){
-  /* período = 1440 (= ancho del viewBox), cresta en 0 y 1440, valle en 720 */
   let d='M0,'+y1;
   for(let k=0;k<3;k++){
     const o=k*1440;
-    /* controles a 0.40/0.60 de cada medio período: crestas anchas y redondeadas */
+
     d+=' C'+(o+288)+','+y1+' '+(o+432)+','+y2+' '+(o+720)+','+y2;
     d+=' C'+(o+1008)+','+y2+' '+(o+1152)+','+y1+' '+(o+1440)+','+y1;
   }
@@ -1437,7 +1071,6 @@ document.querySelectorAll('[data-olas]').forEach(el=>{
    '</svg>';
 });
 
-/* ───────── en táctil, las cajas del hero se abren al tocarlas ───────── */
 if(matchMedia('(hover:none)').matches){
   document.querySelectorAll('.hero__caja').forEach(c=>{
     c.addEventListener('click',()=>{
@@ -1447,7 +1080,6 @@ if(matchMedia('(hover:none)').matches){
   });
 }
 
-/* ───────── menú móvil ───────── */
 (function(){
   const nav=document.getElementById('nav'), bt=document.getElementById('burger');
   if(!bt) return;
@@ -1461,14 +1093,12 @@ if(matchMedia('(hover:none)').matches){
   });
 })();
 
-/* ───────── el dato del header alterna fecha y lugar ───────── */
 (function(){
   const d=document.getElementById('navDato');
   if(!d||menos) return;
   setInterval(()=>d.classList.toggle('alt'), 4800);
 })();
 
-/* ───────── scroll suave ───────── */
 function irA(el){
   const y = el.getBoundingClientRect().top + scrollY - 64;
   if(menos){ scrollTo(0,y); return; }
@@ -1484,7 +1114,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
   e.preventDefault(); irA(el); history.replaceState(null,'',a.getAttribute('href'));
 }));
 
-/* ───────── nav + progreso ───────── */
 const nav=document.getElementById('nav'), barra=document.getElementById('progress');
 let tick=false;
 function alScroll(){
@@ -1496,7 +1125,6 @@ function alScroll(){
 addEventListener('scroll',()=>{ if(!tick){ requestAnimationFrame(alScroll); tick=true; } },{passive:true});
 alScroll();
 
-/* ───────── reveals ───────── */
 const ojo=new IntersectionObserver((es,o)=>es.forEach(en=>{
   if(en.isIntersecting){ en.target.classList.add('in'); o.unobserve(en.target); }
 }),{rootMargin:'0px 0px -12% 0px',threshold:.12});
@@ -1504,7 +1132,6 @@ const mirar=()=>document.querySelectorAll('.reveal:not(.in)').forEach((el,i)=>{
   el.style.transitionDelay=(Math.min(i,6)*.07)+'s'; ojo.observe(el); });
 mirar();
 
-/* ───────── contadores ───────── */
 const fmt=new Intl.NumberFormat('es-AR');
 document.querySelectorAll('[data-contador]').forEach(el=>{
   const fin=+el.dataset.contador;
@@ -1520,7 +1147,6 @@ document.querySelectorAll('[data-contador]').forEach(el=>{
   io.observe(el);
 });
 
-/* ───────── tarjetas de video ───────── */
 const tactil = matchMedia('(hover:none)').matches;
 document.querySelectorAll('.tj').forEach(t=>{
   const v=t.querySelector('video');
@@ -1538,119 +1164,6 @@ document.querySelectorAll('.tj').forEach(t=>{
   }
 });
 
-/* ───────── cronograma ───────── */
-const PROGRAMA={
- '29':[
-  {h:'09.30',pausa:'Apertura',det:'Espacio institucional CAPROLER y Gobierno de Entre Ríos'},
-  {h:'10.00',marca:'La Sibila',tit:'Calidad de <b>leche cruda</b> en tambo',n:'Rolando Luis Sagardoy',rol:'Médico veterinario',f:'sagardoy'},
-  {h:'10.30',tit:'<b>IA aplicada al tambo</b>: automatización y procesos aplicables',n:'Ronald Lombardi',rol:'Médico veterinario',f:'lombardi'},
-  {h:'11.00',tit:'¿Llegó el momento de producir <b>leche + carne</b> en los sistemas lecheros tradicionales?',n:'Sebastián Riffel',rol:'Ingeniero agrónomo',f:'riffel'},
-  {h:'12.00',marca:'Over',tit:'<b>Crianza artificial de terneros</b>: puntos claves de manejo y control',n:'Gonzalo Ceaglio',rol:'Médico veterinario',f:'ceaglio'},
-  {h:'13.00',pausa:'Break',det:'Almuerzo'},
-  {h:'15.00',marca:'Pauer',tit:'<b>Alfalfa</b>, la llave para bajar el costo productivo',n:'Juan Lus',rol:'Ingeniero agrónomo',f:'lus'},
-  {h:'16.00',marca:'Gauss',tit:'Tecnologías y procesos de alto impacto para obtener <b>henos de alta calidad</b>',n:'Gastón Urrets Zavalía',rol:'Ingeniero agrónomo · MBA',f:'urrets'},
-  {h:'17.00',marca:'Suplefeed',tit:'<b>Digestibilidad</b>: el ingrediente oculto de la rentabilidad del tambo',n:'Ignacio Larenze',rol:'Ingeniero agrónomo',f:'larenze'},
-  {h:'18.30',pausa:'Acto oficial',det:'Autoridades de Nación, Provincia y Municipio'},
-  {h:'19.30',tit:'Liderar 2026, proyectar 2027',n:'Salvador Di Stefano',rol:'Analista y consultor económico',f:'distefano',top:1,
-   bio:'Analista y consultor económico argentino, muy seguido en el sector agropecuario por sus informes sobre mercados, granos, hacienda y estrategias financieras. Escribe columnas y dicta conferencias en todo el país.'},
- ],
- '30':[
-  {h:'09.30',marca:'IAPSER',tit:'<b>Lanzamiento</b>: seguro de ganado',n:'Gustavo Dietz, Luciano Gallino y Lautaro Berdat',rol:''},
-  {h:'10.00',tit:'<b>Manejo alimentario</b> en ganado',n:'Pablo Siri',rol:'',f:'siri'},
-  {h:'11.00',marca:'Bladek',tit:'La vaca lechera ha cambiado: ¿estamos <b>nutriendo</b> para expresar su potencial?',n:'José Maiztegui',rol:'Médico veterinario',f:'maiztegui'},
-  {h:'12.00',marca:'Bio Grow',tit:'<b>Silajes</b> de calidad higiénica',n:'Guillermo Piñeiro',rol:'Ingeniero agrónomo',f:'pineiro'},
-  {h:'13.00',pausa:'Break',det:'Almuerzo'},
-  {h:'14.30',marca:'MSD Salud Animal',tit:'Nuevas estrategias de control de la <b>diarrea neonatal</b> en ternero',n:'Victoria Reynals',rol:'Médica veterinaria',f:'reynals'},
-  {h:'15.15',tit:'<b>IA y modelos</b> aplicados al sector lácteo',n:'Leo Cortese y Tomás Vera',rol:'Ingenieros',f:'cortese'},
-  {h:'16.00',marca:'Equipo Técnico Perennia',tit:'¿Es posible una <b>lechería regenerativa</b>?',n:'Federico Sörenson',rol:'Ingeniero',f:'sorenson'},
-  {h:'17.00',marca:'Lácteos Tonutti',tit:'El <b>ABC de la lechería</b> para mejorar la rentabilidad',n:'Mauro Gorgerino',rol:'Médico veterinario',f:'gorgerino'},
-  {h:'18.00',tema:'Ambiente y tambo',tit:'Gestión ambiental, residuos y efluentes: <b>del cumplimiento a la valorización</b>',n:'Alexia Rolandelli',rol:'Bioingeniera',f:'rolandelli'},
-  {h:'18.30',marca:'Región Centro',tit:'<b>Análisis de lechería</b>',n:'Mesa Región Centro',rol:''},
-  {h:'19.30',marca:'Fundación CONIN',tit:'Los 5 pasos para una Gran Nación',n:'Abel Albino',rol:'Doctor en medicina · Presidente de Fundación CONIN',f:'albino',top:1,
-   bio:'Médico pediatra argentino, fundador y presidente de la Fundación CONIN, dedicada desde 1993 a la prevención y el tratamiento de la desnutrición infantil. Su red de centros se extiende por la Argentina y varios países de la región.'},
- ]
-};
-/* logos de marca para la ficha del disertante: [archivo, necesita fondo oscuro] */
-const LOGO_MARCA={
- 'La Sibila':['assets/marcas/m-la-sibila.png',0],
- 'Over':['assets/marcas/m-over.png',1],
- 'Pauer':['assets/marcas/m-pauer.png',0],
- 'Gauss':['assets/marcas/m-gauss.png',0],
- 'Suplefeed':['assets/marcas/m-suplefeed.png',0],
- 'Bladek':['assets/marcas/m-bladek.png',0],
- 'Bio Grow':['assets/marcas/m-biogrow.png',0],
- 'Lácteos Tonutti':['assets/marcas/m-tonutti.png',1],
- 'IAPSER':['assets/marcas/m-iapser.png',0],
- 'Región Centro':['assets/marcas/m-region-centro.png',0]
-};
-function logoMarca(m){
-  const L=m && LOGO_MARCA[m];
-  if(!L) return '';
-  return '<div class="ag__logo'+(L[1]?' ag__logo--osc':'')+'">'+
-    '<img decoding="async" src="'+L[0]+'" alt="'+m+'" loading="lazy"></div>';
-}
-const CHEVRON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" '+
-  'stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
-
-function pintarDia(id,items){
-  document.getElementById(id).innerHTML = items.map((it,k)=>{
-    if(it.pausa) return '<div class="pausa reveal"><span class="pausa__riel"></span>'+
-      '<span class="pausa__h">'+it.h+' <i>hs</i></span>'+
-      '<span class="pausa__c"><b>'+it.pausa+'</b> · '+it.det+'</span></div>';
-    const foto = it.f ? '<img decoding="async" class="ag__foto" width="760" height="760" src="assets/d-'+it.f+'.jpg" alt="" loading="lazy">' : '';
-    const retrato = it.f ? '<img decoding="async" width="760" height="760" src="assets/d-'+it.f+'.jpg" alt="'+it.n+'" loading="lazy">' : '';
-    const rotulo = it.marca || it.tema;
-    const marca = rotulo ? '<span class="ag__marca">'+rotulo+'</span>' : '';
-    return '<article class="ag reveal'+(it.top?' ag--top':'')+(it.f?'':' ag--nofoto')+'">'+
-      '<button type="button" class="ag__bt" aria-expanded="false">'+
-        '<span class="ag__riel"></span>'+
-        '<span class="ag__h">'+it.h+'<i>hs</i></span>'+
-        '<span>'+marca+'<span class="ag__t">'+it.tit+'</span></span>'+
-        '<span class="ag__r">'+foto+'<span class="ag__mas">'+CHEVRON+'</span></span>'+
-        '<span class="ag__sep"></span>'+
-      '</button>'+
-      '<div class="ag__panel"><div><div class="ag__in">'+retrato+
-        '<div class="ag__txt">'+
-          (it.rol?'<span class="ag__rol">'+it.rol+'</span>':'')+
-          '<span class="ag__nom">'+it.n+'</span>'+
-          (it.bio?'<p class="ag__bio">'+it.bio+'</p>':'')+
-        '</div>'+logoMarca(it.marca)+
-      '</div></div></div></article>';
-  }).join('');
-}
-pintarDia('dia-29',PROGRAMA['29']); mirar();
-enRatoLibre(()=>{ pintarDia('dia-30',PROGRAMA['30']); mirar(); });
-
-/* despliegue de la agenda: una sola abierta por vez */
-document.addEventListener('click',e=>{
-  const bt=e.target.closest('.ag__bt'); if(!bt) return;
-  const ag=bt.closest('.ag'), abierta=ag.classList.contains('abierta');
-  ag.closest('.dia').querySelectorAll('.ag.abierta').forEach(o=>{
-    o.classList.remove('abierta'); o.querySelector('.ag__bt').setAttribute('aria-expanded','false');
-  });
-  if(!abierta){ ag.classList.add('abierta'); bt.setAttribute('aria-expanded','true'); }
-});
-
-/* ───────── pestañas ───────── */
-function pestanas(cont,pill,alCambiar){
-  const btns=[...cont.querySelectorAll('button')];
-  const mover=b=>{ pill.style.width=b.offsetWidth+'px';
-    pill.style.transform='translateX('+(b.offsetLeft-btns[0].offsetLeft)+'px)'; };
-  btns.forEach((b,n)=>b.addEventListener('click',()=>{
-    btns.forEach(o=>o.setAttribute('aria-selected',o===b)); mover(b); alCambiar(n); }));
-  const activo=()=>btns.find(b=>b.getAttribute('aria-selected')==='true')||btns[0];
-  requestAnimationFrame(()=>mover(activo()));
-  addEventListener('resize',()=>mover(activo()));
-}
-pestanas(document.getElementById('tabsCrono'),document.getElementById('pillCrono'),n=>{
-  document.getElementById('dia-29').hidden=n!==0;
-  document.getElementById('dia-30').hidden=n!==1;
-  document.querySelectorAll('.dia:not([hidden]) .reveal').forEach(el=>el.classList.add('in'));
-});
-
-/* ───────── marcas ───────── */
-/* [nombre, archivo, variante] — "w" sólo para los logos que la marca entregó en blanco;
-   el resto va con su diseño original a color */
 const MARCAS=[
  ['Peón Electrocercas','peon','m'],
  ['LAR','lar','m'],
@@ -1698,7 +1211,6 @@ const MARCAS=[
  ['Indalac','indalac','m']
 ];
 function cinta(el,lista){
-  /* se baraja en cada carga para que no encabecen siempre las mismas marcas */
   const orden=lista.slice();
   for(let i=orden.length-1;i>0;i--){
     const j=Math.floor(Math.random()*(i+1));
@@ -1711,327 +1223,6 @@ function cinta(el,lista){
 }
 alAcercarse('#sponsors',()=>cinta(document.getElementById('cintaA'),MARCAS));
 
-/* ═════════ PLANO ÚNICO DEL PREDIO ═════════
-   Geometría medida sobre el PDF original a 200 dpi (58 px = 1 metro).
-   Las categorías y sus colores salen del cuadro de costos del dossier:
-   el color es lo que distingue el precio de cada lote. */
-
-const MOSTRAR_PRECIOS = false;   // ponelo en true si querés publicar los valores
-
-const CAT={
- i33c :{n:'Stand 3×3 · central',            m:'3×3',   col:'#73C1EF', tinta:'#04223f', precio:'$700.000 + IVA'},
- i33e :{n:'Stand 3×3 · esquina doble frente',m:'3×3',  col:'#0752A9', tinta:'#ffffff', precio:'$900.000 + IVA'},
- i34c :{n:'Stand 3×4 · central',            m:'3×4',   col:'#80B133', tinta:'#04223f', precio:'$1.600.000 + IVA'},
- i34i :{n:'Stand 3×4 · isla doble frente',  m:'3×4',   col:'#F9B233', tinta:'#04223f', precio:'$2.300.000 + IVA'},
- e1010:{n:'Stand 10×10 · externo',          m:'10×10', col:'#C11826', tinta:'#ffffff', precio:'$1.200.000 + IVA'},
- e105 :{n:'Stand 10×5 · externo',           m:'10×5',  col:'#F4A0A8', tinta:'#4a1015', precio:'$800.000 + IVA'}
-};
-
-/* [n, x, y, ancho, alto, categoría, marca]  ·  medidas en metros,
-   tomadas del plano oficial (Plano_con_logos.ai) */
-const LOTES=[
- /* fila norte */
- [20,2,0,3,3,'i33e','Peón Electrocercas'],[19,5,0,4,3,'i34c','LAR'],
- [18,9,0,4,3,'i34c','Bemix'],[17,13,0,3,3,'i33e','La Ganadera'],
- /* columna oeste */
- [21,0,4,3,4,'i34i','Trossero · BouMatic'],[22,0,8,3,4,'i34c','BESS'],
- [23,0,12,3,3,'i33c','Santa Sylvina'],['24·25',0,15,3,6,'i33c','TSC Agroindustriales'],
- [26,0,21,3,4,'i34c','Magna'],[27,0,25,3,3,'i33c','Veterinaria Hernández'],
- [28,0,28,3,3,'i33e','Indalac'],
- /* columna este */
- [1,15,7,3,4,'i34i','Stel Grupo'],[2,15,11,3,4,'i34c','Metalúrgica Güemes'],
- [3,15,15,3,3,'i33c','Weinbaur · Massey Ferguson'],['4·5',15,18,3,8,'i34c','Pauer'],
- [6,15,26,3,4,'i34i','Folmer'],
- /* islas centrales */
- [16,6,7,3,4,'i34i','Cremigal'],[7,9,7,3,4,'i34i','Fliegl'],
- [15,6,11,3,4,'i34i','Aguas & Procesos'],[8,9,11,3,4,'i34i','Nutrifar'],
- [14,6,18,3,4,'i34i','Agrotambo · DeLaval'],[9,9,18,3,4,'i34i','HEIT · BioGrow'],
- ['13·10',6,22,6,4,'i34i','Suplefeed · FutureCow'],
- [12,6,28,3,4,'i34i','BioSolares'],[11,9,28,3,4,'i34i','Tonutti'],
- /* fila sur */
- [29,0,35,3,3,'i33e','Cotapa'],[30,3,35,3,3,'i33c','Lely'],
- [31,6,35,3,3,'i33c','CAU Crespo · Siglo 21'],['32·33',9,35,6,3,'i33c','LEC-FRI'],
- [34,15,35,3,3,'i33e','La Sibila'],
- /* sector externo · tira de 10×5 */
- [47,27.3,6.6,3,8.4,'e105','Porta'],[48,27.3,15.5,3,8.4,'e105',''],[49,27.3,24.3,3,8.4,'e105',''],
- [50,27.3,33.2,3,8.4,'e105',''],[51,27.3,42,3,8.4,'e105',''],
- /* sector externo · columna este de 10×10 */
- [38,39.2,6.6,10.3,10.2,'e1010','Fliegl Argentina'],['39·40',39.2,17.2,10.3,20.8,'e1010','Agronorte · John Deere'],
- [41,39.2,38.4,10.3,10.2,'e1010','Folmer'],[42,39.2,49,10.3,10.2,'e1010','Jacob Maquinarias'],
- /* sector externo · columna sur de 10×10 */
- [43,20.3,56.4,10.3,10.2,'e1010','Weinbaur · Massey Ferguson'],[44,20.3,67,10.3,10.2,'e1010','Kunzi Máquinas Agrícolas'],
- ['45·46',20.3,77.6,10.3,20.8,'e1010','Gauss'],
- /* sector externo · frente al ingreso */
- ['52·53',27.3,-7.2,21,10.2,'e1010','MB Maquinarias · Traxor']
-];
-
-/* Logo de cada stand, sacado del plano oficial.
-   [ruta, fondoOscuro] — fondoOscuro=1 cuando el logo es claro y necesita azul detrás. */
-/* segundo logo cuando el stand comparte dos marcas */
-const LOGOS2={"21": "boumatic", "3": "massey", "43": "massey", "14": "delaval", "9": "biogrow", "13": "futurecow", "10": "futurecow", "52": "traxor", "53": "traxor"};
-const LOGOS={"20": ["assets/marcas/m-peon.png", 0], "19": ["assets/marcas/m-lar.png", 0], "18": ["assets/marcas/m-bemix.png", 0], "17": ["assets/marcas/m-la-ganadera.png", 0], "21": ["assets/marcas/m-trossero.png", 0], "22": ["assets/marcas/m-bess.png", 0], "23": ["assets/marcas/m-santa-sylvina.png", 0], "24": ["assets/marcas/m-tsc.png", 0], "25": ["assets/marcas/m-tsc.png", 0], "26": ["assets/marcas/m-magno.png", 0], "27": ["assets/marcas/m-vet-hernandez.png", 0], "28": ["assets/marcas/w-indalac.png", 1], "1": ["assets/marcas/m-stel.png", 0], "2": ["assets/marcas/m-guemes.png", 0], "3": ["assets/marcas/m-weinbaur.png", 0], "4": ["assets/marcas/m-pauer.png", 0], "5": ["assets/marcas/m-pauer.png", 0], "6": ["assets/marcas/m-folmer.png", 0], "16": ["assets/marcas/m-cremigal.png", 1], "7": ["assets/marcas/m-fliegl.png", 0], "8": ["assets/marcas/m-nutriar.png", 0], "14": ["assets/marcas/m-agrotambo.png", 0], "9": ["assets/marcas/m-heit.png", 0], "13": ["assets/marcas/m-suplefeed.png", 0], "10": ["assets/marcas/m-suplefeed.png", 0], "12": ["assets/marcas/m-biosolares.png", 0], "11": ["assets/marcas/m-tonutti.png", 1], "29": ["assets/marcas/m-cotapa.png", 0], "30": ["assets/marcas/m-lely.png", 0], "31": ["assets/marcas/m-cau-siglo21.png", 0], "32": ["assets/marcas/m-lec-fri.png", 0], "33": ["assets/marcas/m-lec-fri.png", 0], "34": ["assets/marcas/m-la-sibila.png", 0], "47": ["assets/marcas/m-porta.png", 0], "38": ["assets/marcas/m-fliegl.png", 0], "39": ["assets/marcas/m-agronorte.png", 0], "40": ["assets/marcas/m-agronorte.png", 0], "41": ["assets/marcas/m-folmer.png", 0], "42": ["assets/marcas/m-jacob.png", 0], "43": ["assets/marcas/m-weinbaur.png", 0], "45": ["assets/marcas/m-gauss.png", 0], "46": ["assets/marcas/m-gauss.png", 0], "52": ["assets/marcas/m-mb-maquinarias.png", 0], "53": ["assets/marcas/m-mb-maquinarias.png", 0], "15": ["assets/marcas/m-aguas-procesos.png", 0], "44": ["assets/marcas/m-kunzi.png", 0]};
-/* Descripción breve de cada expositor. Revisala y completá la que falte. */
-const INFO={
- 'Agronorte · John Deere':'Concesionario oficial John Deere con una red de 16 sucursales, brindando soluciones a través de equipos y posventa en las provincias de Santa Fe, Córdoba, Entre Ríos, Corrientes y Misiones.',
- 'Peón Electrocercas':'Electrocercas rurales para manejo de pasturas y contención de hacienda.',
- 'LAR':'La Agrícola Regional Coop. Ltda., cooperativa de servicios e insumos para el productor de la región.',
- 'Trossero · BouMatic':'Equipamiento e instalaciones de ordeñe, representante de BouMatic.',
- 'BESS':'Procesos y envasados para la industria alimentaria.',
- 'Santa Sylvina':'Nutrición animal: alimentos balanceados y suplementos para el rodeo.',
- 'TSC Agroindustriales':'Soluciones agroindustriales para el sector productivo.',
- 'Veterinaria Hernández':'Veterinaria y sanidad animal, con productos y asesoramiento para el tambo.',
- 'Agrotambo · DeLaval':'Representante de DeLaval: equipos de ordeñe, automatización y soluciones para el tambo.',
- 'Metalúrgica Güemes':'Metalúrgica dedicada a equipamiento e instalaciones para el agro.',
- 'Weinbaur · Massey Ferguson':'Concesionario oficial Massey Ferguson en Crespo, Entre Ríos: maquinaria, repuestos y posventa.',
- 'Pauer':'Biotecnología y agroindustria aplicadas a la producción de forrajes y cultivos.',
- 'HEIT · BioGrow':'Nutrición y servicios para el tambo, junto a la línea BioGrow.',
- 'Suplefeed · FutureCow':'Suplefeed es una empresa de Esperanza, Santa Fe, especializada en bionutrición animal: desarrolla premezclas con enzimas, probióticos y aditivos funcionales que actúan sobre el rumen para aprovechar mejor fibras, proteínas y energía, con líneas para tambo, cría, recría y feedlot. FutureCow es un sistema automatizado de preparación de ubres que en una sola pasada lava, desinfecta, estimula y seca los pezones.',
- 'Suplefeed':'Empresa de Esperanza, Santa Fe, especializada en bionutrición animal. Desarrolla premezclas con enzimas, probióticos y aditivos funcionales que actúan sobre el rumen para aprovechar mejor fibras, proteínas y energía, con líneas específicas para tambo, cría, recría y feedlot.',
- 'Aguas & Procesos':'Empresa argentina de Sunchales, Santa Fe, dedicada desde 1980 a la ingeniería en tratamiento de aguas y procesos industriales. Diseña, fabrica y pone en marcha sistemas de ósmosis inversa, ultrafiltración, ablandamiento, desinfección y reutilización de agua.',
- 'CAU Crespo · Siglo 21':'Cooperativa Agrícola Unión de Crespo: servicios e insumos para el productor.',
- 'Jacob Maquinarias':'Maquinaria agrícola: venta, repuestos y servicio.',
- 'Kunzi Máquinas Agrícolas':'Concesionaria de maquinaria agrícola de Paraná, Entre Ríos, sobre la Ruta 18. Desde 2013 vende equipos nuevos y usados: sembradoras, cosechadoras, cabezales maiceros, fertilizadoras, extractoras de granos y tolvas, con representación de marcas como Claas, Giorgi, Apache y Agrometal.',
- 'Fliegl':'Empresa con base en Crespo, Entre Ríos, que fabrica y vende acoplados multicarga, carros compactadores y equipos estercoleros bajo licencia de la marca alemana Fliegl. Soluciones para el manejo de efluentes, purines y compost.',
- 'Fliegl Argentina':'Empresa con base en Crespo, Entre Ríos, que fabrica y vende acoplados multicarga, carros compactadores y equipos estercoleros bajo licencia de la marca alemana Fliegl. Soluciones para el manejo de efluentes, purines y compost.',
- 'Indalac':'Industria láctea. Auspiciante de la jornada.',
- 'MB Maquinarias · Traxor':'Empresa entrerriana con sede en General Ramírez. Junto a Ombú creó en 2025 la marca de tractores Traxor, con una línea de 30 a 260 HP fabricada por Dafeng y una red de unos 50 puntos de venta en todo el país.',
- 'Gauss':'Equipos para la confección y el manejo de forrajes.',
- 'Folmer':'Maquinaria agrícola para siembra y laboreo.',
- 'Bemix':'Nutrición y mezclas para alimentación animal.',
- 'La Ganadera':'Servicios e insumos para la producción ganadera.',
- 'Magna':'Insumos y servicios para el sector agropecuario.',
- 'Stel Grupo':'Soluciones e instalaciones para la industria y el agro.',
- 'Cremigal':'Industria láctea de la región.',
- 'Nutrifar':'Nutrición animal y aditivos para alimentación.',
- 'BioSolares':'Energía solar aplicada a establecimientos rurales.',
- 'Tonutti':'Lácteos Tonutti, industria láctea de Entre Ríos.',
- 'FutureCow':'Sistema automatizado de preparación de ubres antes del ordeñe: en una sola pasada lava, desinfecta, estimula y seca los pezones. Reduce el gasto de papel, previene la mastitis y empareja la rutina sin depender del operario. Más de 100.000 vacas lo usan a diario en el país.',
- 'Cotapa':'Cooperativa de Trabajo Cotagro, industria láctea entrerriana.',
- 'Lely':'Automatización del tambo: robots de ordeñe y manejo del rodeo.',
- 'LEC-FRI':'Equipamiento de frío para leche y agroindustria.',
- 'La Sibila':'Empresa láctea con foco en la calidad de leche cruda.',
- 'Porta':'Soluciones para el agro y la industria.'
-};
-const VB=[-9,-11,62,116];                  // viewBox del plano completo
-const VISTA={interno:[-8,-10,30,68], todo:[-9,-11,62,116]};
-
-const NS='http://www.w3.org/2000/svg';
-function el(t,a){ const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); return e; }
-function txt(x,y,str,size,cls,estilo){
-  const t=el('text',{x,y,'font-size':size,class:cls||'pl-txt'});
-  if(estilo) for(const k in estilo) t.style.setProperty(k,estilo[k]);
-  t.textContent=str; return t;
-}
-
-function construirPlano(){
-  const svg=el('svg',{viewBox:VB.join(' '),role:'img',
-    'aria-label':'Plano del predio con los stands del sector interno y externo'});
-
-  /* grilla cada 10 m, desbordando el viewBox para cubrir todo el visor */
-  const g=el('g',{class:'pl-grilla'});
-  for(let x=-60;x<=100;x+=10) g.appendChild(el('line',{x1:x,y1:-30,x2:x,y2:125}));
-  for(let y=-30;y<=125;y+=10) g.appendChild(el('line',{x1:-60,y1:y,x2:100,y2:y}));
-  svg.appendChild(g);
-
-  /* piso y muro del pabellón */
-  const muro='M-3.1,-5 H3.2 V-6.5 H12.6 V-5 H19 V0.5 M19,4.5 V17.5 H21.2 V50.5 H17.2 V55 H-1.2 V50.5 H-5.3 V17.5 H-3.1 V-5';
-  svg.appendChild(el('path',{class:'pl-piso',
-    d:'M-3.1,-5 H3.2 V-6.5 H12.6 V-5 H19 V17.5 H21.2 V50.5 H17.2 V55 H-1.2 V50.5 H-5.3 V17.5 H-3.1 Z'}));
-  svg.appendChild(el('path',{class:'pl-muro',d:muro}));
-
-  /* baños */
-  [[3.4,-4.6,4.4,3.2],[8.2,-4.6,4.4,3.2]].forEach(([x,y,w,h])=>{
-    svg.appendChild(el('rect',{x,y,width:w,height:h,rx:.25,class:'pl-aux'}));
-    svg.appendChild(txt(x+w/2,y+h/2,'BAÑOS',1));
-  });
-
-  /* ingreso */
-  svg.appendChild(el('path',{d:'M23.4,2.5 H19.6 M20.6,1.6 L19.4,2.5 L20.6,3.4',
-    fill:'none',stroke:'rgba(255,255,255,.75)','stroke-width':.16,'stroke-linecap':'round','stroke-linejoin':'round'}));
-  svg.appendChild(txt(21.4,5.6,'INGRESO',1.5,'pl-txt',{fill:'#fff'}));
-
-  /* auditorio, pantalla y escenario */
-  /* las butacas van como patrón: un solo nodo por bloque en vez de 84 */
-  const defs=el('defs',{});
-  const pat=el('pattern',{id:'butacas',width:.82,height:.82,patternUnits:'userSpaceOnUse'});
-  pat.appendChild(el('rect',{x:0,y:0,width:.58,height:.58,rx:.12,class:'pl-silla'}));
-  defs.appendChild(pat); svg.appendChild(defs);
-  [[-2.44,39],[8.5,39]].forEach(([bx,by])=>{
-    svg.appendChild(el('rect',{x:bx,y:by,width:12*.82,height:7*.82,fill:'url(#butacas)'}));
-  });
-  svg.appendChild(txt(7.95,47.3,'AUDITORIO',1.2));
-  svg.appendChild(el('rect',{x:4.95,y:48.4,width:6,height:3,rx:.25,class:'pl-pant'}));
-  svg.appendChild(txt(7.95,49.9,'PANTALLA 6 × 3',.8,'pl-txt',{fill:'#04223f'}));
-  svg.appendChild(el('rect',{x:3.15,y:51.6,width:9.6,height:3.4,rx:.7,class:'pl-esc'}));
-  svg.appendChild(txt(7.95,53.3,'ESCENARIO',1.1,'pl-txt',{fill:'#fff'}));
-  [[-3.2,46.9,2.8,2.8,'SONIDO'],[14.35,46.9,2.8,2.8,'SET TV']].forEach(([x,y,w,h,t])=>{
-    svg.appendChild(el('rect',{x,y,width:w,height:h,rx:.25,class:'pl-aux'}));
-    svg.appendChild(txt(x+w/2,y+h/2,t,.72));
-  });
-
-  /* rótulos de sector */
-  svg.appendChild(txt(7.95,58.6,'SECTOR INTERNO',2.2,'pl-rot',{'text-anchor':'middle'}));
-  svg.appendChild(txt(34,101.5,'SECTOR EXTERNO',5.4,'pl-rot',{'text-anchor':'middle'}));
-
-  /* lotes */
-  LOTES.forEach(([n,x,y,w,h,c,marca])=>{
-    const cat=CAT[c];
-    const g=el('g',{class:'lote',tabindex:'0',role:'button',
-      'aria-label':'Stand '+n+', '+cat.n+(marca?', '+marca:', disponible')});
-    g.appendChild(el('rect',{class:'lote__f',x:x+.14,y:y+.14,width:w-.28,height:h-.28,rx:.28,
-      fill:cat.col,stroke:'rgba(255,255,255,.3)','stroke-width':.06}));
-    g.appendChild(el('rect',{class:'lote__r',x:x-.34,y:y-.34,width:w+.68,height:h+.68,rx:.6}));
-    const largo=String(n).length;
-    const t=el('text',{class:'lote__n',x:x+w/2,y:y+h/2,
-      'font-size':Math.min(Math.min(w,h)*.44, w*1.55/largo, 2.6),fill:cat.tinta});
-    t.textContent=n; g.appendChild(t);
-    g.dataset.n=n; g.dataset.c=c; g.dataset.marca=marca||'';
-    svg.appendChild(g);
-  });
-
-  return svg;
-}
-
-/* ───────── visor ───────── */
-(function(){
-  const visor=document.getElementById('visor'), lienzo=document.getElementById('lienzo');
-  const val=document.getElementById('zoomVal'), ficha=document.getElementById('fichaSel');
-  let z=1,x=0,y=0,arr=null,svg=null,sel=null;
-
-  document.getElementById('leyenda').innerHTML = Object.keys(CAT).map(k=>{
-    const c=CAT[k];
-    return '<div><i style="background:'+c.col+'"></i>'+c.n+
-      (MOSTRAR_PRECIOS?' · <b>'+c.precio+'</b>':'')+'</div>';
-  }).join('');
-
-  function vacia(){
-    ficha.className='ficha__sel';
-    ficha.innerHTML='<div class="ficha__d"><b>51 stands</b>'+
-      '<span class="info">Tocá cualquier stand del plano para ver quién expone ahí. '+
-      'El color indica la categoría de cada stand.</span></div>';
-  }
-  function hermanos(g){
-    const m=g.dataset.marca;
-    if(!m) return [g];
-    return [...svg.querySelectorAll('.lote')].filter(o=>o.dataset.marca===m);
-  }
-  function mostrar(g){
-    const cat=CAT[g.dataset.c], marca=g.dataset.marca, n=g.dataset.n;
-    const logo=LOGOS[String(n).split('·')[0]];
-    const oscuro = logo ? logo[1] : 0;
-    const cab = logo ? '<img decoding="async" src="'+logo[0]+'" alt="'+marca+'">'
-      : marca ? '<span class="txt">'+marca+'</span>'
-              : '<span class="libre">Sin asignar</span>';
-    /* si la marca ocupa stands adentro y afuera, se nombran todos;
-       cada número lleva el color de su propio stand */
-    const grupo = hermanos(g);
-    const partes = grupo.map(o=>{
-      const c=CAT[o.dataset.c];
-      return String(o.dataset.n).split('·')
-               .map(x=>'<i style="color:'+c.col+'">'+x+'</i>').join('<s>y</s>');
-    });
-    const titulo = 'Stand '+partes.join('<s>y</s>');
-    const secs = [...new Set(grupo.map(o=>o.dataset.c[0]==='i'?'Interno':'Externo'))];
-    const sector = secs.length>1 ? 'Interno y externo' : secs[0];
-    const info = marca ? (INFO[marca] || 'Expositor de la jornada. Completá su descripción en el objeto INFO.')
-                       : 'Espacio sin asignar.';
-    ficha.className='ficha__sel '+(oscuro?'ficha--oscura':'ficha--clara');
-    ficha.style.setProperty('--tinte',cat.col);
-    const sl2 = LOGOS2[String(n).split('·')[0]];
-    /* la variante del segundo logo depende del fondo de la caja */
-    const extra = sl2 ? '<img decoding="async" class="ficha__logo2" src="assets/marcas/'+
-      (oscuro?'w-':'m-')+sl2+'.png" alt="" loading="lazy">' : '';
-    ficha.innerHTML=
-      '<div class="ficha__logo">'+cab+extra+'</div>'+
-      '<div class="ficha__d"><b class="ficha__n">'+titulo+'</b>'+
-      '<span class="sector">'+sector+'</span>'+
-      '<span class="info">'+info+'</span></div>';
-  }
-
-  function k(){ return Math.min(svg.clientWidth/VB[2], svg.clientHeight/VB[3]); }
-  const nota=document.getElementById('nota').querySelector('span');
-  function aplicar(){ if(!svg) return;
-    svg.style.transform='translate3d('+x+'px,'+y+'px,0) scale('+z+')';
-    val.textContent=Math.round(z*100/zMin)+'%';
-    const lejos = z < 1.3;
-    nota.textContent = lejos
-      ? 'Tocá un stand para verlo · acercá para ver el sector interno'
-      : 'Tocá un stand para verlo · alejá para ver el sector externo';
-    const bt=document.getElementById('btVista');
-    if(bt) bt.textContent = lejos ? 'Ver el sector interno' : 'Ver todo el predio'; }
-  let zMin=1;
-  function limitar(){ if(!svg) return;
-    const kk=k(), cw=VB[2]*kk*z, ch=VB[3]*kk*z;
-    const vw=visor.clientWidth, vh=visor.clientHeight;
-    /* límite continuo: crece con el zoom, sin saltos */
-    const mx=Math.max(0,(cw-vw)/2)+vw*.3;
-    const my=Math.max(0,(ch-vh)/2)+vh*.3;
-    x=Math.min(mx,Math.max(-mx,x)); y=Math.min(my,Math.max(-my,y)); }
-  function zoom(nz,cx,cy){
-    const a=z; z=Math.min(12,Math.max(zMin,nz));
-    if(cx!==undefined){ const r=visor.getBoundingClientRect();
-      const ox=cx-r.left-r.width/2, oy=cy-r.top-r.height/2;
-      x=ox-(ox-x)*(z/a); y=oy-(oy-y)*(z/a); }
-    limitar(); aplicar();
-  }
-  function encuadrar(R,margen){
-    if(!svg) return;
-    const kk=k();
-    z=Math.min(visor.clientWidth/(kk*R[2]), visor.clientHeight/(kk*R[3]))*(margen||.94);
-    z=Math.max(zMin,Math.min(12,z));
-    const cx=VB[0]+VB[2]/2, cy=VB[1]+VB[3]/2;
-    x=-((R[0]+R[2]/2)-cx)*kk*z; y=-((R[1]+R[3]/2)-cy)*kk*z;
-    limitar(); aplicar();
-  }
-
-  vacia();
-  function armarPlano(){
-    if(svg) return;
-    svg=construirPlano(); lienzo.appendChild(svg);
-    svg.querySelectorAll('.lote').forEach(g=>{
-      const elegir=()=>{
-        svg.querySelectorAll('.lote.sel').forEach(o=>o.classList.remove('sel'));
-        hermanos(g).forEach(o=>o.classList.add('sel'));
-        sel=g; mostrar(g);
-      };
-      g.addEventListener('click',elegir);
-      g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); elegir(); } });
-    });
-    requestAnimationFrame(()=>encuadrar(VISTA.interno));
-  }
-  alAcercarse('#planos',armarPlano);
-
-  document.getElementById('zIn').addEventListener('click',()=>zoom(z*1.4));
-  document.getElementById('zOut').addEventListener('click',()=>zoom(z/1.4));
-  visor.addEventListener('wheel',e=>{ e.preventDefault();
-    visor.classList.add('moviendo'); zoom(z*(e.deltaY<0?1.13:1/1.13),e.clientX,e.clientY);
-    clearTimeout(visor._t); visor._t=setTimeout(()=>visor.classList.remove('moviendo'),160); },{passive:false});
-  visor.addEventListener('pointerdown',e=>{
-    if(e.target.closest('.lote')) return;
-    arr={px:e.clientX,py:e.clientY,x,y}; visor.classList.add('drag','moviendo'); visor.setPointerCapture(e.pointerId); });
-  visor.addEventListener('pointermove',e=>{ if(!arr) return;
-    x=arr.x+(e.clientX-arr.px); y=arr.y+(e.clientY-arr.py); limitar(); aplicar(); });
-  const soltar=()=>{ arr=null; visor.classList.remove('drag','moviendo'); };
-  visor.addEventListener('pointerup',soltar); visor.addEventListener('pointercancel',soltar);
-  let d0=null,z0=1;
-  visor.addEventListener('touchstart',e=>{ if(e.touches.length===2){
-    d0=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-    z0=z; visor.classList.add('moviendo'); } },{passive:true});
-  visor.addEventListener('touchmove',e=>{ if(e.touches.length===2&&d0){ e.preventDefault();
-    const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-    zoom(z0*d/d0,(e.touches[0].clientX+e.touches[1].clientX)/2,(e.touches[0].clientY+e.touches[1].clientY)/2); } },{passive:false});
-  visor.addEventListener('touchend',()=>{ d0=null; visor.classList.remove('moviendo'); });
-  addEventListener('resize',()=>{ limitar(); aplicar(); });
-
-  const bt=document.getElementById('btVista');
-  bt.addEventListener('click',()=>{
-    const lejos = z < 1.3;
-    encuadrar(lejos?VISTA.interno:VISTA.todo);
-  });
-
-})();
-
-/* ───────── las animaciones pesadas sólo corren si están a la vista ───────── */
 (function(){
   if(menos) return;
   const pares=[[document.getElementById('cintaA'),'corriendo'],
@@ -2043,7 +1234,6 @@ function construirPlano(){
   pares.forEach(([el])=>{ if(el) io.observe(el); });
 })();
 
-/* ───────── partículas de la galería ───────── */
 (function(){
   const c=document.getElementById('particulas'); if(!c||menos) return;
   const ctx=c.getContext('2d'); let w=0,h=0,ps=[],raf=null,visible=false;
@@ -2078,7 +1268,6 @@ function construirPlano(){
   }),{threshold:.05}).observe(c);
 })();
 
-/* ───────── formulario ───────── */
 (function(){
   const form=document.getElementById('form'), ok=document.getElementById('ok'), btn=document.getElementById('enviar');
   const valido={ nombre:v=>v.trim().length>1,
@@ -2091,8 +1280,7 @@ function construirPlano(){
       if(!bien&&limpio){ form[k].focus(); limpio=false; }
     });
     if(!limpio) return;
-    /* Conectá acá tu endpoint (Formspree, Netlify Forms, API propia):
-       fetch('https://formspree.io/f/XXXX',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}}) */
+
     btn.disabled=true; btn.textContent='Enviando…';
     setTimeout(()=>{ form.reset(); btn.disabled=false; btn.textContent='Enviar consulta';
       ok.textContent='Listo, recibimos tu consulta. Te respondemos a la brevedad al mail que dejaste.';

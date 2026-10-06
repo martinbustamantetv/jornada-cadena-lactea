@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Galería · Jornada de la Cadena Láctea de Entre Ríos</title>
-<meta name="description" content="Galería de fotos y videos de la Jornada de la Cadena Láctea de Entre Ríos. Próximamente.">
-<meta name="robots" content="noindex">
+<meta name="description" content="Fotografías de la Jornada de la Cadena Láctea de Entre Ríos en Crespo. Entrá a cada edición, mirá cómo se vivió y descargá las fotos en alta calidad.">
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
@@ -16,72 +15,241 @@
 
 <style>
 @font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-ThinItalic.woff2') format('woff2'),
-      url('assets/fonts/Pliant-ThinItalic.ttf') format('truetype');
-  font-weight:100;font-style:italic;font-display:swap}
+  src:url('assets/fonts/Pliant.woff2') format('woff2');
+  font-weight:100 900;font-style:normal;font-display:swap}
 @font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-Thin.woff2') format('woff2'),
-      url('assets/fonts/Pliant-Thin.ttf') format('truetype');
-  font-weight:100;font-style:normal;font-display:swap}
-@font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-BlackItalic.woff2') format('woff2'),
-      url('assets/fonts/Pliant-BlackItalic.ttf') format('truetype');
-  font-weight:900;font-style:italic;font-display:swap}
-@font-face{font-family:'Pliant';
-  src:url('assets/fonts/Pliant-Black.woff2') format('woff2'),
-      url('assets/fonts/Pliant-Black.ttf') format('truetype');
-  font-weight:900;font-style:normal;font-display:swap}
+  src:url('assets/fonts/Pliant-Italic.woff2') format('woff2');
+  font-weight:100 900;font-style:italic;font-display:swap}
 
 :root{
-  --azul:#0752A9;--celeste:#73C1EF;--verde:#80B133;--noche:#02142C;--noche-2:#041F42;
+  --azul:#0752A9;--celeste:#73C1EF;--verde:#80B133;--ambar:#F9B233;
+  --hueso:#E7E9EA;--noche:#02142C;--noche-2:#041F42;
   --display:'Pliant','Archivo',system-ui,sans-serif;
   --texto:'Inter',system-ui,-apple-system,sans-serif;
   --pad:clamp(20px,5vw,80px);
+  --maxw:1560px;
   --ease:cubic-bezier(.22,.61,.36,1);
+  --g:clamp(8px,.85vw,16px);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%;overflow-x:hidden;scrollbar-gutter:stable}
+html.quieto{overflow:hidden}
 body{margin:0;min-height:100svh;background:var(--noche);color:#fff;
   font-family:var(--texto);font-size:clamp(16px,1.05vw,18px);line-height:1.6;
   display:flex;flex-direction:column;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
 :focus-visible{outline:3px solid var(--verde);outline-offset:3px;border-radius:2px}
+::selection{background:var(--verde);color:#02142C}
+[hidden]{display:none!important}
 
-/* ── barra superior ── */
-.top{display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:16px var(--pad);border-bottom:1px solid rgba(255,255,255,.09)}
-.top img{height:32px;width:auto}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad);width:100%}
+.d{font-family:var(--display);font-style:italic;text-transform:uppercase;margin:0;
+  line-height:.94;letter-spacing:-.01em;overflow-wrap:break-word}
+.d-thin{font-weight:100;letter-spacing:.015em}
+.d-black{font-weight:900;letter-spacing:-.035em}
+.eyebrow{font-family:var(--display);font-style:italic;font-weight:900;text-transform:uppercase;
+  font-size:clamp(11px,.85vw,13px);letter-spacing:.18em;color:var(--celeste);margin:0}
+.rule{display:flex;align-items:center;gap:18px;margin-bottom:clamp(22px,3vw,38px)}
+.rule::after{content:'';flex:1;height:1px;background:currentColor;opacity:.25}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@keyframes entrar{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.entra{animation:entrar .5s var(--ease) both}
+
+.top{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:14px var(--pad);background:rgba(2,20,44,.78);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.09)}
+.top img{height:30px;width:auto}
 .volver{display:inline-flex;align-items:center;gap:9px;
   font-family:var(--texto);font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.16em;
   color:rgba(255,255,255,.68);transition:color .3s}
 .volver:hover{color:var(--celeste)}
 .volver svg{width:14px;height:14px}
 
-/* ── aviso central ── */
-.esc{flex:1;position:relative;display:grid;place-items:center;
-  padding:clamp(60px,10vw,120px) var(--pad);overflow:hidden;isolation:isolate}
-.esc canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6;pointer-events:none}
-.caja{position:relative;z-index:2;text-align:center;max-width:600px}
-.marca{width:min(260px,58vw);margin:0 auto clamp(28px,4vw,44px)}
-.d{font-family:var(--display);font-style:italic;text-transform:uppercase;margin:0;line-height:.94}
-.t1{display:block;font-weight:100;font-style:normal;font-size:clamp(1.1rem,2.4vw,1.7rem);letter-spacing:.14em;color:var(--celeste)}
-.t2{display:block;font-weight:900;font-size:clamp(2.1rem,6vw,4.2rem);letter-spacing:-.035em;
-  margin-top:6px}
-.aviso{margin:clamp(22px,3vw,32px) auto 0;max-width:44ch;font-size:clamp(.98rem,1.2vw,1.1rem);
-  color:rgba(255,255,255,.78);line-height:1.6}
-.aviso b{color:#fff;font-weight:600}
+.cab{position:relative;isolation:isolate;overflow:hidden;
+  padding-block:clamp(46px,6.5vw,92px) clamp(24px,3vw,38px)}
+.cab canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.5;pointer-events:none}
+.cab__in{position:relative;z-index:1}
+.cab__t .l1{display:block;font-size:clamp(1.2rem,2.6vw,2.1rem);letter-spacing:.14em;color:var(--celeste)}
+.cab__t .l2{display:block;font-size:clamp(2.6rem,7.6vw,6.4rem)}
+.cab__bajada{margin:clamp(16px,2vw,24px) 0 0;max-width:62ch;color:rgba(255,255,255,.72);
+  font-size:clamp(.95rem,1.1vw,1.06rem)}
 
-.redes{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;
-  margin-top:clamp(28px,3.6vw,42px)}
-.redes a{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;
-  border:1px solid rgba(255,255,255,.24);color:rgba(255,255,255,.86);
-  font-family:var(--texto);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.13em;
+.atras{display:inline-flex;align-items:center;gap:10px;margin-bottom:clamp(20px,2.6vw,32px);
+  padding:11px 20px 11px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.2);
+  font-family:var(--texto);font-weight:600;text-transform:uppercase;font-size:10.5px;letter-spacing:.15em;
+  color:rgba(255,255,255,.78);
   transition:background .3s,color .3s,border-color .3s,transform .4s var(--ease)}
-.redes a:hover{background:var(--celeste);border-color:var(--celeste);color:var(--noche);transform:translateY(-3px)}
-.redes svg{width:16px;height:16px;flex:none}
+.atras svg{width:14px;height:14px}
+.atras:hover{background:#fff;border-color:#fff;color:var(--noche);transform:translateX(-3px)}
 
-/* ── pie ── */
+.barra{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:clamp(16px,2.4vw,32px);margin-top:clamp(26px,3.4vw,42px)}
+.tabs{position:relative;isolation:isolate;display:flex;gap:8px;
+  background:rgba(255,255,255,.08);padding:7px;border-radius:999px}
+.tabs button{padding:13px clamp(18px,2.4vw,34px);border-radius:999px;
+  font-family:var(--display);font-style:italic;font-weight:100;text-transform:uppercase;
+  font-size:clamp(13px,1.15vw,17px);letter-spacing:.1em;color:rgba(255,255,255,.72);
+  transition:color .35s;white-space:nowrap}
+.tabs button b{font-weight:900;letter-spacing:-.03em;margin-left:.4em;font-size:1.3em}
+.tabs button:hover{color:#fff}
+.tabs button[aria-selected="true"]{color:var(--noche)}
+
+.tabs button[disabled]{color:rgba(255,255,255,.26);cursor:not-allowed}
+.tabs button[disabled]:hover{color:rgba(255,255,255,.26)}
+.tabs__pill{position:absolute;inset:7px auto 7px 7px;border-radius:999px;background:var(--celeste);z-index:-1;
+  transition:transform .55s var(--ease),width .55s var(--ease)}
+.conteo{font-family:var(--texto);font-weight:500;text-transform:uppercase;
+  font-size:11px;letter-spacing:.15em;color:rgba(255,255,255,.5);margin:0}
+.conteo b{color:#fff;font-weight:600}
+
+.eds{display:flex;flex-direction:column;gap:clamp(14px,1.8vw,24px);
+  padding-bottom:clamp(50px,7vw,100px)}
+.ed{position:relative;display:block;overflow:hidden;border-radius:8px;
+  min-height:clamp(230px,29vw,340px);background:var(--noche-2);
+  border:1px solid rgba(255,255,255,.12);
+  transition:border-color .45s var(--ease),transform .55s var(--ease)}
+.ed:hover{border-color:rgba(115,193,239,.55);transform:translateY(-3px)}
+.ed__fotos{position:absolute;inset:0;display:flex;gap:1px;filter:saturate(.72);
+  transition:filter .6s var(--ease)}
+.ed:hover .ed__fotos{filter:saturate(1)}
+.ed__fotos--una i{flex:1 1 100%}
+.ed--propia .ed__fotos{filter:none}
+.ed--propia::after{background:linear-gradient(90deg,rgba(2,20,44,.93) 0%,rgba(2,20,44,.76) 28%,
+  rgba(2,20,44,.26) 62%,rgba(2,20,44,.16) 100%)}
+@media(max-width:760px){
+  .ed--propia::after{background:linear-gradient(180deg,rgba(2,20,44,.2) 0%,rgba(2,20,44,.6) 45%,rgba(2,20,44,.95) 100%)}
+}
+.ed__fotos i{flex:1;background-size:cover;background-position:center;
+  opacity:0;transition:opacity .7s var(--ease),transform 1.3s var(--ease)}
+.ed__fotos i.ok{opacity:1}
+.ed:hover .ed__fotos i{transform:scale(1.045)}
+.ed::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(2,20,44,.97) 0%,rgba(2,20,44,.93) 30%,
+    rgba(2,20,44,.68) 62%,rgba(2,20,44,.6) 100%)}
+.ed__txt{position:relative;z-index:2;height:100%;min-height:inherit;
+  display:flex;flex-direction:column;justify-content:center;gap:4px;
+  padding:clamp(26px,3.4vw,48px);max-width:min(100%,640px)}
+.ed__e{font-family:var(--texto);font-weight:600;text-transform:uppercase;
+  font-size:10.5px;letter-spacing:.17em;color:var(--celeste)}
+.ed__a{font-family:var(--display);font-style:italic;font-weight:900;text-transform:uppercase;
+  letter-spacing:-.045em;line-height:.9;font-size:clamp(3rem,8vw,5.6rem);color:#fff}
+.ed__m{margin-top:6px;color:rgba(255,255,255,.72);font-size:clamp(.9rem,1.05vw,1rem)}
+.ed__n{margin-top:clamp(14px,1.8vw,22px);display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--texto);font-weight:600;text-transform:uppercase;
+  font-size:10.5px;letter-spacing:.14em;color:rgba(255,255,255,.55)}
+.ed__n b{color:#fff;font-weight:700}
+.ed__ir{position:absolute;z-index:2;right:clamp(20px,3vw,40px);top:50%;transform:translateY(-50%);
+  width:clamp(46px,4.4vw,58px);height:clamp(46px,4.4vw,58px);border-radius:50%;
+  display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);color:#fff;
+  transition:background .35s,border-color .35s,color .35s,transform .5s var(--ease)}
+.ed__ir svg{width:19px;height:19px}
+.ed:hover .ed__ir{background:var(--celeste);border-color:var(--celeste);color:var(--noche);
+  transform:translateY(-50%) translateX(5px)}
+@media(max-width:760px){
+  .ed::after{background:linear-gradient(180deg,rgba(2,20,44,.45) 0%,rgba(2,20,44,.72) 45%,rgba(2,20,44,.97) 100%)}
+  .ed__txt{justify-content:flex-end;max-width:100%;padding-right:86px}
+  .ed__ir{top:auto;bottom:clamp(20px,4vw,30px);transform:none}
+  .ed:hover .ed__ir{transform:translateX(4px)}
+}
+
+.galeria{flex:1;padding-block:clamp(26px,3.4vw,48px) clamp(60px,8vw,120px)}
+.dia[hidden]{display:none}
+.msn{display:flex;gap:var(--g);align-items:flex-start;margin-inline:auto}
+.msn__col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:var(--g)}
+
+.ft{position:relative;margin:0}
+.ft__bt{position:relative;display:block;width:100%;aspect-ratio:var(--ar);overflow:hidden;border-radius:4px;
+  cursor:zoom-in;background:rgba(255,255,255,.05);
+  background-image:linear-gradient(100deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.07) 50%,rgba(255,255,255,0) 62%);
+  background-size:260% 100%;animation:brillo 1.5s linear infinite;
+  transition:box-shadow .5s var(--ease)}
+.ft__bt.ok{background-image:none;animation:none}
+@keyframes brillo{from{background-position:140% 0}to{background-position:-40% 0}}
+.ft__bt img{width:100%;height:100%;object-fit:cover;opacity:0;
+  transition:transform 1s var(--ease),opacity .6s var(--ease)}
+.ft__bt.ok img{opacity:1}
+.ft__bt::after{content:'';position:absolute;inset:0;border-radius:4px;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);transition:box-shadow .5s var(--ease)}
+.ft__bt:hover img{transform:scale(1.045);opacity:.88}
+.ft__bt:hover::after{box-shadow:inset 0 0 0 1px rgba(115,193,239,.55)}
+.ft__dl{position:absolute;top:9px;right:9px;z-index:2;width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;
+  background:rgba(2,20,44,.6);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.22);
+  opacity:0;transform:translateY(-5px) scale(.9);
+  transition:opacity .35s var(--ease),transform .35s var(--ease),background .3s,color .3s,border-color .3s}
+.ft__dl svg{width:15px;height:15px}
+.ft:hover .ft__dl,.ft__dl:focus-visible{opacity:1;transform:none}
+.ft__dl:hover{background:var(--celeste);border-color:var(--celeste);color:var(--noche)}
+@media(hover:none),(max-width:860px){
+  .ft__dl{opacity:.85;transform:none;width:32px;height:32px;top:7px;right:7px}
+  .ft__dl svg{width:13px;height:13px}
+}
+
+.mas{display:grid;place-items:center;padding:clamp(28px,4vw,52px) 0 0}
+.mas__r{width:26px;height:26px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.18);border-top-color:var(--celeste);
+  animation:gira .8s linear infinite}
+
+.aviso{display:grid;place-items:center;text-align:center;gap:14px;
+  padding:clamp(50px,9vw,110px) 24px;border:1px dashed rgba(255,255,255,.16);border-radius:10px}
+.aviso h3{font-family:var(--display);font-style:italic;font-weight:900;text-transform:uppercase;
+  letter-spacing:-.03em;font-size:clamp(1.3rem,2.6vw,2rem);margin:0;color:rgba(255,255,255,.9)}
+.aviso p{margin:0;max-width:48ch;color:rgba(255,255,255,.6);font-size:.95rem}
+
+.lb{position:fixed;inset:0;z-index:200;display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto;cursor:zoom-out;
+  opacity:0;transition:opacity .4s var(--ease)}
+.lb.abierto{opacity:1}
+.lb__fondo{position:absolute;inset:0;pointer-events:none;
+  background:rgba(2,20,44,.95);backdrop-filter:blur(18px)}
+.lb__top{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:clamp(12px,1.6vw,20px) clamp(14px,2.4vw,28px);cursor:auto}
+.lb__meta{font-family:var(--texto);font-weight:500;text-transform:uppercase;
+  font-size:11px;letter-spacing:.15em;color:rgba(255,255,255,.55);min-width:0;margin:0}
+.lb__meta b{color:#fff;font-weight:600}
+.lb__acc{display:flex;align-items:center;gap:10px;flex:none}
+.lb__bt{display:inline-flex;align-items:center;gap:9px;height:42px;padding:0 18px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.88);
+  font-family:var(--texto);font-weight:600;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em;
+  transition:background .3s,color .3s,border-color .3s,transform .35s var(--ease)}
+.lb__bt svg{width:15px;height:15px;flex:none}
+.lb__bt:hover{background:var(--celeste);border-color:var(--celeste);color:var(--noche);transform:translateY(-2px)}
+.lb__x{width:42px;padding:0;justify-content:center}
+.lb__x svg{width:16px;height:16px}
+
+.lb__esc{position:relative;z-index:1;margin:0;min-height:0;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  padding:0 clamp(10px,1.6vw,22px)}
+.lb__esc img{max-width:100%;max-height:100%;width:auto;height:auto;cursor:default;
+  object-fit:contain;border-radius:3px;box-shadow:0 30px 90px rgba(0,0,0,.55);
+  opacity:0;transform:scale(.97);
+  transition:opacity .45s var(--ease),transform .55s var(--ease)}
+.lb__esc img.lista{opacity:1;transform:none}
+.lb__carga{position:absolute;inset:0;margin:auto;width:30px;height:30px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.2);border-top-color:var(--celeste);
+  animation:gira .8s linear infinite;opacity:0;transition:opacity .3s}
+.lb.cargando .lb__carga{opacity:1}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+.lb__pie{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;
+  gap:clamp(16px,3vw,32px);padding:clamp(12px,1.6vw,22px);cursor:auto}
+.lb__nav{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.2);color:#fff;
+  transition:background .3s,border-color .3s,color .3s,transform .35s var(--ease),opacity .3s}
+.lb__nav svg{width:19px;height:19px}
+.lb__nav:hover{background:#fff;border-color:#fff;color:var(--noche)}
+.lb__nav[disabled]{opacity:.28;pointer-events:none}
+
+@media(max-width:640px){
+  .lb__bt span{display:none}
+  .lb__bt{width:42px;padding:0;justify-content:center}
+  .lb__esc{padding:0 6px}
+}
+
 .pie{padding:clamp(26px,3vw,40px) var(--pad);border-top:1px solid rgba(255,255,255,.09);
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
 .pie span{font-size:.8rem;color:rgba(255,255,255,.42)}
@@ -89,7 +257,12 @@ a{color:inherit;text-decoration:none}
 .pie .orgs img{width:clamp(120px,13vw,160px);height:auto;opacity:.75;transition:opacity .3s}
 .pie .orgs a:hover img{opacity:1}
 
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .ft__bt:hover img{transform:none}
+  .lb__esc img,.ed__fotos i{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -104,34 +277,43 @@ a{color:inherit;text-decoration:none}
   </a>
 </header>
 
-<main class="esc">
+<section class="cab">
   <canvas id="particulas" aria-hidden="true"></canvas>
-  <div class="caja">
-    <img class="marca" src="assets/logo-blanco.png" alt="Jornada de la Cadena Láctea de Entre Ríos">
-    <h1 class="d">
-      <span class="t1">Galería</span>
-      <span class="t2">En construcción</span>
-    </h1>
-    <p class="aviso">
-      Esta parte aún está en construcción. <b>Seguinos en nuestras redes</b> para tener las últimas
-      novedades acerca del evento.
-    </p>
+  <div class="wrap cab__in">
 
-    
-    <nav class="redes">
-      <a href="https://www.instagram.com/martinbustamantetv/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
-        Instagram
-      </a>
-      <a href="https://www.facebook.com/MBustamante.Tv/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M14.9 8.4h-1.3c-1 0-1.7.7-1.7 1.7v1.7m-1.4 0h4.2m-2.8 0v6.4"/></svg>
-        Facebook
-      </a>
-      <a href="https://martinbustamante.com/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.6 5.6 3.6 9s-1.2 6.4-3.6 9c-2.4-2.6-3.6-5.6-3.6-9S9.6 5.6 12 3z"/></svg>
-        martinbustamante.com
-      </a>
-    </nav>
+    <div id="cabPortada">
+      <p class="eyebrow rule">Galería</p>
+      <h1 class="d cab__t">
+        <span class="l1 d-thin">Mirá cómo se vive</span>
+        <span class="l2 d-black">La Jornada</span>
+      </h1>
+      <p class="cab__bajada">
+        Elegí una edición para entrar a sus fotos. Adentro vas a poder verlas en grande
+        y descargar la que quieras en alta calidad.
+      </p>
+    </div>
+
+    <div id="cabEdicion" hidden>
+      <button class="atras" type="button" id="btAtras">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        Todas las ediciones
+      </button>
+      <h1 class="d cab__t" id="tituloEd"></h1>
+      <div class="barra">
+        <div class="tabs" role="tablist" aria-label="Elegir día" id="tabsDias">
+          <span class="tabs__pill" id="pillDias" aria-hidden="true"></span>
+        </div>
+        <p class="conteo" id="conteo"></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<main class="galeria">
+  <div class="wrap">
+    <div class="eds" id="ediciones"></div>
+    <div id="paneles" hidden></div>
   </div>
 </main>
 
@@ -145,17 +327,711 @@ a{color:inherit;text-decoration:none}
   </div>
 </footer>
 
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <div class="lb__fondo" aria-hidden="true"></div>
+  <div class="lb__top">
+    <p class="lb__meta" id="lbMeta"></p>
+    <div class="lb__acc">
+      <a class="lb__bt" id="lbDl" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg>
+        <span>Descargar</span>
+      </a>
+      <button class="lb__bt lb__x" id="lbX" type="button" aria-label="Cerrar la galería ampliada">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <figure class="lb__esc">
+    <span class="lb__carga" aria-hidden="true"></span>
+    <img id="lbImg" alt="">
+  </figure>
+  <div class="lb__pie">
+    <button class="lb__nav" id="lbPrev" type="button" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <button class="lb__nav" id="lbNext" type="button" aria-label="Foto siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</div>
+
 <script>
-/* mismas partículas sutiles que en la sección de galería del sitio */
+
+const EDICIONES=[
+{
+  anio:'2026',
+  edicion:'2ª edición',
+  cuando:'29 y 30 de septiembre de 2026',
+  donde:'Crespo, Entre Ríos',
+  ruta:'assets/galeria/2026',
+  tapa:'assets/galeria/2026/portada.jpg',
+  dias:[
+    {id:'d1', dia:'Martes',    num:'29', fecha:'martes 29 de septiembre de 2026'},
+    {id:'d2', dia:'Miércoles', num:'30', fecha:'miércoles 30 de septiembre de 2026',
+     disponible:false, motivo:'No hubo cobertura fotográfica este día.'}
+  ]
+}
+];
+
+const menos=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s);
+const ediciones=$('#ediciones'), paneles=$('#paneles'),
+      cabPortada=$('#cabPortada'), cabEdicion=$('#cabEdicion'),
+      tabsDias=$('#tabsDias'), pillDias=$('#pillDias'),
+      conteo=$('#conteo'), tituloEd=$('#tituloEd');
+
+const hayFotos=d=>d.disponible!==false;
+const diasConFotos=ed=>ed.dias.filter(hayFotos);
+const idPanel=(a,b)=>'pan-'+a+'-'+b;
+
+const ojo=new IntersectionObserver((es,o)=>es.forEach(en=>{
+  if(en.isIntersecting){ en.target.classList.add('in'); o.unobserve(en.target); }
+}),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+const mirarUno=(el,i)=>{ el.style.transitionDelay=(Math.min(i||0,8)*.055)+'s'; ojo.observe(el); };
+const mirar=raiz=>(raiz||document).querySelectorAll('.reveal:not(.in)').forEach(mirarUno);
+
+const EXTRA_OK=/\.(jpe?g|png|webp|avif)$/i;
+
+function normalizar(lista){
+  if(typeof lista==='string') lista=[lista];
+  if(lista && !Array.isArray(lista) && Array.isArray(lista.fotos)) lista=lista.fotos;
+  return (Array.isArray(lista)?lista:[]).map(f=>{
+    if(Array.isArray(f)) return {n:String(f[0]||''), w:+f[1]||0, h:+f[2]||0};
+    if(f && typeof f==='object') return {n:String(f.n||f.nombre||f.archivo||''),
+                                         w:+f.w||+f.ancho||0, h:+f.h||+f.alto||0};
+    return {n:String(f||''), w:0, h:0};
+  }).filter(f=>f.n && EXTRA_OK.test(f.n));
+}
+
+const comoLista=t=>normalizar(t.split(/\r?\n/)
+  .map(s=>s.trim().replace(/^["',\s]+|["',\s]+$/g,''))
+  .filter(s=>s && s[0]!=='#'));
+
+function leerJS(base){
+  return new Promise(res=>{
+    const sc=document.createElement('script');
+    sc.src=base+'/fotos.js';
+    sc.onload=()=>{ const l=window.__FOTOS__; window.__FOTOS__=undefined; sc.remove();
+                    res(Array.isArray(l)&&l.length?normalizar(l):null); };
+    sc.onerror=()=>{ sc.remove(); res(null); };
+    document.head.appendChild(sc);
+  });
+}
+
+async function leerIndice(base,archivo){
+  try{
+    const r=await fetch(base+'/'+archivo,{cache:'no-cache'});
+    if(!r.ok) return null;
+    const t=(await r.text()).replace(/^﻿/,'');
+    if(/\.json$/i.test(archivo) || /^\s*\[/.test(t)){
+      try{ return normalizar(JSON.parse(t)); }catch(e){ return comoLista(t); }
+    }
+    return comoLista(t);
+  }catch(e){ return null; }
+}
+
+const DIGITOS=4;
+const numerada=(i,ext)=>String(i).padStart(DIGITOS,'0')+'.'+ext;
+
+function tantear(url){
+  return new Promise(res=>{
+    const im=new Image();
+    im.onload=()=>res([im.naturalWidth,im.naturalHeight]);
+    im.onerror=()=>res(null);
+    im.src=url;
+  });
+}
+
+async function numeradas(base){
+  let ext=null, carpeta=null, primera=null;
+  for(const c of ['m','g']){
+    const exts=['jpg','jpeg','png','webp'];
+    const r=await Promise.all(exts.map(e=>tantear(base+'/'+c+'/'+numerada(1,e))));
+    const k=r.findIndex(Boolean);
+    if(k>=0){ ext=exts[k]; carpeta=c; primera=r[k]; break; }
+  }
+  if(!ext) return null;
+
+  const hay=i=>tantear(base+'/'+carpeta+'/'+numerada(i,ext));
+  const medidas=new Map([[1,primera]]);
+
+  let lo=1, hi=0, v=2;
+  while(!hi && v<=8192){
+    const pasos=[]; for(let k=0;k<4 && v<=8192;k++,v*=2) pasos.push(v);
+    const r=await Promise.all(pasos.map(hay));
+    for(let i=0;i<pasos.length;i++){
+      if(r[i]){ lo=pasos[i]; medidas.set(pasos[i],r[i]); }
+      else { hi=pasos[i]; break; }
+    }
+  }
+  if(!hi) hi=lo+1;
+
+  while(hi-lo>1){
+    const med=(lo+hi)>>1, m=await hay(med);
+    if(m){ lo=med; medidas.set(med,m); } else hi=med;
+  }
+
+  for(let intento=0;intento<3;intento++){
+    let salto=0;
+    for(let k=lo+2;k<=lo+4;k++){ const m=await hay(k); if(m){ medidas.set(k,m); salto=k; break; } }
+    if(!salto) break;
+    lo=salto;
+    while(await hay(lo+1)) lo++;
+  }
+
+  const lista=[];
+  for(let i=1;i<=lo;i++){
+    const f={n:numerada(i,ext), w:0, h:0};
+    if(carpeta==='g') f.sinM=1;
+    const med=medidas.get(i);
+    if(med){ f.w=med[0]; f.h=med[1]; }
+    lista.push(f);
+  }
+  return lista;
+}
+
+async function indice(base,cual){
+  if(cual==='numeradas') return await numeradas(base);
+  if(cual==='fotos.js')  return await leerJS(base);
+  if(cual) return await leerIndice(base,cual);
+  const js=await leerJS(base);
+  if(js) return js;
+  for(const archivo of ['fotos.json','fotos.txt']){
+    const l=await leerIndice(base,archivo);
+    if(l && l.length) return l;
+  }
+  return await numeradas(base);
+}
+
+const memoria=new Map();
+function fotosDe(ed,d){
+  if(!hayFotos(d)) return Promise.resolve([]);
+  const clave=ed.ruta+'/'+d.id;
+  if(!memoria.has(clave)) memoria.set(clave, indice(clave, d.indice||ed.indice).catch(()=>null));
+  return memoria.get(clave);
+}
+
+const urlM=(ed,d,f)=>ed.ruta+'/'+d.id+'/'+(f.sinM?'g':'m')+'/'+encodeURIComponent(f.n);
+const urlG=(ed,d,f)=>ed.ruta+'/'+d.id+'/'+(f.sinG?'m':'g')+'/'+encodeURIComponent(f.n);
+
+function medir(ed,d,f){
+  if(f.w&&f.h) return Promise.resolve(f);
+  const probar=url=>new Promise(res=>{
+    const im=new Image();
+    im.onload=()=>res([im.naturalWidth,im.naturalHeight]);
+    im.onerror=()=>res(null);
+    im.src=url;
+  });
+  return probar(urlM(ed,d,f)).then(m=>{
+    if(m) return m;
+    f.sinM=1;
+    return probar(urlM(ed,d,f));
+  }).then(m=>{ if(m){ f.w=m[0]; f.h=m[1]; } return f; });
+}
+
+function pintarPortada(){
+  ediciones.innerHTML=EDICIONES.map((ed,i)=>
+    '<a class="ed reveal" href="#'+ed.anio+'" aria-label="Ver las fotos de la edición '+ed.anio+'">'+
+      '<span class="ed__fotos" id="tapa-'+i+'" aria-hidden="true"></span>'+
+      '<span class="ed__txt">'+
+        '<span class="ed__e">'+ed.edicion+'</span>'+
+        '<strong class="ed__a">'+ed.anio+'</strong>'+
+        '<span class="ed__m">'+ed.cuando+' · '+ed.donde+'</span>'+
+        '<span class="ed__n" id="n-'+i+'"></span>'+
+      '</span>'+
+      '<span class="ed__ir">'+
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'+
+      '</span>'+
+    '</a>').join('');
+  mirar(ediciones);
+  EDICIONES.forEach(tapaDe);
+}
+
+async function tapaDe(ed,i){
+  const dias=diasConFotos(ed);
+  const listas=await Promise.all(dias.map(d=>fotosDe(ed,d)));
+  const todas=[];
+  listas.forEach((l,k)=>(l||[]).forEach(f=>todas.push([dias[k],f])));
+
+  const n=$('#n-'+i);
+  if(n) n.innerHTML=todas.length
+    ? '<b>'+todas.length+'</b> fotos'
+    : (listas.some(l=>l===null) ? 'Fotos en camino' : 'Sin fotos todavía');
+
+  const tapa=$('#tapa-'+i);
+  if(!tapa) return;
+
+  const propia=ed.tapa || (ed.ruta+'/portada.jpg');
+  const im0=new Image();
+  im0.onload=()=>{
+    tapa.classList.add('ed__fotos--una');
+    const tarjeta=tapa.closest('.ed'); if(tarjeta) tarjeta.classList.add('ed--propia');
+    tapa.innerHTML='<i></i>';
+    tapa.firstChild.style.backgroundImage='url("'+propia+'")';
+    tapa.firstChild.classList.add('ok');
+  };
+  im0.onerror=()=>mosaico();
+  im0.src=propia;
+
+  function mosaico(){
+  if(!todas.length) return;
+  const cuales=[0, Math.floor(todas.length/2), todas.length-1]
+    .filter((v,k,a)=>a.indexOf(v)===k).slice(0,3);
+  tapa.innerHTML=cuales.map(()=>'<i></i>').join('');
+  [...tapa.children].forEach((el,k)=>{
+    const [dia,f]=todas[cuales[k]];
+    const poner=u=>{ el.style.backgroundImage='url("'+u+'")'; el.classList.add('ok'); };
+    const probar=u=>{ const im=new Image();
+      im.onload=()=>poner(u);
+      im.onerror=()=>{ if(!f.sinM){ f.sinM=1; probar(urlM(ed,dia,f)); } };
+      im.src=u; };
+    probar(urlM(ed,dia,f));
+  });
+  }
+}
+
+function columnas(ancho,n){
+  let c;
+  if(ancho<560)       c=2;
+  else if(ancho<1080) c=3;
+  else if(ancho<1460) c=4;
+  else                c=5;
+
+  if(n) c=Math.min(c, Math.max(n<2?1:2, Math.ceil(n/2)));
+  return Math.max(1,c);
+}
+const orientacion=(a,b)=> b/a>1.15 ? 'v' : a/b>1.15 ? 'h' : 'c';
+const anchoUtil=cont=>(cont.parentElement&&cont.parentElement.clientWidth)||innerWidth;
+
+const estados=new WeakMap();
+
+function nuevoEstado(cont,n){
+  const sep=parseFloat(getComputedStyle(cont).columnGap)||0;
+  const anchoCol=(anchoUtil(cont)-sep*(n-1))/n;
+  return {n, sep, s:anchoCol>0?sep/anchoCol:0,
+          alto:new Array(n).fill(0),
+          cuenta:Array.from({length:n},()=>({v:0,h:0,c:0})),
+          ultima:new Array(n).fill(''), tot:{v:0,h:0,c:0}};
+}
+function elegirCol(e,ratio,ori){
+  const meta=e.tot[ori]/e.n;
+  let k=0, mejor=Infinity;
+  for(let j=0;j<e.n;j++){
+    let coste=e.alto[j];
+    if(e.ultima[j]===ori) coste+=.22;
+    coste+=.16*Math.max(0,e.cuenta[j][ori]-meta);
+    if(coste<mejor-1e-9){ mejor=coste; k=j; }
+  }
+  return k;
+}
+function anotar(e,k,ratio,ori){
+  e.alto[k]+=ratio; e.cuenta[k][ori]++; e.ultima[k]=ori; e.tot[ori]++;
+}
+function columnasVacias(cont,n){
+  const e=nuevoEstado(cont,n); estados.set(cont,e);
+  cont.dataset.cols=n;
+  cont.style.maxWidth=(n*460+(n-1)*e.sep)+'px';
+  cont.replaceChildren(...Array.from({length:n},()=>{
+    const col=document.createElement('div'); col.className='msn__col'; return col; }));
+  return e;
+}
+
+function colocar(cont,ft){
+  let e=estados.get(cont);
+  if(!e || !cont.children.length) e=columnasVacias(cont, +cont.dataset.cols||1);
+  const w=+ft.dataset.ancho, h=+ft.dataset.alto;
+  const ratio=h/w+e.s, ori=orientacion(w,h);
+  const k=elegirCol(e,ratio,ori);
+  cont.children[k].appendChild(ft);
+  anotar(e,k,ratio,ori);
+}
+
+function repartir(cont,forzar){
+  const fotos=[...cont.querySelectorAll('.ft')];
+  if(!fotos.length) return;
+  const total=+cont.dataset.total||fotos.length;
+  const n=columnas(anchoUtil(cont), total);
+  if(!forzar && +cont.dataset.cols===n) return;
+
+  const e=columnasVacias(cont,n);
+  const r=fotos.map(f=>(+f.dataset.alto)/(+f.dataset.ancho)+e.s);
+  const o=fotos.map(f=>orientacion(+f.dataset.ancho,+f.dataset.alto));
+  const tot={v:0,h:0,c:0}; o.forEach(x=>tot[x]++);
+  const meta={v:tot.v/n, h:tot.h/n, c:tot.c/n};
+
+  const cajas=Array.from({length:n},()=>[]);
+  r.forEach((h,i)=>{
+    let k=0, mejor=Infinity;
+    for(let j=0;j<n;j++){
+      let coste=e.alto[j];
+      if(e.ultima[j]===o[i]) coste+=.22;
+      coste+=.16*Math.max(0,e.cuenta[j][o[i]]-meta[o[i]]);
+      if(coste<mejor-1e-9){ mejor=coste; k=j; }
+    }
+    cajas[k].push(i); anotar(e,k,r[i],o[i]);
+  });
+
+  for(let v=0;v<40;v++){
+    let alta=0; for(let j=1;j<n;j++) if(e.alto[j]>e.alto[alta]) alta=j;
+    let mejor=null, tope=e.alto[alta]-.02;
+    for(const i of cajas[alta]) for(let d=0;d<n;d++){
+      if(d===alta) continue;
+      if(e.cuenta[d][o[i]]+1 > Math.ceil(meta[o[i]])+1) continue;
+      let m=0;
+      for(let j=0;j<n;j++){
+        const h=j===alta?e.alto[j]-r[i]:j===d?e.alto[j]+r[i]:e.alto[j];
+        if(h>m) m=h;
+      }
+      if(m<tope){ tope=m; mejor=[i,d]; }
+    }
+    if(!mejor) break;
+    const [i,d]=mejor;
+    cajas[alta].splice(cajas[alta].indexOf(i),1); cajas[d].push(i);
+    e.alto[alta]-=r[i]; e.alto[d]+=r[i];
+    e.cuenta[alta][o[i]]--; e.cuenta[d][o[i]]++;
+  }
+
+  cajas.forEach((lista,k)=>{
+    lista.sort((a,b)=>a-b).forEach(i=>cont.children[k].appendChild(fotos[i]));
+  });
+}
+
+let iEd=0, iDia=0;
+const dias=()=>EDICIONES[iEd].dias;
+const diaActual=()=>dias()[iDia];
+
+const TANDA=24;
+
+function figura(ed,d,f,i,total){
+  const ft=document.createElement('figure');
+  ft.className='ft reveal';
+  ft.dataset.ancho=f.w; ft.dataset.alto=f.h; ft.dataset.i=i;
+  ft.innerHTML=
+    '<button class="ft__bt" type="button" data-abrir="'+i+'" '+
+      'aria-label="Ampliar foto '+(i+1)+' de '+total+'">'+
+      '<img src="'+urlM(ed,d,f)+'" alt="Jornada de la Cadena Láctea '+ed.anio+
+      ' · '+d.dia+' '+d.num+' · foto '+(i+1)+'" width="'+f.w+'" height="'+f.h+'" '+
+      'loading="lazy" decoding="async">'+
+    '</button>'+
+    '<a class="ft__dl" href="'+urlG(ed,d,f)+'" '+
+      'download="'+f.n+'" '+
+      'title="Descargar en alta calidad" aria-label="Descargar la foto '+(i+1)+' en alta calidad">'+
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg>'+
+    '</a>';
+  const bt=ft.firstChild, im=bt.firstChild;
+  bt.style.setProperty('--ar',f.w+'/'+f.h);
+  const listo=()=>bt.classList.add('ok');
+  if(im.complete && im.naturalWidth) listo();
+  else{ im.addEventListener('load',listo,{once:true});
+        im.addEventListener('error',listo,{once:true}); }
+  return ft;
+}
+
+async function pintarPanel(a,b){
+  const ed=EDICIONES[a], d=ed.dias[b], pan=document.getElementById(idPanel(a,b));
+  if(!pan || pan.dataset.listo) return;
+  pan.dataset.listo='1';
+
+  if(b===iDia) pan.innerHTML='<div class="mas"><span class="mas__r" aria-hidden="true"></span></div>';
+  const lista=await fotosDe(ed,d);
+  pan.replaceChildren();
+
+  if(lista===null){
+    pan.innerHTML='<div class="aviso reveal"><h3>No se encontró el índice de la carpeta</h3><p>'+
+      (location.protocol==='file:'
+        ? 'Estás abriendo el archivo desde el disco y falta el <b>fotos.js</b> de esta carpeta. Volvé a correr renombrar.bat en la carpeta del día, o subí el sitio al servidor.'
+        : 'El navegador no puede listar una carpeta solo. Falta el <b>fotos.js</b> dentro de <b>'+ed.ruta+'/'+d.id+'/</b>: lo deja renombrar.bat.')+'</p></div>';
+    mirar(pan); return;
+  }
+  if(!lista.length){
+    pan.innerHTML='<div class="aviso reveal"><h3>Todavía no hay fotos de este día</h3><p>'+
+      (d.motivo||'Las estamos subiendo. Seguinos en Instagram para enterarte cuando estén.')+'</p></div>';
+    mirar(pan); return;
+  }
+
+  const msn=document.createElement('div');
+  msn.className='msn';
+  msn.dataset.total=lista.length;
+  pan.replaceChildren(msn);
+  if(b===iDia) actualizarConteo(lista.length);
+
+  if(lista.every(f=>f.w&&f.h)){
+    lista.forEach((f,i)=>msn.appendChild(figura(ed,d,f,i,lista.length)));
+    repartir(msn,true);
+    mirar(pan);
+    return;
+  }
+
+  columnasVacias(msn, columnas(anchoUtil(msn), lista.length));
+  const sigue=document.createElement('div');
+  sigue.className='mas'; sigue.innerHTML='<span class="mas__r" aria-hidden="true"></span>';
+  pan.appendChild(sigue);
+
+  let desde=0, trabajando=false;
+  async function tanda(){
+    if(trabajando || desde>=lista.length) return;
+    trabajando=true;
+    const hasta=Math.min(lista.length,desde+TANDA);
+    const trozo=lista.slice(desde,hasta).map(f=>medir(ed,d,f));
+    for(let k=0;k<trozo.length;k++){
+      const f=await trozo[k];
+      if(!f.w||!f.h) continue;
+      const ft=figura(ed,d,f,desde+k,lista.length);
+      colocar(msn,ft);
+      mirarUno(ft,k);
+    }
+    desde=hasta;
+    trabajando=false;
+    if(desde>=lista.length){
+      sigue.remove(); vigia.disconnect();
+
+      const puestas=msn.querySelectorAll('.ft').length;
+      msn.dataset.total=puestas;
+      if(b===iDia && puestas!==lista.length) actualizarConteo(puestas);
+    }
+    else if(!sePuedeScrollear()) tanda();
+  }
+  const sePuedeScrollear=()=>document.documentElement.scrollHeight>innerHeight+120;
+  const vigia=new IntersectionObserver(es=>{ if(es.some(x=>x.isIntersecting)) tanda(); },
+    {rootMargin:'600px 0px'});
+  vigia.observe(sigue);
+  pan.dataset.progresivo='1';
+  tanda();
+}
+
+async function actualizarConteo(n){
+  const d=diaActual();
+  if(n===undefined){
+    const l=await fotosDe(EDICIONES[iEd],d);
+    n=l?l.length:0;
+  }
+  conteo.innerHTML=n ? '<b>'+n+'</b> fotos · '+d.fecha : d.fecha;
+}
+
+function pintarEdicion(){
+  const ed=EDICIONES[iEd];
+  tituloEd.innerHTML='<span class="l1 d-thin">'+ed.edicion+'</span>'+
+                     '<span class="l2 d-black">'+ed.anio+'</span>';
+
+  tabsDias.querySelectorAll('button').forEach(b=>b.remove());
+  ed.dias.forEach((d,n)=>{
+    const b=document.createElement('button');
+    b.type='button'; b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', n===iDia?'true':'false');
+    b.setAttribute('aria-controls', idPanel(iEd,n));
+    b.id='tab-'+iEd+'-'+n;
+    b.innerHTML=d.dia+' <b>'+d.num+'</b>';
+    if(!hayFotos(d)){
+      b.disabled=true;
+      b.setAttribute('aria-disabled','true');
+      b.title=d.motivo||'Sin fotos de este día';
+    }
+    tabsDias.appendChild(b);
+  });
+
+  paneles.replaceChildren(...ed.dias.map((d,n)=>{
+    const p=document.createElement('div');
+    p.className='dia'; p.id=idPanel(iEd,n);
+    p.setAttribute('role','tabpanel'); p.setAttribute('aria-labelledby','tab-'+iEd+'-'+n);
+    if(n!==iDia) p.hidden=true;
+    return p;
+  }));
+
+  moverPill();
+  actualizarConteo();
+  pintarPanel(iEd,iDia);
+  enRatoLibre(()=>ed.dias.forEach((d,n)=>{ if(n!==iDia && hayFotos(d)) pintarPanel(iEd,n); }));
+}
+
+function enRatoLibre(fn){
+  if('requestIdleCallback' in window) requestIdleCallback(fn,{timeout:2500});
+  else setTimeout(fn,600);
+}
+
+function moverPill(){
+  const bs=[...tabsDias.querySelectorAll('button')];
+  const b=bs.find(x=>x.getAttribute('aria-selected')==='true')||bs[0];
+  if(!b) return;
+  pillDias.style.width=b.offsetWidth+'px';
+  pillDias.style.transform='translateX('+(b.offsetLeft-bs[0].offsetLeft)+'px)';
+}
+tabsDias.addEventListener('click',e=>{
+  const b=e.target.closest('button');
+  if(!b || b.disabled) return;
+  const bs=[...tabsDias.querySelectorAll('button')], n=bs.indexOf(b);
+  if(n<0||n===iDia) return;
+  location.hash=EDICIONES[iEd].anio+'/'+dias()[n].id;
+});
+
+function mostrarDia(n){
+  const bs=[...tabsDias.querySelectorAll('button')];
+  iDia=n;
+  bs.forEach((o,k)=>o.setAttribute('aria-selected',k===n));
+  moverPill(); actualizarConteo();
+  EDICIONES[iEd].dias.forEach((d,k)=>{
+    document.getElementById(idPanel(iEd,k)).hidden=k!==n; });
+  pintarPanel(iEd,n);
+  document.querySelectorAll('.dia:not([hidden]) .reveal').forEach(el=>el.classList.add('in'));
+
+  const msn=document.getElementById(idPanel(iEd,n)).querySelector('.msn');
+  if(msn){ delete msn.dataset.cols; repartir(msn); }
+}
+
+function leerHash(){
+  const h=decodeURIComponent(location.hash).replace(/^#\/?/,'').trim();
+  if(!h) return null;
+  const [a,d]=h.split('/');
+  const e=EDICIONES.findIndex(x=>x.anio===a);
+  if(e<0) return null;
+  const libres=EDICIONES[e].dias;
+  let di=libres.findIndex(x=>x.id===d && hayFotos(x));
+  if(di<0) di=libres.findIndex(hayFotos);
+  return {e, d:Math.max(0,di)};
+}
+
+function aplicarRuta(){
+  const r=leerHash();
+  if(!r){
+    cabEdicion.hidden=true; paneles.hidden=true;
+    cabPortada.hidden=false; ediciones.hidden=false;
+    cabPortada.classList.remove('entra'); void cabPortada.offsetWidth;
+    cabPortada.classList.add('entra');
+    document.title='Galería · Jornada de la Cadena Láctea de Entre Ríos';
+    return;
+  }
+  const cambiaEd=(r.e!==iEd) || paneles.hidden;
+  cabPortada.hidden=true; ediciones.hidden=true;
+  cabEdicion.hidden=false; paneles.hidden=false;
+  if(cambiaEd){
+    iEd=r.e; iDia=r.d;
+    pintarEdicion();
+    cabEdicion.classList.remove('entra'); void cabEdicion.offsetWidth;
+    cabEdicion.classList.add('entra');
+  }else if(r.d!==iDia){
+    mostrarDia(r.d);
+  }
+  document.title='Galería '+EDICIONES[iEd].anio+' · Jornada de la Cadena Láctea de Entre Ríos';
+  requestAnimationFrame(moverPill);
+}
+addEventListener('hashchange',()=>{ aplicarRuta(); scrollTo({top:0,behavior:menos?'auto':'smooth'}); });
+$('#btAtras').addEventListener('click',()=>{
+  if(history.length>1 && leerHash()) history.back();
+  else location.hash='';
+});
+
+let tReflujo;
+addEventListener('resize',()=>{
+  clearTimeout(tReflujo);
+  tReflujo=setTimeout(()=>{
+    moverPill();
+    document.querySelectorAll('.dia:not([hidden]) .msn').forEach(repartir);
+  },160);
+});
+
+const lb=$('#lb'), lbImg=$('#lbImg'), lbMeta=$('#lbMeta'),
+      lbDl=$('#lbDl'), lbPrev=$('#lbPrev'), lbNext=$('#lbNext');
+let iFoto=-1, abridor=null, listaLb=[];
+
+const rutaG=i=>urlG(EDICIONES[iEd],diaActual(),listaLb[i]);
+
+function mostrar(i){
+  const ed=EDICIONES[iEd], d=diaActual(), tot=listaLb.length;
+  if(!tot) return;
+  iFoto=(i+tot)%tot;
+  lb.classList.add('cargando');
+  lbImg.classList.remove('lista');
+  lbImg.src=rutaG(iFoto);
+  lbImg.alt='Jornada de la Cadena Láctea '+ed.anio+' · '+d.dia+' '+d.num+' · foto '+(iFoto+1);
+  lbDl.href=rutaG(iFoto);
+  lbDl.download=listaLb[iFoto].n;
+  lbMeta.innerHTML='<b>'+d.dia+' '+d.num+'</b> · '+ed.anio;
+  lbPrev.disabled=lbNext.disabled=(tot<2);
+  if(tot>1) [iFoto+1,iFoto-1].forEach(k=>{ const im=new Image(); im.src=rutaG((k+tot)%tot); });
+}
+lbImg.addEventListener('load',()=>{ lb.classList.remove('cargando'); lbImg.classList.add('lista'); });
+
+lbImg.addEventListener('error',()=>{
+  const f=listaLb[iFoto];
+  if(f && !f.sinG){ f.sinG=1; lbImg.src=rutaG(iFoto); lbDl.href=rutaG(iFoto); return; }
+  lb.classList.remove('cargando');
+});
+
+async function abrir(i,desde){
+  listaLb=(await fotosDe(EDICIONES[iEd],diaActual()))||[];
+  if(!listaLb.length) return;
+  abridor=desde||null;
+  document.documentElement.classList.add('quieto');
+  lb.hidden=false;
+  mostrar(i);
+  requestAnimationFrame(()=>lb.classList.add('abierto'));
+  $('#lbX').focus({preventScroll:true});
+  document.querySelectorAll('header.top,section.cab,main.galeria,footer.pie')
+    .forEach(el=>el.setAttribute('aria-hidden','true'));
+}
+function cerrar(){
+  lb.classList.remove('abierto');
+  document.querySelectorAll('header.top,section.cab,main.galeria,footer.pie')
+    .forEach(el=>el.removeAttribute('aria-hidden'));
+  const fin=()=>{ lb.hidden=true; lbImg.removeAttribute('src');
+    document.documentElement.classList.remove('quieto');
+    if(abridor){ abridor.focus({preventScroll:true}); abridor=null; } };
+  menos?fin():setTimeout(fin,380);
+}
+
+paneles.addEventListener('click',e=>{
+  const bt=e.target.closest('[data-abrir]'); if(!bt) return;
+  abrir(+bt.dataset.abrir,bt);
+});
+$('#lbX').addEventListener('click',cerrar);
+
+lb.addEventListener('click',e=>{ if(!e.target.closest('#lbImg,.lb__top,.lb__pie')) cerrar(); });
+lbPrev.addEventListener('click',()=>mostrar(iFoto-1));
+lbNext.addEventListener('click',()=>mostrar(iFoto+1));
+
+addEventListener('keydown',e=>{
+  if(lb.hidden) return;
+  if(e.key==='Escape'){ e.preventDefault(); cerrar(); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); mostrar(iFoto-1); }
+  else if(e.key==='ArrowRight'){ e.preventDefault(); mostrar(iFoto+1); }
+  else if(e.key==='Tab'){
+    const f=[...lb.querySelectorAll('a[href],button:not([disabled]):not([tabindex="-1"])')];
+    if(!f.length) return;
+    const pri=f[0], ult=f[f.length-1];
+    if(e.shiftKey && document.activeElement===pri){ e.preventDefault(); ult.focus(); }
+    else if(!e.shiftKey && document.activeElement===ult){ e.preventDefault(); pri.focus(); }
+  }
+});
+
 (function(){
-  const c=document.getElementById('particulas');
-  if(!c || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let x0=null,y0=null;
+  lb.addEventListener('touchstart',e=>{
+    if(e.touches.length!==1) return;
+    x0=e.touches[0].clientX; y0=e.touches[0].clientY;
+  },{passive:true});
+  lb.addEventListener('touchend',e=>{
+    if(x0===null) return;
+    const t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0;
+    x0=null;
+    if(Math.abs(dx)>52 && Math.abs(dx)>Math.abs(dy)*1.4) mostrar(iFoto+(dx<0?1:-1));
+    else if(dy>90 && Math.abs(dy)>Math.abs(dx)*1.4) cerrar();
+  },{passive:true});
+})();
+
+pintarPortada();
+aplicarRuta();
+mirar();
+
+(function(){
+  const c=$('#particulas');
+  if(!c || menos) return;
   const ctx=c.getContext('2d'); const dpr=Math.min(devicePixelRatio||1,2);
-  let w=0,h=0,ps=[],raf=null;
+  let w=0,h=0,ps=[];
   function medir(){
-    const r=c.getBoundingClientRect(); w=r.width; h=r.height;
+    const r=c.getBoundingClientRect();
+    if(!r.width||!r.height) return;
+    w=r.width; h=r.height;
     c.width=w*dpr; c.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
-    const n=Math.round(Math.min(70,Math.max(26,w*h/16000)));
+    const n=Math.round(Math.min(60,Math.max(22,w*h/18000)));
     ps=Array.from({length:n},()=>({
       x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.7+.5,
       vx:(Math.random()-.5)*.12, vy:-(Math.random()*.16+.04),
@@ -172,10 +1048,12 @@ a{color:inherit;text-decoration:none}
       ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283);
       ctx.fillStyle='rgba(115,193,239,'+al.toFixed(3)+')'; ctx.fill();
     }
-    raf=requestAnimationFrame(pintar);
+    requestAnimationFrame(pintar);
   }
-  medir(); addEventListener('resize',medir);
-  raf=requestAnimationFrame(pintar);
+  medir();
+
+  new ResizeObserver(medir).observe(c);
+  requestAnimationFrame(pintar);
 })();
 </script>
 </body>
